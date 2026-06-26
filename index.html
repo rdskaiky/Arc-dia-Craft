@@ -3,73 +3,71 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Arcádia Craft - Servidor Minecraft</title>
+  <title>Arcádia Craft — Servidor Minecraft</title>
 
-  <!-- Meta tags SEO e Open Graph -->
-  <meta name="description" content="Arcádia Craft - Servidor Minecraft Anarquia + Survival. PvP liberado, sem regras, sem limites." />
-  <meta name="keywords" content="Minecraft, servidor, anarquia, survival, PvP, Arcádia Craft" />
-  <meta property="og:title" content="Arcádia Craft - Servidor Minecraft" />
+  <!-- SEO -->
+  <meta name="description" content="Arcádia Craft — Servidor Minecraft Anarquia + Survival. PvP liberado." />
+  <meta property="og:title" content="Arcádia Craft — Servidor Minecraft" />
   <meta property="og:description" content="Anarquia + Survival. PvP liberado, construa, destrua, domine." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://seu-site.com" />
   <meta property="og:image" content="arcadiacraft.png" />
   <meta property="og:site_name" content="Arcádia Craft" />
-  <meta name="theme-color" content="#9b4dff" />
+  <meta name="theme-color" content="#6c3b9e" />
 
-  <!-- Schema.org JSON-LD -->
+  <!-- Schema.org -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Game",
       "name": "Arcádia Craft",
-      "description": "Servidor Minecraft Anarquia + Survival. PvP liberado, sem regras.",
+      "description": "Servidor Minecraft Anarquia + Survival. PvP liberado.",
       "gamePlatform": "Minecraft",
       "genre": "Anarquia, Survival, PvP",
-      "url": "https://seu-site.com",
       "image": "arcadiacraft.png"
     }
   </script>
 
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%239b4dff'>⚔</text></svg>" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%236c3b9e'/%3E%3Ctext x='50' y='68' font-size='50' text-anchor='middle' fill='%23ffffff' font-family='Arial' font-weight='bold'%3EA%3C/text%3E%3C/svg%3E" />
 
-  <!-- Fontes e ícones -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Orbitron:wght@600;800&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <style>
     /* =====================================================================
-       VARIÁVEIS CSS (TEMA)
+       ROOT VARIABLES
        ===================================================================== */
     :root {
-      --primary: #9b4dff;
-      --primary-dark: #7a2be0;
-      --primary-light: #b388ff;
-      --secondary: #d4b3ff;
-      --bg-dark: #0b0812;
-      --bg-card: rgba(18, 12, 30, 0.65);
-      --bg-glass: rgba(12, 8, 22, 0.85);
-      --text: #cbb7e6;
-      --text-muted: #6d538a;
-      --text-light: #d4b3ff;
-      --gold: #ffd700;
-      --green: #4cdf8b;
-      --red: #ff6b6b;
-      --orange: #ffaa55;
-      --border: rgba(155, 77, 255, 0.15);
-      --shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
-      --radius: 24px;
-      --transition: 0.3s ease;
-      --font-body: 'Inter', 'Roboto', sans-serif;
-      --font-title: 'Orbitron', sans-serif;
+      --color-primary: #6c3b9e;
+      --color-primary-dark: #4f2a7a;
+      --color-primary-light: #9b6bc0;
+      --color-secondary: #c9a7eb;
+      --color-accent: #f0c97a;
+      --color-bg: #0d0a14;
+      --color-surface: #151020;
+      --color-card: rgba(21, 16, 32, 0.75);
+      --color-text: #e4d9f2;
+      --color-text-muted: #9885b0;
+      --color-text-light: #f2edf7;
+      --color-border: rgba(108, 59, 158, 0.20);
+      --color-border-hover: rgba(108, 59, 158, 0.45);
+      --radius-lg: 32px;
+      --radius-md: 20px;
+      --radius-sm: 12px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --menu-width: 300px;
     }
 
     /* =====================================================================
        RESET E BASE
        ===================================================================== */
-    * {
+    *,
+    *::before,
+    *::after {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -78,26 +76,32 @@
     html {
       scroll-behavior: smooth;
       font-size: 16px;
+      -webkit-text-size-adjust: 100%;
     }
 
     body {
       min-height: 100vh;
       font-family: var(--font-body);
-      background: var(--bg-dark);
-      color: var(--text);
-      overflow-x: hidden;
+      background: var(--color-bg);
+      color: var(--color-text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: var(--color-primary);
+      color: #fff;
     }
 
     *:focus-visible {
-      outline: 2px solid var(--primary);
+      outline: 2px solid var(--color-primary-light);
       outline-offset: 2px;
       border-radius: 4px;
     }
 
     /* =====================================================================
-       FUNDO DA GALÁXIA INTERATIVA (CANVAS)
+       GALAXY BACKGROUND
        ===================================================================== */
     #galaxyCanvas {
       position: fixed;
@@ -110,7 +114,7 @@
       display: block;
     }
 
-    .nebula-overlay {
+    .galaxy-overlay {
       position: fixed;
       top: 0;
       left: 0;
@@ -119,13 +123,13 @@
       z-index: 0;
       pointer-events: none;
       background:
-        radial-gradient(ellipse at 20% 30%, rgba(120, 40, 200, 0.10), transparent 60%),
-        radial-gradient(ellipse at 80% 70%, rgba(40, 80, 220, 0.08), transparent 50%),
-        radial-gradient(ellipse at 50% 50%, rgba(200, 60, 255, 0.05), transparent 70%);
+        radial-gradient(ellipse at 25% 20%, rgba(108, 59, 158, 0.08), transparent 55%),
+        radial-gradient(ellipse at 75% 80%, rgba(60, 30, 120, 0.06), transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(200, 160, 255, 0.03), transparent 70%);
     }
 
     /* =====================================================================
-       MENU DESKTOP
+       NAVEGAÇÃO DESKTOP
        ===================================================================== */
     .desktop-nav {
       position: fixed;
@@ -133,12 +137,12 @@
       left: 0;
       width: 100%;
       z-index: 100;
-      background: var(--bg-glass);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-      padding: 0 40px;
-      height: 70px;
+      background: rgba(13, 10, 20, 0.78);
+      backdrop-filter: blur(18px) saturate(1.2);
+      -webkit-backdrop-filter: blur(18px) saturate(1.2);
+      border-bottom: 1px solid var(--color-border);
+      padding: 0 48px;
+      height: 72px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -148,103 +152,107 @@
     .desktop-nav .brand {
       display: flex;
       align-items: baseline;
-      gap: 2px;
-      font-family: var(--font-title);
-      font-weight: 800;
-      font-size: 1.8rem;
-      letter-spacing: 1px;
+      gap: 4px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.6rem;
+      letter-spacing: -0.5px;
+      color: var(--color-text-light);
+      text-decoration: none;
     }
+
     .desktop-nav .brand .arcadia {
-      color: var(--secondary);
+      color: var(--color-text-light);
     }
+
     .desktop-nav .brand .craft {
-      color: var(--primary);
-      text-shadow: 0 0 20px rgba(155, 77, 255, 0.3);
+      color: var(--color-primary-light);
+      font-weight: 600;
     }
 
     .desktop-nav .nav-links {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
       list-style: none;
-      flex-wrap: wrap;
     }
 
     .desktop-nav .nav-links li a {
-      color: var(--text-muted);
-      text-decoration: none;
-      padding: 8px 16px;
-      border-radius: 30px;
-      font-weight: 500;
-      font-size: 0.85rem;
-      letter-spacing: 0.3px;
-      transition: var(--transition);
       display: flex;
       align-items: center;
       gap: 8px;
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      transition: var(--transition);
       border: 1px solid transparent;
+      letter-spacing: 0.2px;
     }
 
     .desktop-nav .nav-links li a i {
       font-size: 1rem;
-      color: var(--primary);
+      color: var(--color-primary-light);
+      opacity: 0.7;
+      transition: var(--transition);
     }
 
     .desktop-nav .nav-links li a:hover,
     .desktop-nav .nav-links li a:focus-visible {
-      background: rgba(155, 77, 255, 0.08);
-      color: var(--secondary);
-      border-color: rgba(155, 77, 255, 0.15);
+      color: var(--color-text-light);
+      background: rgba(108, 59, 158, 0.08);
+      border-color: var(--color-border);
+    }
+
+    .desktop-nav .nav-links li a:hover i {
+      opacity: 1;
+      color: var(--color-secondary);
+    }
+
+    .desktop-nav .nav-links li a.vip-link i {
+      color: var(--color-accent);
+    }
+    .desktop-nav .nav-links li a.vip-link:hover {
+      border-color: rgba(240, 201, 122, 0.25);
+      background: rgba(240, 201, 122, 0.04);
+    }
+
+    .desktop-nav .nav-links li a.supporter-link i {
+      color: #6fcf97;
+    }
+    .desktop-nav .nav-links li a.supporter-link:hover {
+      border-color: rgba(111, 207, 151, 0.25);
+      background: rgba(111, 207, 151, 0.04);
     }
 
     .desktop-nav .nav-links li a.players-link i {
-      color: var(--green);
+      color: #7ec8e3;
     }
     .desktop-nav .nav-links li a.players-link:hover {
-      border-color: rgba(76, 223, 139, 0.3);
-      background: rgba(76, 223, 139, 0.05);
-    }
-
-    .desktop-nav .nav-links li a.vip-link {
-      border-color: rgba(255, 215, 0, 0.15);
-    }
-    .desktop-nav .nav-links li a.vip-link i {
-      color: var(--gold);
-    }
-    .desktop-nav .nav-links li a.vip-link:hover {
-      border-color: rgba(255, 215, 0, 0.4);
-      background: rgba(255, 215, 0, 0.05);
-    }
-
-    .desktop-nav .nav-links li a.supporter-link {
-      border-color: rgba(76, 223, 139, 0.15);
-    }
-    .desktop-nav .nav-links li a.supporter-link i {
-      color: var(--green);
-    }
-    .desktop-nav .nav-links li a.supporter-link:hover {
-      border-color: rgba(76, 223, 139, 0.3);
-      background: rgba(76, 223, 139, 0.05);
+      border-color: rgba(126, 200, 227, 0.25);
+      background: rgba(126, 200, 227, 0.04);
     }
 
     .desktop-nav .nav-links li a.rules-link i {
-      color: var(--orange);
+      color: #f0b27a;
     }
     .desktop-nav .nav-links li a.rules-link:hover {
-      border-color: rgba(255, 170, 85, 0.3);
-      background: rgba(255, 170, 85, 0.05);
+      border-color: rgba(240, 178, 122, 0.25);
+      background: rgba(240, 178, 122, 0.04);
     }
 
-    .desktop-nav .nav-links li a.donate-link i {
-      color: #ff6b6b;
+    .desktop-nav .nav-links li a.stats-link i {
+      color: #ff9f43;
     }
-    .desktop-nav .nav-links li a.donate-link:hover {
-      border-color: rgba(255, 107, 107, 0.3);
-      background: rgba(255, 107, 107, 0.05);
+    .desktop-nav .nav-links li a.stats-link:hover {
+      border-color: rgba(255, 159, 67, 0.25);
+      background: rgba(255, 159, 67, 0.04);
     }
 
     /* =====================================================================
-       MENU MOBILE
+       MENU OFF-CANVAS MELHORADO (MOBILE)
        ===================================================================== */
     .menu-toggle {
       display: none;
@@ -252,10 +260,10 @@
       top: 18px;
       left: 18px;
       z-index: 1000;
-      background: rgba(18, 12, 30, 0.85);
-      backdrop-filter: blur(8px);
-      border: 1px solid var(--border);
-      border-radius: 14px;
+      background: rgba(13, 10, 20, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
       padding: 10px 12px;
       cursor: pointer;
       flex-direction: column;
@@ -263,59 +271,94 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
       transition: var(--transition);
     }
+
     .menu-toggle:hover {
-      border-color: var(--primary);
+      border-color: var(--color-border-hover);
     }
+
     .menu-toggle span {
       display: block;
       width: 26px;
       height: 2px;
-      background: var(--primary-light);
+      background: var(--color-text-muted);
       border-radius: 4px;
       transition: var(--transition);
     }
+
     .menu-toggle.active span:nth-child(1) {
       transform: rotate(45deg) translate(5px, 5px);
+      background: var(--color-text-light);
     }
     .menu-toggle.active span:nth-child(2) {
       opacity: 0;
     }
     .menu-toggle.active span:nth-child(3) {
       transform: rotate(-45deg) translate(5px, -5px);
+      background: var(--color-text-light);
     }
 
+    /* Overlay com blur e sombra */
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 998;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .menu-overlay.show {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* Menu lateral com animação fluida */
     .side-menu {
       position: fixed;
       top: 0;
-      left: -300px;
-      width: 280px;
+      left: calc(-1 * var(--menu-width));
+      width: var(--menu-width);
       height: 100vh;
-      background: rgba(12, 8, 22, 0.97);
-      backdrop-filter: blur(20px);
-      border-right: 1px solid var(--border);
+      background: rgba(13, 10, 20, 0.96);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-right: 1px solid var(--color-border);
       z-index: 999;
-      padding: 80px 24px 30px;
-      transition: left 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-      box-shadow: 4px 0 40px rgba(0, 0, 0, 0.6);
+      padding: 80px 28px 30px;
+      transition: left 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+      box-shadow: 4px 0 60px rgba(0, 0, 0, 0.7);
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 2px;
+      will-change: transform, left;
     }
+
     .side-menu.open {
       left: 0;
     }
 
     .side-menu .menu-title {
-      font-family: var(--font-title);
+      font-family: var(--font-display);
       font-weight: 600;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       letter-spacing: 4px;
       text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 24px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 12px;
+      color: var(--color-text-muted);
+      margin-bottom: 28px;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .side-menu .menu-title i {
+      color: var(--color-primary-light);
     }
 
     .side-menu .menu-item {
@@ -323,8 +366,8 @@
       align-items: center;
       gap: 14px;
       padding: 12px 16px;
-      border-radius: 14px;
-      color: var(--text);
+      border-radius: var(--radius-sm);
+      color: var(--color-text-muted);
       font-weight: 400;
       font-size: 0.95rem;
       text-decoration: none;
@@ -332,58 +375,72 @@
       border: 1px solid transparent;
       cursor: pointer;
     }
+
     .side-menu .menu-item i {
       font-size: 1.2rem;
-      width: 26px;
+      width: 28px;
       text-align: center;
-      color: var(--primary);
-    }
-    .side-menu .menu-item:hover,
-    .side-menu .menu-item:focus-visible {
-      background: rgba(155, 77, 255, 0.08);
-      border-color: rgba(155, 77, 255, 0.15);
-      transform: translateX(4px);
-    }
-    .side-menu .menu-item.vip {
-      border-color: rgba(255, 215, 0, 0.15);
-    }
-    .side-menu .menu-item.vip i {
-      color: var(--gold);
-    }
-    .side-menu .menu-item.vip span {
-      color: var(--gold);
-    }
-    .side-menu .menu-item.supporter {
-      border-color: rgba(76, 223, 139, 0.15);
-    }
-    .side-menu .menu-item.supporter i {
-      color: var(--green);
-    }
-    .side-menu .menu-item.supporter span {
-      color: var(--green);
-    }
-    .side-menu .menu-item.rules i {
-      color: var(--orange);
-    }
-    .side-menu .menu-item.players i {
-      color: var(--green);
-    }
-    .side-menu .menu-item.donate i {
-      color: #ff6b6b;
+      color: var(--color-primary-light);
+      opacity: 0.7;
+      transition: var(--transition);
     }
 
-    .menu-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 998;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.4s ease;
+    .side-menu .menu-item:hover,
+    .side-menu .menu-item:focus-visible {
+      background: rgba(108, 59, 158, 0.06);
+      color: var(--color-text-light);
+      border-color: var(--color-border);
     }
-    .menu-overlay.show {
+
+    .side-menu .menu-item:hover i,
+    .side-menu .menu-item:focus-visible i {
       opacity: 1;
-      pointer-events: all;
+    }
+
+    .side-menu .menu-item.vip i {
+      color: var(--color-accent);
+    }
+    .side-menu .menu-item.vip span {
+      color: var(--color-accent);
+    }
+    .side-menu .menu-item.vip:hover {
+      border-color: rgba(240, 201, 122, 0.20);
+      background: rgba(240, 201, 122, 0.04);
+    }
+
+    .side-menu .menu-item.supporter i {
+      color: #6fcf97;
+    }
+    .side-menu .menu-item.supporter span {
+      color: #6fcf97;
+    }
+    .side-menu .menu-item.supporter:hover {
+      border-color: rgba(111, 207, 151, 0.20);
+      background: rgba(111, 207, 151, 0.04);
+    }
+
+    .side-menu .menu-item.players i {
+      color: #7ec8e3;
+    }
+    .side-menu .menu-item.players:hover {
+      border-color: rgba(126, 200, 227, 0.20);
+      background: rgba(126, 200, 227, 0.04);
+    }
+
+    .side-menu .menu-item.rules i {
+      color: #f0b27a;
+    }
+    .side-menu .menu-item.rules:hover {
+      border-color: rgba(240, 178, 122, 0.20);
+      background: rgba(240, 178, 122, 0.04);
+    }
+
+    .side-menu .menu-item.stats i {
+      color: #ff9f43;
+    }
+    .side-menu .menu-item.stats:hover {
+      border-color: rgba(255, 159, 67, 0.20);
+      background: rgba(255, 159, 67, 0.04);
     }
 
     /* =====================================================================
@@ -393,45 +450,47 @@
       position: relative;
       z-index: 1;
       max-width: 1200px;
-      margin: 90px auto 40px;
-      padding: 0 24px;
+      margin: 96px auto 48px;
+      padding: 0 28px;
     }
 
     /* =====================================================================
-       CABEÇALHO
+       HEADER
        ===================================================================== */
     .header {
       text-align: center;
-      margin-bottom: 24px;
+      margin-bottom: 32px;
     }
 
-    .badge {
+    .header .badge {
       display: inline-block;
-      background: rgba(155, 77, 255, 0.10);
-      border: 1px solid var(--border);
+      background: rgba(108, 59, 158, 0.10);
+      border: 1px solid var(--color-border);
       border-radius: 100px;
       padding: 6px 24px;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       font-weight: 600;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--primary-light);
+      color: var(--color-primary-light);
       backdrop-filter: blur(4px);
+      margin-bottom: 18px;
     }
 
     .header h1 {
-      font-family: var(--font-title);
-      font-weight: 800;
-      font-size: 4.2rem;
-      letter-spacing: 2px;
-      background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 50%, var(--primary-dark) 100%);
-      background-size: 200% 200%;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 4.4rem;
+      letter-spacing: -2px;
+      line-height: 1.05;
+      background: linear-gradient(135deg, #f2edf7 0%, var(--color-secondary) 40%, var(--color-primary-light) 70%, var(--color-primary) 100%);
+      background-size: 300% 300%;
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      animation: gradShift 6s ease-in-out infinite;
-      line-height: 1.1;
+      animation: gradShift 8s ease-in-out infinite;
     }
+
     @keyframes gradShift {
       0%,
       100% {
@@ -443,32 +502,34 @@
     }
 
     .header .sub {
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 400;
-      color: var(--text-muted);
-      letter-spacing: 6px;
+      color: var(--color-text-muted);
+      letter-spacing: 8px;
       text-transform: uppercase;
-      margin-top: 6px;
-      opacity: 0.8;
-      border-bottom: 1px solid var(--border);
+      margin-top: 8px;
+      opacity: 0.75;
+      border-bottom: 1px solid var(--color-border);
       display: inline-block;
-      padding-bottom: 6px;
-      min-height: 32px;
+      padding-bottom: 8px;
+      min-height: 40px;
+      font-family: var(--font-display);
     }
 
     .divider {
-      width: 80px;
+      width: 72px;
       height: 2px;
-      margin: 20px auto 24px;
-      background: linear-gradient(90deg, transparent, var(--primary), transparent);
+      margin: 22px auto 28px;
+      background: linear-gradient(90deg, transparent, var(--color-primary-light), transparent);
       border-radius: 4px;
       animation: linePulse 3s ease-in-out infinite;
     }
+
     @keyframes linePulse {
       0%,
       100% {
-        width: 80px;
-        opacity: 0.5;
+        width: 72px;
+        opacity: 0.4;
       }
       50% {
         width: 160px;
@@ -476,61 +537,229 @@
       }
     }
 
-    /* Descrição */
+    /* =====================================================================
+       DESCRIÇÃO
+       ===================================================================== */
     .description {
       text-align: center;
-      color: var(--text);
+      color: var(--color-text);
       font-size: 1.05rem;
       line-height: 1.9;
       font-weight: 300;
-      padding: 18px 24px;
-      background: rgba(155, 77, 255, 0.03);
-      border-radius: 32px;
-      border-left: 2px solid var(--border);
-      border-right: 2px solid var(--border);
-      margin-bottom: 28px;
-      letter-spacing: 0.3px;
-    }
-    .description strong {
-      color: var(--secondary);
-      font-weight: 600;
-    }
-    .description .highlight {
-      display: inline-block;
-      background: rgba(155, 77, 255, 0.06);
-      padding: 0 10px;
-      border-radius: 12px;
-      font-weight: 500;
+      padding: 24px 32px;
+      background: var(--color-card);
+      backdrop-filter: blur(8px);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      margin-bottom: 32px;
+      letter-spacing: 0.2px;
     }
 
-    /* Status do servidor */
-    .server-status {
-      text-align: center;
-      margin: -10px 0 20px;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-    .server-status .status-online {
-      color: var(--green);
+    .description strong {
+      color: var(--color-text-light);
       font-weight: 600;
     }
-    .server-status .status-offline {
-      color: var(--red);
-      font-weight: 600;
-    }
-    .server-status i {
-      margin-right: 6px;
+
+    .description .highlight {
+      display: inline-block;
+      background: rgba(108, 59, 158, 0.06);
+      padding: 0 12px;
+      border-radius: 8px;
+      font-weight: 500;
+      color: var(--color-secondary);
     }
 
     /* =====================================================================
-       BOTÕES PRINCIPAIS
+       STATUS DETALHADO DO SERVIDOR
+       ===================================================================== */
+    .server-status-detailed {
+      background: var(--color-card);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 24px 28px;
+      margin: 20px 0 32px;
+      transition: var(--transition);
+    }
+
+    .server-status-detailed:hover {
+      border-color: var(--color-border-hover);
+    }
+
+    .server-status-detailed .status-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .server-status-detailed .status-header .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .server-status-detailed .status-header .status-badge.online {
+      color: #6fcf97;
+    }
+    .server-status-detailed .status-header .status-badge.offline {
+      color: #e74c3c;
+    }
+    .server-status-detailed .status-header .status-badge i {
+      font-size: 0.6rem;
+    }
+
+    .server-status-detailed .status-header .uptime {
+      color: var(--color-text-muted);
+      font-size: 0.9rem;
+    }
+
+    .server-status-detailed .status-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .server-status-detailed .status-body .info-group h4 {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-text-muted);
+      margin-bottom: 4px;
+    }
+
+    .server-status-detailed .status-body .info-group p,
+    .server-status-detailed .status-body .info-group .motd {
+      color: var(--color-text-light);
+      font-weight: 500;
+      word-break: break-word;
+    }
+
+    .server-status-detailed .status-body .info-group .motd {
+      font-weight: 300;
+      font-size: 0.95rem;
+      color: var(--color-secondary);
+    }
+
+    .server-status-detailed .status-body .players-online {
+      grid-column: 1 / -1;
+      border-top: 1px solid var(--color-border);
+      padding-top: 16px;
+    }
+
+    .server-status-detailed .status-body .players-online h4 {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-text-muted);
+      margin-bottom: 8px;
+    }
+
+    .server-status-detailed .status-body .players-online .player-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .server-status-detailed .status-body .players-online .player-tag {
+      background: rgba(108, 59, 158, 0.08);
+      border: 1px solid var(--color-border);
+      border-radius: 30px;
+      padding: 4px 14px;
+      font-size: 0.8rem;
+      color: var(--color-text-light);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .server-status-detailed .status-body .players-online .player-tag .world {
+      font-size: 0.6rem;
+      color: var(--color-text-muted);
+    }
+
+    .server-status-detailed .status-body .players-online .no-players {
+      color: var(--color-text-muted);
+      font-size: 0.9rem;
+      font-weight: 300;
+    }
+
+    .server-status-detailed .status-body .mods-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .server-status-detailed .status-body .mods-list .mod-tag {
+      background: rgba(108, 59, 158, 0.05);
+      border: 1px solid var(--color-border);
+      border-radius: 20px;
+      padding: 2px 12px;
+      font-size: 0.7rem;
+      color: var(--color-text-muted);
+    }
+
+    /* =====================================================================
+       ESTATÍSTICAS RÁPIDAS
+       ===================================================================== */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px;
+      margin: 20px 0 32px;
+    }
+
+    .stat-card {
+      background: var(--color-card);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 20px 16px;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .stat-card:hover {
+      border-color: var(--color-border-hover);
+      transform: translateY(-3px);
+    }
+
+    .stat-card .stat-number {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--color-text-light);
+      line-height: 1.1;
+    }
+
+    .stat-card .stat-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--color-text-muted);
+      margin-top: 4px;
+    }
+
+    .stat-card .stat-icon {
+      font-size: 1.6rem;
+      color: var(--color-primary-light);
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    /* =====================================================================
+       BOTÕES
        ===================================================================== */
     .button-group {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 16px;
-      margin: 10px 0 36px;
+      gap: 14px;
+      margin: 8px 0 40px;
     }
 
     .btn {
@@ -538,56 +767,61 @@
       align-items: center;
       justify-content: center;
       gap: 12px;
-      padding: 16px 32px;
+      padding: 14px 32px;
       border-radius: 60px;
       font-family: var(--font-body);
       font-weight: 600;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
+      font-size: 0.85rem;
+      letter-spacing: 0.8px;
       text-transform: uppercase;
       text-decoration: none;
       color: #fff;
-      background: linear-gradient(135deg, #3f1f6b, #281a40);
-      border: 1px solid var(--border);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
       transition: var(--transition);
-      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
       flex: 1 1 auto;
       min-width: 160px;
-      position: relative;
-      overflow: hidden;
       cursor: pointer;
       user-select: none;
+      position: relative;
+      overflow: hidden;
     }
+
     .btn i {
-      font-size: 1.2rem;
-      opacity: 0.9;
-      transition: transform 0.3s ease;
+      font-size: 1.1rem;
+      opacity: 0.8;
+      transition: var(--transition);
     }
-    .btn::after {
+
+    .btn::before {
       content: '';
       position: absolute;
       inset: 0;
       border-radius: 60px;
-      padding: 2px;
-      background: linear-gradient(135deg, var(--primary-light), var(--primary-dark), var(--primary-light));
+      padding: 1px;
+      background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary), var(--color-primary-light));
       background-size: 200% 200%;
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
       mask-composite: exclude;
+      -webkit-mask-composite: xor;
       opacity: 0;
       transition: opacity 0.4s;
       animation: borderSpin 4s linear infinite;
     }
-    .btn:hover::after,
-    .btn:focus-visible::after {
+
+    .btn:hover::before,
+    .btn:focus-visible::before {
       opacity: 1;
     }
+
     .btn:hover,
     .btn:focus-visible {
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 12px 40px rgba(155, 77, 255, 0.20);
+      transform: translateY(-3px) scale(1.01);
+      box-shadow: 0 12px 40px rgba(108, 59, 158, 0.15);
       border-color: transparent;
     }
+
     @keyframes borderSpin {
       0% {
         background-position: 0% 50%;
@@ -601,33 +835,35 @@
     }
 
     .btn-discord {
-      background: linear-gradient(135deg, #4a3b8a, #2a1e5a);
+      background: linear-gradient(135deg, #3b2b6b, #1f1540);
     }
     .btn-discord i {
       color: #8b9cf7;
     }
 
     .btn-whatsapp {
-      background: linear-gradient(135deg, #1d7a4a, #0f4a2a);
+      background: linear-gradient(135deg, #1a6a3a, #0d3a20);
     }
     .btn-whatsapp i {
-      color: var(--green);
+      color: #6fcf97;
     }
 
     .btn-ip {
-      background: linear-gradient(135deg, #2a1a4a, #1a0a2a);
-      border-color: rgba(255, 200, 100, 0.15);
+      background: linear-gradient(135deg, #2a1a4a, #120a22);
+      border-color: rgba(240, 201, 122, 0.12);
     }
     .btn-ip i {
-      color: #ffcc77;
+      color: var(--color-accent);
     }
     .btn-ip:hover {
-      border-color: #ffcc77;
-      box-shadow: 0 0 40px rgba(255, 200, 100, 0.10);
+      border-color: rgba(240, 201, 122, 0.30);
+      box-shadow: 0 12px 40px rgba(240, 201, 122, 0.06);
     }
+
     .btn-ip.copied {
       animation: ipCopied 0.6s ease;
     }
+
     @keyframes ipCopied {
       0%,
       100% {
@@ -635,77 +871,32 @@
       }
       50% {
         transform: scale(0.95);
-        box-shadow: 0 0 60px rgba(76, 223, 139, 0.2);
-        border-color: var(--green);
+        box-shadow: 0 0 60px rgba(111, 207, 151, 0.15);
+        border-color: #6fcf97;
       }
     }
 
-    .btn-discord.clicked {
-      animation: discordClick 0.6s ease forwards;
-      pointer-events: none;
-    }
-    @keyframes discordClick {
-      0% {
-        transform: scale(1);
-      }
-      20% {
-        transform: scale(0.92);
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
-      }
-      40% {
-        transform: scale(1.05);
-        box-shadow: 0 0 50px rgba(139, 156, 247, 0.4);
-        border-color: #8b9cf7;
-      }
-      100% {
-        transform: scale(1);
-      }
-    }
-    .btn-discord.clicked i {
-      animation: iconSpinDiscord 0.6s ease forwards;
-    }
-    @keyframes iconSpinDiscord {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-
+    .btn-discord.clicked,
     .btn-whatsapp.clicked {
-      animation: whatsappClick 0.6s ease forwards;
+      animation: btnPulse 0.6s ease forwards;
       pointer-events: none;
     }
-    @keyframes whatsappClick {
+
+    @keyframes btnPulse {
       0% {
         transform: scale(1);
       }
       20% {
-        transform: scale(0.92);
+        transform: scale(0.94);
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
       }
       40% {
-        transform: scale(1.05);
-        box-shadow: 0 0 50px rgba(76, 223, 139, 0.4);
-        border-color: var(--green);
+        transform: scale(1.04);
+        box-shadow: 0 0 50px rgba(108, 59, 158, 0.15);
+        border-color: var(--color-primary-light);
       }
       100% {
         transform: scale(1);
-      }
-    }
-    .btn-whatsapp.clicked i {
-      animation: iconPulseWhats 0.6s ease forwards;
-    }
-    @keyframes iconPulseWhats {
-      0%,
-      100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.4);
-        color: var(--green);
-        filter: drop-shadow(0 0 20px var(--green));
       }
     }
 
@@ -713,94 +904,91 @@
       position: fixed;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%) scale(0.8);
-      background: rgba(18, 12, 30, 0.92);
-      backdrop-filter: blur(12px);
-      padding: 20px 40px;
+      transform: translate(-50%, -50%) scale(0.90);
+      background: rgba(13, 10, 20, 0.92);
+      backdrop-filter: blur(16px);
+      padding: 18px 40px;
       border-radius: 60px;
-      border: 1px solid var(--border);
-      color: var(--secondary);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-light);
       font-weight: 600;
-      letter-spacing: 2px;
-      font-size: 1.1rem;
+      letter-spacing: 1.5px;
+      font-size: 1rem;
       opacity: 0;
       pointer-events: none;
       transition: all 0.3s ease;
       z-index: 1001;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
     }
+
     .click-feedback.show {
       opacity: 1;
       transform: translate(-50%, -50%) scale(1);
     }
+
     .click-feedback i {
       margin-right: 12px;
-      font-size: 1.4rem;
-    }
-    .click-feedback.discord-fb i {
-      color: #8b9cf7;
-    }
-    .click-feedback.whatsapp-fb i {
-      color: var(--green);
-    }
-    .click-feedback.ip-fb i {
-      color: #ffcc77;
+      font-size: 1.2rem;
     }
 
     /* =====================================================================
-       GALERIA DE IMAGENS
+       GALERIA
        ===================================================================== */
     .gallery-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin: 30px 0 40px;
+      gap: 18px;
+      margin: 32px 0 44px;
       position: relative;
     }
 
     .gallery-grid .img-wrapper {
       position: relative;
       overflow: hidden;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
       cursor: pointer;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      background: rgba(22, 14, 40, 0.3);
+      background: var(--color-surface);
       opacity: 0.3;
       transform: scale(0.96);
       transition: opacity 0.8s ease, transform 0.8s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     }
+
     .gallery-grid .img-wrapper.visible {
       opacity: 1;
       transform: scale(1);
     }
+
     .gallery-grid .img-wrapper:hover {
-      border-color: rgba(155, 77, 255, 0.35);
-      box-shadow: 0 0 30px rgba(155, 77, 255, 0.06);
+      border-color: var(--color-border-hover);
+      box-shadow: var(--shadow-glow);
     }
+
     .gallery-grid .img-wrapper:hover img {
-      transform: scale(1.04);
+      transform: scale(1.03);
     }
+
     .gallery-grid .img-wrapper img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.5s ease;
+      transition: transform 0.6s ease;
     }
 
     .gallery-grid .img-wrapper .sword-overlay {
       position: absolute;
-      bottom: 12px;
-      right: 12px;
-      width: 60px;
+      bottom: 14px;
+      right: 14px;
+      width: 56px;
       height: auto;
       z-index: 5;
-      filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.10));
+      filter: drop-shadow(0 0 16px rgba(240, 201, 122, 0.08));
       pointer-events: none;
-      animation: floatSword 3s ease-in-out infinite;
-      opacity: 0.85;
+      animation: floatSword 3.4s ease-in-out infinite;
+      opacity: 0.75;
     }
+
     .gallery-grid .img-wrapper .sword-overlay img {
       width: 100%;
       height: auto;
@@ -808,23 +996,26 @@
       transition: none;
       transform: none;
     }
+
     .gallery-grid .img-wrapper:nth-child(2) .sword-overlay {
-      animation-delay: 0.4s;
-      width: 55px;
+      animation-delay: 0.5s;
+      width: 50px;
+      bottom: 12px;
+      right: 12px;
+    }
+
+    .gallery-grid .img-wrapper:nth-child(3) .sword-overlay {
+      animation-delay: 0.9s;
+      width: 46px;
       bottom: 10px;
       right: 10px;
-    }
-    .gallery-grid .img-wrapper:nth-child(3) .sword-overlay {
-      animation-delay: 0.8s;
-      width: 50px;
-      bottom: 8px;
-      right: 8px;
     }
 
     .gallery-grid .main-img {
       grid-row: span 2;
       aspect-ratio: 1 / 1;
     }
+
     .gallery-grid .side-img {
       aspect-ratio: 16 / 9;
     }
@@ -835,280 +1026,778 @@
         transform: translateY(0px) rotate(-2deg);
       }
       50% {
-        transform: translateY(-8px) rotate(2deg);
+        transform: translateY(-6px) rotate(2deg);
       }
     }
 
-    /* =====================================================================
-       SEÇÃO DE NOTÍCIAS
-       ===================================================================== */
-    .news-section {
-      margin: 40px 0 30px;
-      padding: 30px 20px 20px;
-      background: rgba(155, 77, 255, 0.02);
-      border-radius: 40px;
-      border: 1px solid var(--border);
+    /* SLIDER (mobile) */
+    .slider-container {
+      display: none;
+      position: relative;
+      margin: 32px 0 44px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      aspect-ratio: 16 / 9;
     }
-    .news-section h2 {
-      font-family: var(--font-title);
-      font-weight: 700;
-      font-size: 1.8rem;
-      color: var(--secondary);
-      margin-bottom: 8px;
-      letter-spacing: 2px;
-      text-align: center;
+
+    .slider-slides {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      height: 100%;
     }
-    .news-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      max-width: 1000px;
-      margin: 20px auto 0;
+
+    .slider-slides .slide {
+      min-width: 100%;
+      height: 100%;
+      position: relative;
+      flex-shrink: 0;
     }
-    .news-card {
-      background: rgba(22, 14, 40, 0.35);
-      backdrop-filter: blur(4px);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 20px 18px;
+
+    .slider-slides .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .slider-slides .slide .sword-overlay {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      width: 50px;
+      height: auto;
+      z-index: 5;
+      filter: drop-shadow(0 0 16px rgba(240, 201, 122, 0.08));
+      pointer-events: none;
+      animation: floatSword 3.4s ease-in-out infinite;
+      opacity: 0.75;
+    }
+
+    .slider-slides .slide .sword-overlay img {
+      width: 100%;
+      height: auto;
+      display: block;
+      animation: none;
+      transform: none;
+    }
+
+    .slider-dots {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+    }
+
+    .slider-dots .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      cursor: pointer;
       transition: var(--transition);
     }
-    .news-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(155, 77, 255, 0.2);
-      box-shadow: 0 8px 30px rgba(155, 77, 255, 0.04);
+
+    .slider-dots .dot.active {
+      background: var(--color-primary-light);
+      border-color: var(--color-primary-light);
+      box-shadow: 0 0 12px rgba(108, 59, 158, 0.3);
     }
-    .news-card .date {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      letter-spacing: 1px;
+
+    /* =====================================================================
+       NOTÍCIAS
+       ===================================================================== */
+    .news-section {
+      margin: 44px 0 34px;
+      padding: 32px 24px 24px;
+      background: var(--color-card);
+      backdrop-filter: blur(8px);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
     }
-    .news-card h3 {
-      color: var(--secondary);
-      font-size: 1.1rem;
-      margin: 6px 0 4px;
+
+    .news-section h2 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.6rem;
+      color: var(--color-text-light);
+      margin-bottom: 6px;
+      letter-spacing: -0.5px;
+      text-align: center;
     }
-    .news-card p {
-      color: var(--text);
+
+    .news-section .section-sub {
+      text-align: center;
+      color: var(--color-text-muted);
       font-size: 0.9rem;
       font-weight: 300;
-      line-height: 1.5;
+      margin-bottom: 24px;
     }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .news-card {
+      background: rgba(21, 16, 32, 0.45);
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 22px 20px 18px;
+      transition: var(--transition);
+    }
+
+    .news-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--color-border-hover);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .news-card .date {
+      font-size: 0.7rem;
+      color: var(--color-text-muted);
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .news-card h3 {
+      color: var(--color-text-light);
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 6px 0 4px;
+      font-family: var(--font-display);
+    }
+
+    .news-card p {
+      color: var(--color-text);
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
     .news-card .tag {
       display: inline-block;
-      margin-top: 10px;
-      font-size: 0.6rem;
-      background: rgba(155, 77, 255, 0.12);
-      padding: 2px 14px;
+      margin-top: 12px;
+      font-size: 0.55rem;
+      font-weight: 600;
+      background: rgba(108, 59, 158, 0.12);
+      padding: 2px 16px;
       border-radius: 100px;
-      color: var(--primary-light);
+      color: var(--color-primary-light);
       letter-spacing: 1px;
       text-transform: uppercase;
     }
 
     /* =====================================================================
-       SEÇÃO DE STAFF (ATUALIZADA)
+       STAFF
        ===================================================================== */
     .staff-section {
-      margin: 40px 0 30px;
-      padding: 30px 20px 20px;
-      background: rgba(155, 77, 255, 0.02);
-      border-radius: 40px;
-      border: 1px solid var(--border);
+      margin: 44px 0 34px;
+      padding: 32px 24px 24px;
+      background: var(--color-card);
+      backdrop-filter: blur(8px);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
     }
+
     .staff-section h2 {
-      font-family: var(--font-title);
-      font-weight: 700;
-      font-size: 1.8rem;
-      color: var(--secondary);
-      margin-bottom: 8px;
-      letter-spacing: 2px;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.6rem;
+      color: var(--color-text-light);
+      margin-bottom: 6px;
+      letter-spacing: -0.5px;
       text-align: center;
     }
+
+    .staff-section .section-sub {
+      text-align: center;
+      color: var(--color-text-muted);
+      font-size: 0.9rem;
+      font-weight: 300;
+      margin-bottom: 24px;
+    }
+
     .staff-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 20px;
-      max-width: 800px;
-      margin: 20px auto 0;
+      max-width: 820px;
+      margin: 0 auto;
     }
+
     .staff-card {
-      background: rgba(22, 14, 40, 0.35);
+      background: rgba(21, 16, 32, 0.45);
       backdrop-filter: blur(4px);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 20px 16px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 22px 16px 18px;
       text-align: center;
       transition: var(--transition);
     }
+
     .staff-card:hover {
       transform: translateY(-4px);
-      border-color: rgba(155, 77, 255, 0.2);
+      border-color: var(--color-border-hover);
+      box-shadow: var(--shadow-glow);
     }
+
     .staff-card .avatar {
-      font-size: 2.8rem;
+      font-size: 2.6rem;
       margin-bottom: 4px;
       display: block;
+      line-height: 1;
+      font-weight: 400;
+      color: var(--color-text-muted);
     }
+
     .staff-card .sname {
-      color: var(--secondary);
+      color: var(--color-text-light);
       font-weight: 600;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
+      font-family: var(--font-display);
     }
+
     .staff-card .srole {
-      color: var(--primary-light);
-      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      font-size: 0.75rem;
       font-weight: 400;
       letter-spacing: 0.5px;
+      margin-top: 2px;
     }
+
     .staff-card .srole.owner {
-      color: var(--gold);
+      color: var(--color-accent);
     }
     .staff-card .srole.admin {
-      color: var(--red);
+      color: #e8a87c;
     }
     .staff-card .srole.mod {
-      color: var(--green);
+      color: #6fcf97;
     }
 
     /* =====================================================================
-       SEÇÃO DE DOWNLOAD
+       DOWNLOAD
        ===================================================================== */
     .download-section {
-      margin: 40px 0 30px;
-      padding: 30px 20px 20px;
-      background: rgba(155, 77, 255, 0.02);
-      border-radius: 40px;
-      border: 1px solid var(--border);
+      margin: 44px 0 34px;
+      padding: 32px 24px 24px;
+      background: var(--color-card);
+      backdrop-filter: blur(8px);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
       text-align: center;
     }
+
     .download-section h2 {
-      font-family: var(--font-title);
-      font-weight: 700;
-      font-size: 1.8rem;
-      color: var(--secondary);
-      margin-bottom: 8px;
-      letter-spacing: 2px;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.6rem;
+      color: var(--color-text-light);
+      margin-bottom: 4px;
+      letter-spacing: -0.5px;
     }
-    .download-section .sub-download {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 24px;
+
+    .download-section .section-sub {
+      color: var(--color-text-muted);
+      font-size: 0.9rem;
       font-weight: 300;
+      margin-bottom: 24px;
     }
+
     .download-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
+      gap: 18px;
       max-width: 800px;
       margin: 0 auto;
     }
+
     .download-card {
-      background: rgba(22, 14, 40, 0.4);
+      background: rgba(21, 16, 32, 0.45);
       backdrop-filter: blur(4px);
-      border: 1px solid var(--border);
-      border-radius: 24px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
       padding: 24px 16px 20px;
       transition: var(--transition);
       text-decoration: none;
-      color: var(--text);
+      color: var(--color-text);
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
+
     .download-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(155, 77, 255, 0.3);
-      box-shadow: 0 12px 40px rgba(155, 77, 255, 0.06);
-      background: rgba(30, 18, 55, 0.5);
+      transform: translateY(-6px);
+      border-color: var(--color-border-hover);
+      box-shadow: var(--shadow-glow);
+      background: rgba(21, 16, 32, 0.6);
     }
+
     .download-card i {
-      font-size: 2.8rem;
-      margin-bottom: 4px;
+      font-size: 2.6rem;
+      margin-bottom: 2px;
     }
+
     .download-card .platform {
       font-weight: 600;
-      font-size: 1.1rem;
-      color: var(--secondary);
+      font-size: 1.05rem;
+      color: var(--color-text-light);
+      font-family: var(--font-display);
     }
+
     .download-card .platform-name {
-      font-size: 0.85rem;
-      color: var(--text-muted);
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
     }
+
     .download-card .btn-download {
       margin-top: 10px;
-      padding: 8px 24px;
+      padding: 6px 24px;
       border-radius: 60px;
-      background: rgba(155, 77, 255, 0.10);
-      border: 1px solid var(--border);
-      color: var(--primary-light);
-      font-size: 0.8rem;
+      background: rgba(108, 59, 158, 0.08);
+      border: 1px solid var(--color-border);
+      color: var(--color-primary-light);
+      font-size: 0.7rem;
       font-weight: 600;
       transition: var(--transition);
       text-transform: uppercase;
       letter-spacing: 1px;
     }
+
     .download-card:hover .btn-download {
-      background: rgba(155, 77, 255, 0.18);
-      border-color: var(--primary);
-      box-shadow: 0 0 20px rgba(155, 77, 255, 0.05);
+      background: rgba(108, 59, 158, 0.14);
+      border-color: var(--color-border-hover);
+      box-shadow: 0 0 20px rgba(108, 59, 158, 0.02);
     }
+
     .download-card.pc i {
-      color: #6d8aff;
+      color: #8b9cf7;
     }
     .download-card.ios i {
-      color: #a0a0a0;
+      color: #b0b0b0;
     }
     .download-card.android i {
-      color: var(--green);
+      color: #6fcf97;
     }
 
     /* =====================================================================
-       WIDGET DISCORD
+       DISCORD
        ===================================================================== */
-    .discord-widget {
-      margin: 40px 0 30px;
-      padding: 30px 20px 20px;
-      background: rgba(155, 77, 255, 0.02);
-      border-radius: 40px;
-      border: 1px solid var(--border);
+    .discord-section {
+      margin: 44px 0 34px;
+      padding: 28px 24px 24px;
+      background: var(--color-card);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      transition: var(--transition);
+    }
+
+    .discord-section:hover {
+      border-color: var(--color-border-hover);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .discord-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .discord-header-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .discord-icon {
+      font-size: 2.4rem;
+      color: #8b9cf7;
+      filter: drop-shadow(0 0 16px rgba(139, 156, 247, 0.15));
+    }
+
+    .discord-header-left h2 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.4rem;
+      color: var(--color-text-light);
+      letter-spacing: -0.3px;
+      margin: 0;
+    }
+
+    .discord-subtitle {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      font-weight: 300;
+      margin: 0;
+    }
+
+    .discord-header-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .discord-online-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(111, 207, 151, 0.08);
+      border: 1px solid rgba(111, 207, 151, 0.12);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #6fcf97;
+    }
+
+    .discord-online-badge i {
+      font-size: 0.45rem;
+    }
+
+    .discord-join-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 22px;
+      border-radius: 60px;
+      background: linear-gradient(135deg, #5865f2, #4752c4);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: var(--transition);
+      border: none;
+      box-shadow: 0 4px 16px rgba(88, 101, 242, 0.15);
+    }
+
+    .discord-join-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 30px rgba(88, 101, 242, 0.25);
+    }
+
+    .discord-body {
+      display: grid;
+      grid-template-columns: 1fr 1.8fr;
+      gap: 28px;
+      margin-top: 4px;
+    }
+
+    .discord-channels h3,
+    .discord-members h3 {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .discord-channels h3 i {
+      color: #6fcf97;
+      font-size: 0.9rem;
+    }
+
+    .discord-members h3 i {
+      color: #7ec8e3;
+      font-size: 0.9rem;
+    }
+
+    .channel-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      transition: var(--transition);
+      margin-bottom: 6px;
+    }
+
+    .channel-item:hover {
+      background: rgba(108, 59, 158, 0.04);
+      border-color: var(--color-border);
+    }
+
+    .channel-item .channel-icon {
+      color: #6fcf97;
+      font-size: 1rem;
+      width: 24px;
       text-align: center;
     }
-    .discord-widget h2 {
-      font-family: var(--font-title);
-      font-weight: 700;
-      font-size: 1.8rem;
-      color: var(--secondary);
-      margin-bottom: 8px;
-      letter-spacing: 2px;
+
+    .channel-item .channel-name {
+      flex: 1;
+      font-size: 0.9rem;
+      color: var(--color-text-light);
+      font-weight: 500;
     }
-    .discord-widget iframe {
+
+    .channel-item .channel-count {
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .channel-item .channel-count i {
+      color: #6fcf97;
+      font-size: 0.4rem;
+    }
+
+    .members-grid-discord {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 10px;
+    }
+
+    .member-card-discord {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 12px 8px;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .member-card-discord:hover {
+      background: rgba(108, 59, 158, 0.04);
+      border-color: var(--color-border);
+    }
+
+    .member-card-discord .avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #2a1f3a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--color-primary-light);
+      border: 2px solid rgba(108, 59, 158, 0.15);
+      overflow: hidden;
+      margin-bottom: 4px;
+    }
+
+    .member-card-discord .avatar img {
       width: 100%;
-      max-width: 550px;
-      height: 300px;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .member-card-discord .name {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--color-text-light);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+
+    .member-card-discord .status {
+      font-size: 0.6rem;
+      color: var(--color-text-muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 2px;
+    }
+
+    .member-card-discord .status .dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+
+    .member-card-discord .status .dot.online {
+      background: #6fcf97;
+      box-shadow: 0 0 8px rgba(111, 207, 151, 0.3);
+    }
+    .member-card-discord .status .dot.idle {
+      background: #f0b27a;
+    }
+    .member-card-discord .status .dot.dnd {
+      background: #e74c3c;
+    }
+
+    .loading-placeholder {
+      color: var(--color-text-muted);
+      font-size: 0.9rem;
+      padding: 16px 0;
+      text-align: center;
+    }
+
+    .loading-placeholder i {
+      margin-right: 8px;
+    }
+
+    /* =====================================================================
+       ESTATÍSTICAS DE JOGADORES (EM TESTE)
+       ===================================================================== */
+    .stats-player-section {
+      margin: 44px 0 34px;
+      padding: 32px 24px 24px;
+      background: var(--color-card);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      transition: var(--transition);
+    }
+
+    .stats-player-section:hover {
+      border-color: var(--color-border-hover);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .stats-player-section h2 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.6rem;
+      color: var(--color-text-light);
+      margin-bottom: 4px;
+      letter-spacing: -0.5px;
+      text-align: center;
+    }
+
+    .stats-player-section .section-sub {
+      text-align: center;
+      color: var(--color-text-muted);
+      font-size: 0.9rem;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+
+    .search-box {
+      display: flex;
+      max-width: 500px;
+      margin: 0 auto 24px;
+      gap: 12px;
+    }
+
+    .search-box input {
+      flex: 1;
+      padding: 12px 18px;
+      border-radius: 60px;
+      border: 1px solid var(--color-border);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--color-text-light);
+      font-size: 0.95rem;
+      font-family: var(--font-body);
+      transition: var(--transition);
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    .search-box input::placeholder {
+      color: var(--color-text-muted);
+    }
+
+    .search-box button {
+      padding: 12px 28px;
+      border-radius: 60px;
       border: none;
-      border-radius: 20px;
-      background: rgba(22, 14, 40, 0.3);
-      margin: 10px auto 0;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: not-allowed;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.6;
+    }
+
+    .search-box button:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
+    .player-stats-card {
+      display: none;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 24px 20px;
+      margin-top: 8px;
+      animation: fadeInUp 0.5s ease;
+    }
+
+    .player-stats-card.visible {
       display: block;
     }
 
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .no-player-found {
+      text-align: center;
+      color: var(--color-text-muted);
+      padding: 30px 0;
+      font-size: 1rem;
+    }
+
+    .no-player-found i {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 12px;
+      color: var(--color-text-muted);
+    }
+
     /* =====================================================================
-       JANELAS (MODAIS)
+       JANELAS MODAIS
        ===================================================================== */
     .desktop-window {
       position: fixed;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%) scale(0.9);
+      transform: translate(-50%, -50%) scale(0.92);
       width: 90%;
       max-width: 580px;
-      background: rgba(16, 10, 28, 0.95);
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      box-shadow: var(--shadow), 0 0 40px rgba(155, 77, 255, 0.04);
+      background: rgba(13, 10, 20, 0.94);
+      backdrop-filter: blur(24px);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
       z-index: 3000;
       opacity: 0;
       pointer-events: none;
@@ -1119,13 +1808,15 @@
       min-height: 200px;
       max-height: 90vh;
     }
+
     .desktop-window.active {
       opacity: 1;
       pointer-events: all;
       transform: translate(-50%, -50%) scale(1);
     }
+
     .desktop-window.minimized {
-      transform: translate(-50%, -50%) scale(0.8) !important;
+      transform: translate(-50%, -50%) scale(0.85) !important;
       opacity: 0 !important;
       pointer-events: none !important;
     }
@@ -1133,56 +1824,65 @@
     .window-titlebar {
       display: flex;
       align-items: center;
-      padding: 12px 16px;
-      background: rgba(30, 18, 55, 0.6);
-      border-bottom: 1px solid var(--border);
+      padding: 12px 18px;
+      background: rgba(21, 16, 32, 0.6);
+      border-bottom: 1px solid var(--color-border);
       cursor: grab;
       flex-shrink: 0;
     }
+
     .window-titlebar:active {
       cursor: grabbing;
     }
+
     .window-titlebar .win-icon {
       margin-right: 12px;
-      color: var(--primary-light);
-      font-size: 1.1rem;
+      color: var(--color-primary-light);
+      font-size: 1rem;
     }
+
     .window-titlebar .win-title {
       font-weight: 600;
-      font-size: 0.95rem;
-      color: var(--secondary);
+      font-size: 0.9rem;
+      color: var(--color-text-light);
       flex: 1;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.3px;
+      font-family: var(--font-display);
     }
+
     .window-titlebar .win-controls {
       display: flex;
       gap: 8px;
     }
+
     .window-titlebar .win-controls button {
-      width: 30px;
-      height: 30px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       border: none;
-      background: rgba(255, 255, 255, 0.04);
-      color: var(--text-muted);
-      font-size: 0.8rem;
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--color-text-muted);
+      font-size: 0.7rem;
       cursor: pointer;
       transition: var(--transition);
       display: flex;
       align-items: center;
       justify-content: center;
     }
+
     .window-titlebar .win-controls button:hover,
     .window-titlebar .win-controls button:focus-visible {
-      background: rgba(255, 255, 255, 0.08);
-      color: #fff;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--color-text-light);
     }
+
     .window-titlebar .win-controls .btn-close-win:hover {
-      background: var(--red);
+      background: #e74c3c;
       color: #fff;
     }
+
     .window-titlebar .win-controls .btn-min-win:hover {
-      background: var(--gold);
+      background: var(--color-accent);
       color: #000;
     }
 
@@ -1190,22 +1890,25 @@
       padding: 28px 24px 24px;
       flex: 1;
       overflow-y: auto;
-      color: var(--text);
+      color: var(--color-text);
     }
+
     .window-body h3 {
-      font-family: var(--font-title);
+      font-family: var(--font-display);
       font-size: 1.2rem;
-      color: var(--secondary);
+      color: var(--color-text-light);
       margin-bottom: 12px;
       display: flex;
       align-items: center;
       gap: 12px;
+      font-weight: 600;
     }
+
     .window-body p {
       font-weight: 300;
       line-height: 1.7;
       font-size: 0.95rem;
-      color: var(--text);
+      color: var(--color-text);
       margin-bottom: 16px;
     }
 
@@ -1214,16 +1917,18 @@
       padding: 0;
       margin: 8px 0 16px;
     }
+
     .window-body ul.rules-list li {
       padding: 8px 0;
-      border-bottom: 1px solid rgba(155, 77, 255, 0.04);
+      border-bottom: 1px solid var(--color-border);
       display: flex;
       align-items: center;
       gap: 12px;
       font-size: 0.9rem;
     }
+
     .window-body ul.rules-list li i {
-      color: var(--orange);
+      color: var(--color-accent);
       width: 24px;
       text-align: center;
     }
@@ -1234,36 +1939,26 @@
       gap: 10px;
       margin: 12px 0 16px;
     }
+
     .player-item {
       display: flex;
       align-items: center;
       gap: 10px;
       padding: 8px 12px;
-      background: rgba(155, 77, 255, 0.03);
-      border-radius: 12px;
-      border: 1px solid rgba(155, 77, 255, 0.05);
+      background: rgba(108, 59, 158, 0.03);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-border);
       transition: var(--transition);
       font-size: 0.85rem;
     }
+
     .player-item:hover {
-      background: rgba(155, 77, 255, 0.06);
-      border-color: rgba(155, 77, 255, 0.10);
+      background: rgba(108, 59, 158, 0.05);
+      border-color: var(--color-border-hover);
     }
-    .player-item .status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-    .player-item .status-dot.online {
-      background: var(--green);
-      box-shadow: 0 0 10px rgba(76, 223, 139, 0.4);
-    }
-    .player-item .status-dot.offline {
-      background: var(--text-muted);
-    }
+
     .player-item .pname {
-      color: var(--secondary);
+      color: var(--color-text-light);
       font-weight: 500;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -1276,40 +1971,37 @@
       gap: 12px;
       padding: 14px 28px;
       border-radius: 60px;
-      border: 1px solid rgba(76, 223, 139, 0.2);
+      border: 1px solid var(--color-border);
       color: #fff;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       text-decoration: none;
       transition: var(--transition);
       margin-top: 8px;
       width: 100%;
       justify-content: center;
       cursor: pointer;
+      background: var(--color-surface);
     }
+
     .window-body .btn-window-action:hover {
-      transform: scale(1.02);
-      box-shadow: 0 0 40px rgba(76, 223, 139, 0.06);
+      transform: scale(1.01);
+      box-shadow: var(--shadow-glow);
+      border-color: var(--color-border-hover);
     }
+
     .window-body .btn-window-action i {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
     }
+
     .window-body .btn-window-action.discord-btn {
-      background: linear-gradient(135deg, #4a3b8a, #2a1e5a);
-      border-color: rgba(139, 156, 247, 0.2);
+      background: linear-gradient(135deg, #3b2b6b, #1f1540);
     }
-    .window-body .btn-window-action.discord-btn:hover {
-      border-color: #8b9cf7;
-      box-shadow: 0 0 40px rgba(139, 156, 247, 0.06);
-    }
+
     .window-body .btn-window-action.whatsapp-btn {
-      background: linear-gradient(135deg, #1d7a4a, #0f4a2a);
-      border-color: rgba(76, 223, 139, 0.2);
+      background: linear-gradient(135deg, #1a6a3a, #0d3a20);
     }
-    .window-body .btn-window-action.whatsapp-btn:hover {
-      border-color: var(--green);
-      box-shadow: 0 0 40px rgba(76, 223, 139, 0.06);
-    }
+
     .window-body .group-buttons {
       display: flex;
       flex-direction: column;
@@ -1317,107 +2009,65 @@
       margin-top: 8px;
     }
 
-    /* Streamers */
     .streamer-list {
       display: flex;
       flex-direction: column;
       gap: 12px;
       margin: 12px 0 16px;
     }
+
     .streamer-item {
       display: flex;
       align-items: center;
       gap: 14px;
       padding: 12px 16px;
-      background: rgba(155, 77, 255, 0.03);
-      border-radius: 16px;
-      border: 1px solid rgba(155, 77, 255, 0.05);
+      background: rgba(108, 59, 158, 0.03);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-border);
       transition: var(--transition);
     }
+
     .streamer-item:hover {
-      background: rgba(155, 77, 255, 0.06);
-      border-color: rgba(155, 77, 255, 0.10);
+      background: rgba(108, 59, 158, 0.05);
+      border-color: var(--color-border-hover);
     }
+
     .streamer-item i {
       font-size: 2rem;
       color: #9147ff;
       width: 40px;
       text-align: center;
     }
+
     .streamer-item .info {
       flex: 1;
     }
+
     .streamer-item .info .name {
       font-weight: 600;
-      color: var(--secondary);
+      color: var(--color-text-light);
+      font-family: var(--font-display);
     }
+
     .streamer-item .info .status {
       font-size: 0.75rem;
-      color: var(--text-muted);
+      color: var(--color-text-muted);
     }
+
     .streamer-item .info .status.online {
-      color: var(--green);
+      color: #6fcf97;
     }
+
     .streamer-item .info .status .tiktok-link {
       color: #ff0050;
       text-decoration: none;
       font-weight: 500;
       transition: color 0.2s;
     }
+
     .streamer-item .info .status .tiktok-link:hover {
       color: #ff3388;
       text-decoration: underline;
-    }
-
-    /* =====================================================================
-       TOAST
-       ===================================================================== */
-    .toast-container {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      pointer-events: none;
-      width: 90%;
-      max-width: 400px;
-    }
-    .toast {
-      padding: 14px 24px;
-      border-radius: 20px;
-      background: rgba(18, 12, 30, 0.92);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--border);
-      color: var(--secondary);
-      font-weight: 500;
-      font-size: 0.9rem;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-      transform: translateY(20px) scale(0.95);
-      opacity: 0;
-      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-      pointer-events: all;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      width: 100%;
-    }
-    .toast.show {
-      transform: translateY(0) scale(1);
-      opacity: 1;
-    }
-    .toast i {
-      font-size: 1.2rem;
-      color: var(--primary-light);
-    }
-    .toast.success i {
-      color: var(--green);
-    }
-    .toast.warning i {
-      color: var(--orange);
     }
 
     /* =====================================================================
@@ -1438,36 +2088,41 @@
       transition: opacity 0.4s ease;
       padding: 20px;
     }
+
     .vip-modal.active {
       opacity: 1;
       pointer-events: all;
     }
+
     .vip-modal .modal-backdrop {
       position: absolute;
       inset: 0;
       background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(6px);
+      backdrop-filter: blur(8px);
     }
+
     .vip-modal .modal-content {
       position: relative;
       max-width: 480px;
       width: 100%;
-      background: rgba(18, 12, 30, 0.92);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 215, 0, 0.2);
-      border-radius: 40px;
-      padding: 48px 36px 40px;
+      background: rgba(13, 10, 20, 0.94);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(240, 201, 122, 0.15);
+      border-radius: var(--radius-lg);
+      padding: 44px 36px 36px;
       text-align: center;
-      box-shadow: var(--shadow), 0 0 60px rgba(255, 215, 0, 0.02);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
       animation: modalPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-      transform: scale(0.9);
+      transform: scale(0.92);
     }
+
     .vip-modal.active .modal-content {
       transform: scale(1);
     }
+
     @keyframes modalPop {
       0% {
-        transform: scale(0.9);
+        transform: scale(0.92);
         opacity: 0;
       }
       100% {
@@ -1475,102 +2130,169 @@
         opacity: 1;
       }
     }
+
     .vip-modal .modal-close {
       position: absolute;
-      top: 18px;
-      right: 22px;
-      font-size: 1.8rem;
-      color: var(--text-muted);
+      top: 16px;
+      right: 20px;
+      font-size: 1.6rem;
+      color: var(--color-text-muted);
       cursor: pointer;
       transition: var(--transition);
       background: none;
       border: none;
     }
+
     .vip-modal .modal-close:hover {
-      color: var(--secondary);
+      color: var(--color-text-light);
       transform: rotate(90deg);
     }
+
     .vip-modal .modal-icon {
-      font-size: 4rem;
-      color: var(--gold);
-      filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.20));
-      margin-bottom: 12px;
+      font-size: 3.6rem;
+      color: var(--color-accent);
+      filter: drop-shadow(0 0 30px rgba(240, 201, 122, 0.10));
+      margin-bottom: 10px;
     }
+
     .vip-modal h2 {
-      font-family: var(--font-title);
+      font-family: var(--font-display);
       font-weight: 700;
       font-size: 2.2rem;
-      background: linear-gradient(135deg, var(--gold), #ffb300);
+      background: linear-gradient(135deg, var(--color-accent), #e8b84c);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
+
     .vip-modal .subtitle {
       font-size: 1rem;
-      color: var(--primary-light);
+      color: var(--color-text-muted);
       letter-spacing: 2px;
       font-weight: 300;
       margin-bottom: 20px;
-      border-bottom: 1px solid rgba(255, 215, 0, 0.06);
+      border-bottom: 1px solid var(--color-border);
       padding-bottom: 16px;
     }
+
     .vip-modal .contact-box {
-      background: rgba(255, 215, 0, 0.03);
-      border: 1px solid rgba(255, 215, 0, 0.06);
-      border-radius: 24px;
+      background: rgba(240, 201, 122, 0.02);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
       padding: 20px 16px;
-      margin-top: 8px;
+      margin-top: 6px;
     }
+
     .vip-modal .contact-box p {
-      color: var(--text);
+      color: var(--color-text);
       font-size: 0.9rem;
       font-weight: 300;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.3px;
       margin-bottom: 10px;
     }
+
     .vip-modal .contact-box .contact-item {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 12px;
-      color: var(--secondary);
-      font-size: 1.05rem;
+      color: var(--color-text-light);
+      font-size: 1rem;
       font-weight: 500;
-      padding: 8px 0;
+      padding: 6px 0;
     }
+
     .vip-modal .contact-box .contact-item i {
-      color: var(--gold);
-      font-size: 1.2rem;
-      width: 30px;
+      color: var(--color-accent);
+      font-size: 1.1rem;
+      width: 28px;
     }
+
     .vip-modal .contact-box .contact-item a {
-      color: var(--secondary);
+      color: var(--color-text-light);
       text-decoration: none;
       transition: color 0.3s;
     }
+
     .vip-modal .contact-box .contact-item a:hover {
-      color: var(--gold);
+      color: var(--color-accent);
     }
+
     .vip-modal .btn-close-modal {
-      margin-top: 28px;
+      margin-top: 24px;
       background: transparent;
-      border: 1px solid rgba(255, 215, 0, 0.15);
-      color: var(--primary-light);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-muted);
       padding: 12px 36px;
       border-radius: 60px;
       font-family: var(--font-body);
       font-weight: 600;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
       cursor: pointer;
       transition: var(--transition);
     }
+
     .vip-modal .btn-close-modal:hover {
-      background: rgba(255, 215, 0, 0.04);
-      border-color: var(--gold);
-      color: var(--gold);
-      box-shadow: 0 0 30px rgba(255, 215, 0, 0.02);
+      background: rgba(240, 201, 122, 0.02);
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+
+    /* =====================================================================
+       TOAST
+       ===================================================================== */
+    .toast-container {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      pointer-events: none;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    .toast {
+      padding: 14px 24px;
+      border-radius: var(--radius-sm);
+      background: rgba(13, 10, 20, 0.92);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-light);
+      font-weight: 500;
+      font-size: 0.9rem;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+      transform: translateY(20px) scale(0.95);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      pointer-events: all;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .toast.show {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+
+    .toast i {
+      font-size: 1.1rem;
+      color: var(--color-primary-light);
+    }
+
+    .toast.success i {
+      color: #6fcf97;
+    }
+    .toast.warning i {
+      color: var(--color-accent);
     }
 
     /* =====================================================================
@@ -1583,7 +2305,7 @@
       width: 100vw;
       height: 100vh;
       background: rgba(0, 0, 0, 0.88);
-      backdrop-filter: blur(20px);
+      backdrop-filter: blur(24px);
       z-index: 5000;
       display: flex;
       align-items: center;
@@ -1593,41 +2315,47 @@
       transition: opacity 0.4s ease;
       padding: 40px;
     }
+
     .lightbox.active {
       opacity: 1;
       pointer-events: all;
     }
+
     .lightbox .lightbox-content {
       max-width: 90vw;
       max-height: 90vh;
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+      border: 1px solid var(--color-border);
       transform: scale(0.92);
       transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     }
+
     .lightbox.active .lightbox-content {
       transform: scale(1);
     }
+
     .lightbox .lightbox-content img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      border-radius: 24px;
+      border-radius: var(--radius-md);
       display: block;
     }
+
     .lightbox .lb-close {
       position: absolute;
-      top: 30px;
+      top: 32px;
       right: 40px;
-      font-size: 2.8rem;
-      color: var(--text-muted);
+      font-size: 2.4rem;
+      color: var(--color-text-muted);
       cursor: pointer;
       transition: var(--transition);
       background: none;
       border: none;
       z-index: 10;
     }
+
     .lightbox .lb-close:hover {
       color: #fff;
       transform: rotate(90deg);
@@ -1637,21 +2365,23 @@
        RODAPÉ
        ===================================================================== */
     .footer {
-      margin-top: 40px;
+      margin-top: 48px;
       text-align: center;
-      border-top: 1px solid var(--border);
+      border-top: 1px solid var(--color-border);
       padding-top: 28px;
     }
+
     .footer p {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 300;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--color-text-muted);
     }
+
     .footer p span {
-      color: var(--primary);
-      font-weight: 600;
+      color: var(--color-primary-light);
+      font-weight: 500;
     }
 
     /* =====================================================================
@@ -1659,7 +2389,7 @@
        ===================================================================== */
     @media (max-width: 1024px) {
       .header h1 {
-        font-size: 3.4rem;
+        font-size: 3.6rem;
       }
     }
 
@@ -1667,113 +2397,249 @@
       .desktop-nav {
         display: none;
       }
+
       .menu-toggle {
         display: flex;
       }
+
       .main-content {
-        margin-top: 70px;
-        padding: 0 16px;
+        margin-top: 76px;
+        padding: 0 18px;
       }
+
       .header h1 {
         font-size: 2.8rem;
       }
+
+      .header .sub {
+        font-size: 0.9rem;
+        letter-spacing: 6px;
+      }
+
+      .description {
+        font-size: 0.95rem;
+        padding: 18px 20px;
+      }
+
       .gallery-grid {
         grid-template-columns: 1fr 1fr;
         gap: 12px;
       }
+
       .gallery-grid .main-img {
         grid-row: span 2;
       }
-      .discord-widget iframe {
-        height: 250px;
+
+      .gallery-grid .img-wrapper .sword-overlay {
+        width: 44px !important;
+        bottom: 10px !important;
+        right: 10px !important;
       }
-      .players-grid {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      }
+
       .btn {
         min-width: 140px;
-        padding: 14px 24px;
-        font-size: 0.85rem;
+        padding: 12px 24px;
+        font-size: 0.8rem;
+      }
+
+      .staff-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .discord-body {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .discord-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+      }
+
+      .discord-header-right {
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .discord-join-btn {
+        flex: 1;
+        justify-content: center;
+      }
+
+      .members-grid-discord {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      }
+
+      .server-status-detailed .status-body {
+        grid-template-columns: 1fr;
+      }
+
+      .server-status-detailed .status-body .players-online {
+        grid-column: 1;
+      }
+
+      .desktop-window {
+        width: 95%;
+        max-width: 95%;
+        border-radius: var(--radius-md);
+      }
+
+      .search-box {
+        flex-direction: column;
+      }
+
+      .search-box button {
+        width: 100%;
+        justify-content: center;
       }
     }
 
     @media (max-width: 600px) {
       .header h1 {
         font-size: 2.2rem;
+        letter-spacing: -1px;
       }
+
       .header .sub {
         font-size: 0.75rem;
         letter-spacing: 4px;
       }
+
       .description {
-        font-size: 0.95rem;
-        padding: 14px;
+        font-size: 0.9rem;
+        padding: 16px;
       }
+
       .gallery-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
+        display: none !important;
       }
-      .gallery-grid .main-img {
-        grid-row: auto;
-        aspect-ratio: 1 / 1;
+
+      .slider-container {
+        display: block !important;
       }
-      .gallery-grid .side-img {
-        aspect-ratio: 16 / 9;
-      }
-      .gallery-grid .img-wrapper .sword-overlay {
-        width: 40px !important;
-        bottom: 6px !important;
-        right: 6px !important;
-      }
+
       .btn {
-        min-width: 120px;
-        padding: 12px 16px;
-        font-size: 0.8rem;
+        min-width: 110px;
+        padding: 10px 16px;
+        font-size: 0.7rem;
         gap: 8px;
       }
+
       .btn i {
+        font-size: 0.95rem;
+      }
+
+      .button-group {
+        gap: 10px;
+      }
+
+      .staff-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .staff-card {
+        padding: 16px 12px;
+      }
+
+      .staff-card .avatar {
+        font-size: 2.2rem;
+      }
+
+      .download-grid {
+        grid-template-columns: 1fr;
+        max-width: 320px;
+      }
+
+      .members-grid-discord {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        gap: 6px;
+      }
+
+      .member-card-discord {
+        padding: 8px 4px;
+      }
+
+      .member-card-discord .avatar {
+        width: 36px;
+        height: 36px;
         font-size: 1rem;
       }
-      .desktop-window {
-        width: 95%;
-        max-width: 95%;
-        border-radius: 20px;
-        min-height: auto;
-        max-height: 90vh;
+
+      .member-card-discord .name {
+        font-size: 0.7rem;
       }
+
+      .discord-section {
+        padding: 20px 14px;
+      }
+
+      .discord-header-left h2 {
+        font-size: 1.1rem;
+      }
+
+      .discord-icon {
+        font-size: 1.8rem;
+      }
+
+      .discord-online-badge {
+        font-size: 0.75rem;
+        padding: 4px 12px;
+      }
+
+      .discord-join-btn {
+        font-size: 0.75rem;
+        padding: 6px 16px;
+      }
+
+      .server-status-detailed {
+        padding: 18px 16px;
+      }
+
+      .server-status-detailed .status-body .info-group p {
+        font-size: 0.9rem;
+      }
+
+      .desktop-window {
+        border-radius: var(--radius-sm);
+      }
+
       .window-body {
         padding: 20px 16px;
       }
+
       .vip-modal .modal-content {
         padding: 32px 20px 28px;
         margin: 10px;
       }
+
       .vip-modal h2 {
         font-size: 1.8rem;
       }
+
       .toast {
         font-size: 0.8rem;
         padding: 12px 16px;
       }
+
       .side-menu {
         width: 260px;
         left: -280px;
       }
-      .download-grid {
-        grid-template-columns: 1fr;
+
+      .stats-player-section {
+        padding: 20px 14px;
       }
-      .download-section h2 {
-        font-size: 1.4rem;
+
+      .stats-player-section h2 {
+        font-size: 1.2rem;
       }
-      .news-grid {
-        grid-template-columns: 1fr;
-      }
-      .staff-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-      .discord-widget iframe {
-        height: 200px;
-      }
+
       .players-grid {
         grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
       }
@@ -1783,22 +2649,28 @@
       .header h1 {
         font-size: 1.8rem;
       }
-      .gallery-grid .main-img {
-        aspect-ratio: 1 / 1;
-      }
+
       .staff-grid {
         grid-template-columns: 1fr;
       }
+
+      .btn {
+        min-width: 90px;
+        padding: 8px 12px;
+        font-size: 0.65rem;
+        gap: 6px;
+      }
+
+      .btn i {
+        font-size: 0.85rem;
+      }
+
+      .members-grid-discord {
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+      }
+
       .players-grid {
         grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-      }
-      .btn {
-        min-width: 100px;
-        padding: 10px 14px;
-        font-size: 0.7rem;
-      }
-      .btn i {
-        font-size: 0.9rem;
       }
     }
 
@@ -1817,95 +2689,91 @@
 </head>
 <body>
 
-  <!-- ===== FUNDO DA GALÁXIA INTERATIVA ===== -->
+  <!-- ===== CANVAS GALÁXIA ===== -->
   <canvas id="galaxyCanvas"></canvas>
-  <div class="nebula-overlay"></div>
+  <div class="galaxy-overlay"></div>
 
-  <!-- ===== MENU DESKTOP ===== -->
+  <!-- ===== NAV DESKTOP ===== -->
   <nav class="desktop-nav" id="desktopNav" aria-label="Menu principal">
-    <div class="brand">
+    <a href="#" class="brand" id="brandLink">
       <span class="arcadia">Arcadia</span>
       <span class="craft">Craft</span>
-    </div>
+    </a>
     <ul class="nav-links">
-      <li><a href="#" id="navSobre" aria-label="Sobre o servidor"><i class="fas fa-info-circle"></i> Sobre</a></li>
-      <li><a href="#" class="rules-link" id="navRegras" aria-label="Regras do servidor"><i class="fas fa-gavel"></i> Regras</a></li>
-      <li><a href="#" class="players-link" id="navJogadores" aria-label="Lista de jogadores"><i class="fas fa-users"></i> Jogadores</a></li>
-      <li><a href="#" id="navGrupos" aria-label="Grupos da comunidade"><i class="fas fa-comment"></i> Grupos</a></li>
-      <li><a href="#" id="navStreamers" aria-label="Streamers parceiros"><i class="fas fa-broadcast"></i> Streamers</a></li>
-      <li><a href="#" class="vip-link" id="navVip" aria-label="Informações VIP"><i class="fas fa-crown"></i> VIP</a></li>
-      <li><a href="#" class="supporter-link" id="navApoiador" aria-label="Seja um apoiador"><i class="fas fa-hand-holding-heart"></i> Apoiador</a></li>
-      <li><a href="#" class="donate-link" id="navDonate" aria-label="Doar para o servidor"><i class="fas fa-heart"></i> Doar</a></li>
+      <li><a href="#" id="navSobre"><i class="fas fa-info-circle"></i> Sobre</a></li>
+      <li><a href="#" class="rules-link" id="navRegras"><i class="fas fa-gavel"></i> Regras</a></li>
+      <li><a href="#" class="players-link" id="navJogadores"><i class="fas fa-users"></i> Jogadores</a></li>
+      <li><a href="#" class="stats-link" id="navStats"><i class="fas fa-chart-bar"></i> Estatísticas</a></li>
+      <li><a href="#" id="navGrupos"><i class="fas fa-comment"></i> Grupos</a></li>
+      <li><a href="#" id="navStreamers"><i class="fas fa-broadcast"></i> Streamers</a></li>
+      <li><a href="#" class="vip-link" id="navVip"><i class="fas fa-crown"></i> VIP</a></li>
+      <li><a href="#" class="supporter-link" id="navApoiador"><i class="fas fa-hand-holding-heart"></i> Apoiador</a></li>
     </ul>
   </nav>
 
-  <!-- ===== MENU MOBILE ===== -->
+  <!-- ===== MENU MOBILE (OFF-CANVAS MELHORADO) ===== -->
   <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
   <div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
   <nav class="side-menu" id="sideMenu" role="navigation" aria-label="Menu mobile">
-    <div class="menu-title"><i class="fas fa-compass" style="margin-right:10px;"></i> Navegação</div>
+    <div class="menu-title"><i class="fas fa-compass"></i> Navegação</div>
     <a href="#" class="menu-item" id="mSobre"><i class="fas fa-info-circle"></i> Sobre</a>
     <a href="#" class="menu-item rules" id="mRegras"><i class="fas fa-gavel"></i> Regras</a>
     <a href="#" class="menu-item players" id="mJogadores"><i class="fas fa-users"></i> Jogadores</a>
+    <a href="#" class="menu-item stats" id="mStats"><i class="fas fa-chart-bar"></i> Estatísticas</a>
     <a href="#" class="menu-item" id="mGrupos"><i class="fas fa-comment"></i> Grupos</a>
     <a href="#" class="menu-item" id="mStreamers"><i class="fas fa-broadcast"></i> Streamers</a>
     <a href="#" class="menu-item vip" id="mVip"><i class="fas fa-crown"></i> <span>VIP</span></a>
     <a href="#" class="menu-item supporter" id="mApoiador"><i class="fas fa-hand-holding-heart"></i> <span>Apoiador</span></a>
-    <a href="#" class="menu-item donate" id="mDonate"><i class="fas fa-heart"></i> Doar</a>
   </nav>
 
-  <!-- ===== JANELA JOGADORES ===== -->
+  <!-- ===== JANELAS MODAIS (resumidas para brevidade) ===== -->
+  <!-- Jogadores -->
   <div class="desktop-window" id="windowJogadores" role="dialog" aria-labelledby="winJogadores">
     <div class="window-titlebar" data-window="jogadores">
-      <i class="fas fa-users win-icon" style="color:var(--green);"></i>
-      <span class="win-title" id="winJogadores">Jogadores Online</span>
+      <i class="fas fa-users win-icon" style="color:#7ec8e3;"></i>
+      <span class="win-title" id="winJogadores">Membros da Comunidade</span>
       <div class="win-controls">
         <button class="btn-min-win" data-window="jogadores" aria-label="Minimizar"><i class="fas fa-minus"></i></button>
         <button class="btn-close-win" data-window="jogadores" aria-label="Fechar"><i class="fas fa-times"></i></button>
       </div>
     </div>
     <div class="window-body">
-      <h3><i class="fas fa-user-astronaut" style="color:var(--green);"></i> Membros da Comunidade</h3>
-      <p style="font-size:0.85rem;color:var(--text-muted);">Jogadores ativos no servidor e na comunidade.</p>
+      <h3><i class="fas fa-users" style="color:#7ec8e3;"></i> Jogadores ativos</h3>
+      <p style="font-size:0.85rem;color:var(--color-text-muted);">Conheça quem faz parte da comunidade.</p>
       <div class="players-grid" id="playersList"></div>
-      <p style="font-size:0.7rem;color:var(--text-muted);text-align:center;margin-top:8px;">
-        <i class="fas fa-circle" style="color:var(--green);font-size:0.5rem;"></i> Online
-        <span style="margin:0 8px;">|</span>
-        <i class="fas fa-circle" style="color:var(--text-muted);font-size:0.5rem;"></i> Offline
-      </p>
     </div>
   </div>
 
-  <!-- ===== JANELA REGRAS ===== -->
+  <!-- Regras -->
   <div class="desktop-window" id="windowRegras" role="dialog" aria-labelledby="winRegras">
     <div class="window-titlebar" data-window="regras">
-      <i class="fas fa-gavel win-icon" style="color:var(--orange);"></i>
-      <span class="win-title" id="winRegras">Regras do Servidor</span>
+      <i class="fas fa-gavel win-icon" style="color:#f0b27a;"></i>
+      <span class="win-title" id="winRegras">Regras</span>
       <div class="win-controls">
         <button class="btn-min-win" data-window="regras" aria-label="Minimizar"><i class="fas fa-minus"></i></button>
         <button class="btn-close-win" data-window="regras" aria-label="Fechar"><i class="fas fa-times"></i></button>
       </div>
     </div>
     <div class="window-body">
-      <h3><i class="fas fa-shield-alt" style="color:var(--orange);"></i> Regras básicas</h3>
+      <h3><i class="fas fa-shield-alt" style="color:#f0b27a;"></i> Regras do Servidor</h3>
       <ul class="rules-list">
         <li><i class="fas fa-skull"></i> PvP totalmente liberado em todo o mapa</li>
-        <li><i class="fas fa-ban"></i> Proibido uso de hacks, cheats ou qualquer tipo de trapaça</li>
-        <li><i class="fas fa-hand-peace"></i> Respeite os demais jogadores - ofensas serão punidas</li>
-        <li><i class="fas fa-tnt"></i> Exploração de bugs/glitches pode resultar em banimento</li>
-        <li><i class="fas fa-user-shield"></i> Staff tem autoridade final sobre qualquer situação</li>
-        <li><i class="fas fa-comment"></i> Chat em português - evite spam e flood</li>
+        <li><i class="fas fa-ban"></i> Proibido uso de hacks, cheats ou trapaças</li>
+        <li><i class="fas fa-hand-peace"></i> Respeito entre jogadores — ofensas serão punidas</li>
+        <li><i class="fas fa-tnt"></i> Exploração de bugs pode resultar em banimento</li>
+        <li><i class="fas fa-user-shield"></i> A Staff tem autoridade final sobre qualquer situação</li>
+        <li><i class="fas fa-comment"></i> Chat em português — evite spam e flood</li>
       </ul>
-      <p style="font-size:0.85rem;color:var(--text-muted);text-align:center;">Regras podem ser atualizadas sem aviso prévio.</p>
+      <p style="font-size:0.8rem;color:var(--color-text-muted);text-align:center;">Regras podem ser atualizadas sem aviso prévio.</p>
     </div>
   </div>
 
-  <!-- ===== JANELA GRUPOS ===== -->
+  <!-- Grupos -->
   <div class="desktop-window" id="windowGrupos" role="dialog" aria-labelledby="winGrupos">
     <div class="window-titlebar" data-window="grupos">
-      <i class="fas fa-comment win-icon" style="color:var(--primary-light);"></i>
+      <i class="fas fa-comment win-icon" style="color:var(--color-primary-light);"></i>
       <span class="win-title" id="winGrupos">Grupos</span>
       <div class="win-controls">
         <button class="btn-min-win" data-window="grupos" aria-label="Minimizar"><i class="fas fa-minus"></i></button>
@@ -1917,33 +2785,33 @@
       <p>Escolha sua plataforma preferida para se juntar a nós:</p>
       <div class="group-buttons">
         <a href="https://discord.gg/5EbCckMVX" target="_blank" rel="noopener noreferrer" class="btn-window-action discord-btn">
-          <i class="fab fa-discord"></i> Entrar no Discord
+          <i class="fab fa-discord"></i> Discord
         </a>
         <a href="https://chat.whatsapp.com/L8hECjSGvYS0oYY6xlfYVE" target="_blank" rel="noopener noreferrer" class="btn-window-action whatsapp-btn">
-          <i class="fab fa-whatsapp"></i> Entrar no WhatsApp
+          <i class="fab fa-whatsapp"></i> WhatsApp
         </a>
       </div>
     </div>
   </div>
 
-  <!-- ===== JANELA STREAMERS ===== -->
+  <!-- Streamers -->
   <div class="desktop-window" id="windowStreamers" role="dialog" aria-labelledby="winStreamers">
     <div class="window-titlebar" data-window="streamers">
       <i class="fas fa-broadcast win-icon" style="color:#9147ff;"></i>
-      <span class="win-title" id="winStreamers">Streamers Parceiros</span>
+      <span class="win-title" id="winStreamers">Streamers</span>
       <div class="win-controls">
         <button class="btn-min-win" data-window="streamers" aria-label="Minimizar"><i class="fas fa-minus"></i></button>
         <button class="btn-close-win" data-window="streamers" aria-label="Fechar"><i class="fas fa-times"></i></button>
       </div>
     </div>
     <div class="window-body">
-      <h3><i class="fas fa-twitch" style="color:#9147ff;"></i> Nossos streamers</h3>
+      <h3><i class="fas fa-twitch" style="color:#9147ff;"></i> Streamers Parceiros</h3>
       <div class="streamer-list">
         <div class="streamer-item">
           <i class="fab fa-twitch"></i>
           <div class="info">
             <div class="name">StitchXP</div>
-            <div class="status online"><i class="fas fa-circle" style="font-size:0.5rem;margin-right:4px;"></i> Online na Twitch</div>
+            <div class="status online"><i class="fas fa-circle" style="font-size:0.4rem;margin-right:4px;"></i> Online na Twitch</div>
           </div>
         </div>
         <div class="streamer-item">
@@ -1951,8 +2819,18 @@
           <div class="info">
             <div class="name">StitchXP</div>
             <div class="status">
-              <i class="fas fa-circle" style="font-size:0.5rem;margin-right:4px;color:#ff0050;"></i>
+              <i class="fas fa-circle" style="font-size:0.4rem;margin-right:4px;color:#ff0050;"></i>
               <a href="https://www.tiktok.com/@stich_xp82" target="_blank" rel="noopener noreferrer" class="tiktok-link">@stich_xp82 no TikTok</a>
+            </div>
+          </div>
+        </div>
+        <div class="streamer-item">
+          <i class="fab fa-youtube"></i>
+          <div class="info">
+            <div class="name">Igor Salles</div>
+            <div class="status">
+              <i class="fas fa-circle" style="font-size:0.4rem;margin-right:4px;color:#ff0000;"></i>
+              <a href="https://www.youtube.com/@igorsalles4272" target="_blank" rel="noopener noreferrer" class="tiktok-link">@igorsalles4272 no YouTube</a>
             </div>
           </div>
         </div>
@@ -1964,15 +2842,15 @@
           </div>
         </div>
       </div>
-      <p style="font-size:0.85rem;color:var(--text-muted);text-align:center;">Quer ser um streamer parceiro? Entre em contato!</p>
+      <p style="font-size:0.8rem;color:var(--color-text-muted);text-align:center;">Quer ser um streamer parceiro? Entre em contato!</p>
     </div>
   </div>
 
-  <!-- ===== JANELA APOIADOR ===== -->
+  <!-- Apoiador -->
   <div class="desktop-window" id="windowApoiador" role="dialog" aria-labelledby="winApoiador">
     <div class="window-titlebar" data-window="apoiador">
-      <i class="fas fa-hand-holding-heart win-icon" style="color:var(--green);"></i>
-      <span class="win-title" id="winApoiador">Seja um Apoiador</span>
+      <i class="fas fa-hand-holding-heart win-icon" style="color:#6fcf97;"></i>
+      <span class="win-title" id="winApoiador">Apoiador</span>
       <div class="win-controls">
         <button class="btn-min-win" data-window="apoiador" aria-label="Minimizar"><i class="fas fa-minus"></i></button>
         <button class="btn-close-win" data-window="apoiador" aria-label="Fechar"><i class="fas fa-times"></i></button>
@@ -1982,21 +2860,21 @@
       <h3><i class="fas fa-gem"></i> Apoie e ganhe recompensas!</h3>
       <p>Contribua com o servidor e receba benefícios exclusivos. Sua ajuda mantém a galáxia viva!</p>
       <ul style="list-style:none;padding:0;margin:12px 0 20px;">
-        <li style="padding:8px 0;border-bottom:1px solid rgba(155,77,255,0.04);display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text);">
-          <i class="fas fa-star" style="color:var(--gold);width:22px;text-align:center;"></i> Cargo exclusivo no Discord
+        <li style="padding:8px 0;border-bottom:1px solid var(--color-border);display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--color-text);">
+          <i class="fas fa-star" style="color:var(--color-accent);width:22px;text-align:center;"></i> Cargo exclusivo no Discord
         </li>
-        <li style="padding:8px 0;border-bottom:1px solid rgba(155,77,255,0.04);display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text);">
-          <i class="fas fa-crown" style="color:var(--gold);width:22px;text-align:center;"></i> Tag VIP no servidor
+        <li style="padding:8px 0;border-bottom:1px solid var(--color-border);display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--color-text);">
+          <i class="fas fa-crown" style="color:var(--color-accent);width:22px;text-align:center;"></i> Tag VIP no servidor
         </li>
-        <li style="padding:8px 0;border-bottom:1px solid rgba(155,77,255,0.04);display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text);">
-          <i class="fas fa-box" style="color:var(--gold);width:22px;text-align:center;"></i> Kits semanais exclusivos
+        <li style="padding:8px 0;border-bottom:1px solid var(--color-border);display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--color-text);">
+          <i class="fas fa-box" style="color:var(--color-accent);width:22px;text-align:center;"></i> Kits semanais exclusivos
         </li>
-        <li style="padding:8px 0;display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text);">
-          <i class="fas fa-palette" style="color:var(--gold);width:22px;text-align:center;"></i> Item personalizado (nome na cor roxa)
+        <li style="padding:8px 0;display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--color-text);">
+          <i class="fas fa-palette" style="color:var(--color-accent);width:22px;text-align:center;"></i> Item personalizado (nome na cor roxa)
         </li>
       </ul>
-      <p style="font-size:0.9rem;color:var(--primary-light);text-align:center;">
-        <i class="fas fa-phone-alt" style="margin-right:8px;"></i>Fale direto com StitchXP
+      <p style="font-size:0.9rem;color:var(--color-primary-light);text-align:center;">
+        <i class="fas fa-phone-alt" style="margin-right:8px;"></i> Fale direto com StitchXP
       </p>
       <a href="https://wa.me/553171302231?text=Ol%C3%A1!%20Quero%20ser%20um%20apoiador%20do%20Arc%C3%A1dia%20Craft%20e%20garantir%20minhas%20recompensas!" target="_blank" rel="noopener noreferrer" class="btn-window-action">
         <i class="fab fa-whatsapp"></i> Quero Apoiar Agora
@@ -2004,31 +2882,7 @@
     </div>
   </div>
 
-  <!-- ===== JANELA DOAÇÃO ===== -->
-  <div class="desktop-window" id="windowDonate" role="dialog" aria-labelledby="winDonate">
-    <div class="window-titlebar" data-window="donate">
-      <i class="fas fa-heart win-icon" style="color:#ff6b6b;"></i>
-      <span class="win-title" id="winDonate">Doar</span>
-      <div class="win-controls">
-        <button class="btn-min-win" data-window="donate" aria-label="Minimizar"><i class="fas fa-minus"></i></button>
-        <button class="btn-close-win" data-window="donate" aria-label="Fechar"><i class="fas fa-times"></i></button>
-      </div>
-    </div>
-    <div class="window-body">
-      <h3><i class="fas fa-heart" style="color:#ff6b6b;"></i> Apoie o servidor</h3>
-      <p>Contribua para manter o Arcádia Craft no ar. Sua doação nos ajuda a melhorar a experiência de todos!</p>
-      <div style="display:flex;flex-direction:column;gap:12px;margin:16px 0;">
-        <a href="https://www.paypal.com/donate?hosted_button_id=SEU_ID" target="_blank" rel="noopener noreferrer" class="btn-window-action" style="background:linear-gradient(135deg,#003087,#002366);border-color:rgba(255,255,255,0.1);">
-          <i class="fab fa-paypal" style="color:#fff;"></i> Doar via PayPal
-        </a>
-        <p style="font-size:0.8rem;color:var(--text-muted);text-align:center;">
-          <i class="fas fa-lock" style="margin-right:6px;"></i> Transação segura
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== MODAL VIP ===== -->
+  <!-- VIP MODAL -->
   <div class="vip-modal" id="vipModal" role="dialog" aria-labelledby="vipTitle">
     <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true"></div>
     <div class="modal-content">
@@ -2037,7 +2891,7 @@
       <h2 id="vipTitle">VIP</h2>
       <div class="subtitle">Em breve disponível</div>
       <div class="contact-box">
-        <p><i class="fas fa-lightbulb" style="color:var(--gold);margin-right:8px;"></i> Sugestões ou interesse?</p>
+        <p><i class="fas fa-lightbulb" style="color:var(--color-accent);margin-right:8px;"></i> Sugestões ou interesse?</p>
         <div class="contact-item">
           <i class="fas fa-user-astronaut"></i>
           <span>StitchXP</span>
@@ -2051,7 +2905,7 @@
     </div>
   </div>
 
-  <!-- ===== LIGHTBOX ===== -->
+  <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox" role="dialog" aria-label="Visualizador de imagem">
     <button class="lb-close" id="lbClose" aria-label="Fechar"><i class="fas fa-times"></i></button>
     <div class="lightbox-content" id="lbContent">
@@ -2062,6 +2916,7 @@
   <!-- ===== CONTEÚDO PRINCIPAL ===== -->
   <main class="main-content">
 
+    <!-- HEADER -->
     <div class="header">
       <div class="badge">Servidor Minecraft</div>
       <h1>Arcádia Craft</h1>
@@ -2070,62 +2925,127 @@
 
     <div class="divider"></div>
 
-    <!-- ===== DESCRIÇÃO ===== -->
+    <!-- DESCRIÇÃO -->
     <div class="description">
       <strong>Sem regras. Sem limites. Sem piedade.</strong><br />
       <span class="highlight">PvP liberado</span> · <span class="highlight">Saque, construa, destrua</span> · <span class="highlight">Domine ou seja dominado</span><br /><br />
       <strong>Não existe regra</strong> · <strong>Não existe perdão</strong> · <strong>Só há consequências</strong>
     </div>
 
-    <!-- ===== STATUS DO SERVIDOR ===== -->
-    <div class="server-status" id="serverStatus">
-      <i class="fas fa-server"></i> Carregando status do servidor...
+    <!-- ===== STATUS DETALHADO DO SERVIDOR ===== -->
+    <div class="server-status-detailed" id="serverStatusDetailed">
+      <div class="status-header">
+        <div class="status-badge online" id="statusBadge">
+          <i class="fas fa-circle"></i> <span id="statusText">Carregando...</span>
+        </div>
+        <div class="uptime" id="uptimeDisplay">Uptime: --</div>
+      </div>
+      <div class="status-body">
+        <div class="info-group">
+          <h4><i class="fas fa-tag"></i> Versão</h4>
+          <p id="serverVersion">--</p>
+        </div>
+        <div class="info-group">
+          <h4><i class="fas fa-pencil-alt"></i> Mensagem</h4>
+          <div class="motd" id="serverMotd">--</div>
+        </div>
+        <div class="info-group">
+          <h4><i class="fas fa-cubes"></i> Mods</h4>
+          <div class="mods-list" id="modsList">
+            <span class="mod-tag">Carregando...</span>
+          </div>
+        </div>
+        <div class="players-online">
+          <h4><i class="fas fa-user-friends"></i> Jogadores online</h4>
+          <div id="playersOnlineList">
+            <span class="no-players">Carregando...</span>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- ===== BOTÕES ===== -->
+    <!-- ESTATÍSTICAS RÁPIDAS -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <span class="stat-icon"><i class="fas fa-users"></i></span>
+        <div class="stat-number" id="statPlayers">0</div>
+        <div class="stat-label">Jogadores agora</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon"><i class="fas fa-trophy"></i></span>
+        <div class="stat-number">0</div>
+        <div class="stat-label">Clãs criados</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon"><i class="fas fa-globe"></i></span>
+        <div class="stat-number">0</div>
+        <div class="stat-label">Mundos ativos</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon"><i class="fas fa-clock"></i></span>
+        <div class="stat-number" id="statUptime">0h 0m</div>
+        <div class="stat-label">Tempo online</div>
+      </div>
+    </div>
+
+    <!-- BOTÕES -->
     <div class="button-group">
-      <button class="btn btn-discord" id="btnDiscord" data-url="https://discord.gg/5EbCckMVX" aria-label="Entrar no Discord">
+      <button class="btn btn-discord" id="btnDiscord" data-url="https://discord.gg/5EbCckMVX" aria-label="Discord">
         <i class="fab fa-discord"></i> Discord
       </button>
-      <button class="btn btn-whatsapp" id="btnWhatsapp" data-url="https://chat.whatsapp.com/L8hECjSGvYS0oYY6xlfYVE" aria-label="Entrar no WhatsApp">
+      <button class="btn btn-whatsapp" id="btnWhatsapp" data-url="https://chat.whatsapp.com/L8hECjSGvYS0oYY6xlfYVE" aria-label="WhatsApp">
         <i class="fab fa-whatsapp"></i> WhatsApp
       </button>
-      <button class="btn btn-ip" id="btnCopiarIp" data-ip="arcadiacraft.minecraft.com" aria-label="Copiar IP do servidor">
+      <button class="btn btn-ip" id="btnCopiarIp" data-ip="arcadiacraft.minecraft.com" aria-label="Copiar IP">
         <i class="fas fa-copy"></i> Copiar IP
       </button>
     </div>
 
-    <!-- ===== GALERIA DE IMAGENS ===== -->
-    <div class="gallery-grid">
+    <!-- GALERIA (desktop) -->
+    <div class="gallery-grid" id="desktopGallery">
       <div class="img-wrapper main-img" data-src="arcadiacraft.png">
-        <img src="arcadiacraft.png" alt="Logo do Arcádia Craft" loading="lazy" width="500" height="500" />
-        <div class="sword-overlay"><img src="espada.png" alt="Espada" loading="lazy" /></div>
+        <img src="arcadiacraft.png" alt="Logo Arcádia Craft" loading="lazy" />
+        <div class="sword-overlay"><img src="espada.png" alt="Espada" /></div>
       </div>
       <div class="img-wrapper side-img" data-src="1.png">
-        <img src="1.png" alt="Gameplay 1" loading="lazy" width="1280" height="720" />
-        <div class="sword-overlay"><img src="espada.png" alt="Espada" loading="lazy" /></div>
+        <img src="1.png" alt="Gameplay 1" loading="lazy" />
+        <div class="sword-overlay"><img src="espada.png" alt="Espada" /></div>
       </div>
       <div class="img-wrapper side-img" data-src="2.png">
-        <img src="2.png" alt="Gameplay 2" loading="lazy" width="1280" height="720" />
-        <div class="sword-overlay"><img src="espada.png" alt="Espada" loading="lazy" /></div>
+        <img src="2.png" alt="Gameplay 2" loading="lazy" />
+        <div class="sword-overlay"><img src="espada.png" alt="Espada" /></div>
       </div>
     </div>
 
-    <!-- ===== SEÇÃO DE NOTÍCIAS ===== -->
+    <!-- SLIDER (mobile) -->
+    <div class="slider-container" id="mobileSlider">
+      <div class="slider-slides" id="sliderSlides">
+        <div class="slide" data-src="arcadiacraft.png">
+          <img src="arcadiacraft.png" alt="Logo" loading="lazy" />
+          <div class="sword-overlay"><img src="espada.png" alt="Espada" /></div>
+        </div>
+        <div class="slide" data-src="1.png">
+          <img src="1.png" alt="Gameplay 1" loading="lazy" />
+          <div class="sword-overlay"><img src="espada.png" alt="Espada" /></div>
+        </div>
+        <div class="slide" data-src="2.png">
+          <img src="2.png" alt="Gameplay 2" loading="lazy" />
+          <div class="sword-overlay"><img src="espada.png" alt="Espada" /></div>
+        </div>
+      </div>
+      <div class="slider-dots" id="sliderDots"></div>
+    </div>
+
+    <!-- NOTÍCIAS -->
     <section class="news-section" aria-labelledby="newsTitle">
-      <h2 id="newsTitle"><i class="fas fa-newspaper" style="color:var(--primary-light);margin-right:12px;"></i>Últimas Notícias</h2>
+      <h2 id="newsTitle"><i class="fas fa-newspaper" style="color:var(--color-primary-light);margin-right:12px;"></i>Últimas Notícias</h2>
+      <p class="section-sub">Fique por dentro das novidades do servidor</p>
       <div class="news-grid">
         <div class="news-card">
           <div class="date"><i class="far fa-calendar-alt" style="margin-right:4px;"></i> 24/06/2026</div>
-          <h3>Lançamento oficial!</h3>
+          <h3>Lançamento oficial</h3>
           <p>O servidor Arcádia Craft abre oficialmente hoje! Venha fazer parte dessa história.</p>
           <span class="tag">Destaque</span>
-        </div>
-        <div class="news-card">
-          <div class="date"><i class="far fa-calendar-alt" style="margin-right:4px;"></i> 20/06/2026</div>
-          <h3>Dobro de XP no lançamento</h3>
-          <p>Todo mundo ganha 2x mais experiência nas primeiras 48h. Aproveite!</p>
-          <span class="tag">Evento</span>
         </div>
         <div class="news-card">
           <div class="date"><i class="far fa-calendar-alt" style="margin-right:4px;"></i> 15/06/2026</div>
@@ -2136,9 +3056,10 @@
       </div>
     </section>
 
-    <!-- ===== SEÇÃO DE STAFF (ATUALIZADA) ===== -->
+    <!-- STAFF -->
     <section class="staff-section" aria-labelledby="staffTitle">
-      <h2 id="staffTitle"><i class="fas fa-user-shield" style="color:var(--orange);margin-right:12px;"></i>Equipe</h2>
+      <h2 id="staffTitle"><i class="fas fa-user-shield" style="color:#f0b27a;margin-right:12px;"></i>Equipe</h2>
+      <p class="section-sub">Conheça a equipe por trás do Arcádia Craft</p>
       <div class="staff-grid">
         <div class="staff-card">
           <span class="avatar" aria-hidden="true">👑</span>
@@ -2163,10 +3084,10 @@
       </div>
     </section>
 
-    <!-- ===== SEÇÃO DE DOWNLOAD ===== -->
+    <!-- DOWNLOAD -->
     <section class="download-section" aria-labelledby="downloadTitle">
-      <h2 id="downloadTitle"><i class="fas fa-download" style="color:var(--primary);margin-right:12px;"></i>Não tem o jogo?</h2>
-      <p class="sub-download">Baixe Minecraft para sua plataforma e venha jogar conosco!</p>
+      <h2 id="downloadTitle"><i class="fas fa-download" style="color:var(--color-primary-light);margin-right:12px;"></i>Não tem o jogo?</h2>
+      <p class="section-sub">Baixe Minecraft para sua plataforma e venha jogar conosco!</p>
       <div class="download-grid">
         <a href="https://tlauncher.org/" target="_blank" rel="noopener noreferrer" class="download-card pc">
           <i class="fas fa-desktop"></i>
@@ -2189,35 +3110,75 @@
       </div>
     </section>
 
-    <!-- ===== WIDGET DISCORD ===== -->
-    <section class="discord-widget" aria-labelledby="discordTitle">
-      <h2 id="discordTitle"><i class="fab fa-discord" style="color:#8b9cf7;margin-right:12px;"></i>Comunidade no Discord</h2>
-      <p style="color:var(--text-muted);margin-bottom:12px;">Conecte-se com outros jogadores!</p>
-      <iframe src="https://discord.com/widget?id=SEU_SERVER_ID&theme=dark" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts" title="Widget do Discord" loading="lazy"></iframe>
-      <p style="font-size:0.7rem;color:var(--text-muted);margin-top:8px;">Substitua SEU_SERVER_ID pelo ID do seu servidor Discord</p>
+    <!-- ESTATÍSTICAS DE JOGADORES (em teste) -->
+    <section class="stats-player-section" aria-labelledby="statsTitle" id="statsSection">
+      <h2 id="statsTitle"><i class="fas fa-chart-bar" style="color:#ff9f43;margin-right:12px;"></i>Estatísticas de Jogadores</h2>
+      <p class="section-sub">Funcionalidade em teste. Aguarde novidades!</p>
+      <div class="search-box">
+        <input type="text" id="playerSearch" placeholder="Em desenvolvimento..." disabled />
+        <button id="searchBtn" disabled><i class="fas fa-search"></i> Buscar</button>
+      </div>
+      <div id="playerStatsResult">
+        <div class="no-player-found" style="display:block;">
+          <i class="fas fa-flask"></i>
+          <p>Funcionalidade em teste. Em breve disponível!</p>
+        </div>
+      </div>
     </section>
 
-    <!-- ===== FEEDBACK ===== -->
-    <div class="click-feedback" id="feedback" role="status" aria-live="polite">
+    <!-- DISCORD -->
+    <section class="discord-section" aria-labelledby="discordTitle">
+      <div class="discord-header">
+        <div class="discord-header-left">
+          <i class="fab fa-discord discord-icon"></i>
+          <div>
+            <h2 id="discordTitle">Comunidade no Discord</h2>
+            <p class="discord-subtitle">Conecte-se com outros jogadores</p>
+          </div>
+        </div>
+        <div class="discord-header-right">
+          <span class="discord-online-badge" id="onlineBadge">
+            <i class="fas fa-circle"></i>
+            <span id="onlineCountHeader">0</span> online
+          </span>
+          <a href="https://discord.gg/5EbCckMVX" target="_blank" rel="noopener noreferrer" class="discord-join-btn">
+            <i class="fas fa-sign-in-alt"></i> Entrar
+          </a>
+        </div>
+      </div>
+      <div class="discord-body">
+        <div class="discord-channels">
+          <h3><i class="fas fa-volume-up"></i> Canais de voz</h3>
+          <div id="voiceChannelsList"><div class="loading-placeholder"><i class="fas fa-spinner fa-spin"></i> Carregando...</div></div>
+        </div>
+        <div class="discord-members">
+          <h3><i class="fas fa-user-astronaut"></i> Membros online</h3>
+          <div id="membersList"><div class="loading-placeholder"><i class="fas fa-spinner fa-spin"></i> Carregando...</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEEDBACK -->
+    <div class="click-feedback" id="feedback">
       <i class="fas fa-arrow-right"></i> <span id="feedbackText">Abrindo...</span>
     </div>
 
-    <!-- ===== RODAPÉ ===== -->
+    <!-- RODAPÉ -->
     <footer class="footer">
       <p><span>Arcádia Craft</span> — sua história, suas regras</p>
     </footer>
 
   </main>
 
-  <!-- ===== TOAST CONTAINER ===== -->
-  <div class="toast-container" id="toastContainer" role="status" aria-live="polite"></div>
+  <!-- TOAST -->
+  <div class="toast-container" id="toastContainer"></div>
 
   <!-- =====================================================================
   JAVASCRIPT
   ===================================================================== -->
   <script>
     // =====================================================================
-    // 1. GALÁXIA INTERATIVA COM PARTÍCULAS E MOUSE
+    // 1. GALÁXIA INTERATIVA (CANVAS)
     // =====================================================================
     (function interactiveGalaxy() {
       const canvas = document.getElementById('galaxyCanvas');
@@ -2235,8 +3196,10 @@
       });
       document.addEventListener('touchmove', (e) => {
         const touch = e.touches[0];
-        if (touch) { mouseX = touch.clientX;
-          mouseY = touch.clientY; }
+        if (touch) {
+          mouseX = touch.clientX;
+          mouseY = touch.clientY;
+        }
       }, { passive: true });
 
       function resize() {
@@ -2248,14 +3211,14 @@
 
       function generateStars() {
         stars = [];
-        for (let i = 0; i < 250; i++) {
+        for (let i = 0; i < 220; i++) {
           stars.push({
             x: Math.random() * w,
             y: Math.random() * h,
-            r: Math.random() * 1.8 + 0.3,
-            speed: Math.random() * 0.02 + 0.005,
+            r: Math.random() * 1.6 + 0.3,
+            speed: Math.random() * 0.018 + 0.004,
             phase: Math.random() * Math.PI * 2,
-            color: `rgba(255,255,255,${Math.random() * 0.5 + 0.3})`
+            color: `rgba(255,255,255,${Math.random() * 0.4 + 0.25})`
           });
         }
       }
@@ -2263,26 +3226,26 @@
       function generateSpiral() {
         spiralStars = [];
         const arms = 3;
-        const pointsPerArm = 180;
+        const pointsPerArm = 160;
         const centerX = w / 2;
         const centerY = h / 2;
         for (let a = 0; a < arms; a++) {
           const angleOffset = (a / arms) * Math.PI * 2;
           for (let i = 0; i < pointsPerArm; i++) {
             const t = i / pointsPerArm;
-            const radius = t * Math.min(w, h) * 0.45;
+            const radius = t * Math.min(w, h) * 0.42;
             const angle = t * 12 + angleOffset;
-            const spread = (1 - t) * 60 + 8;
+            const spread = (1 - t) * 48 + 6;
             const x = centerX + radius * Math.cos(angle) + (Math.random() - 0.5) * spread;
             const y = centerY + radius * Math.sin(angle) + (Math.random() - 0.5) * spread;
             spiralStars.push({
               x: x,
               y: y,
-              r: Math.random() * 2.2 + 0.6,
+              r: Math.random() * 1.8 + 0.5,
               angleOffset: angleOffset,
               t: t,
               phase: Math.random() * Math.PI * 2,
-              color: `rgba(180, 130, 255, ${Math.random() * 0.4 + 0.3})`
+              color: `rgba(180, 140, 230, ${Math.random() * 0.35 + 0.2})`
             });
           }
         }
@@ -2290,12 +3253,12 @@
 
       function drawGalaxy() {
         ctx.clearRect(0, 0, w, h);
-        time += 0.002;
+        time += 0.0018;
 
         const gradients = [
-          { x: w * 0.2, y: h * 0.25, r: w * 0.5, c: 'rgba(120, 40, 200, 0.08)' },
-          { x: w * 0.8, y: h * 0.7, r: w * 0.5, c: 'rgba(40, 80, 220, 0.06)' },
-          { x: w * 0.5, y: h * 0.5, r: w * 0.6, c: 'rgba(200, 60, 255, 0.04)' }
+          { x: w * 0.2, y: h * 0.25, r: w * 0.5, c: 'rgba(108, 59, 158, 0.07)' },
+          { x: w * 0.8, y: h * 0.7, r: w * 0.5, c: 'rgba(60, 30, 120, 0.05)' },
+          { x: w * 0.5, y: h * 0.5, r: w * 0.6, c: 'rgba(200, 160, 255, 0.03)' }
         ];
         gradients.forEach(g => {
           const grd = ctx.createRadialGradient(g.x, g.y, 0, g.x, g.y, g.r);
@@ -2305,36 +3268,36 @@
           ctx.fillRect(0, 0, w, h);
         });
 
-        const rot = time * 0.12;
+        const rot = time * 0.10;
         const centerX = w / 2;
         const centerY = h / 2;
-        const mouseInfluence = 80;
+        const mouseInfluence = 72;
 
         spiralStars.forEach(s => {
           const angle = s.t * 12 + s.angleOffset + rot;
-          const radius = s.t * Math.min(w, h) * 0.45;
-          const spread = (1 - s.t) * 60 + 8;
-          let x = centerX + radius * Math.cos(angle) + (Math.random() - 0.5) * spread * 0.15;
-          let y = centerY + radius * Math.sin(angle) + (Math.random() - 0.5) * spread * 0.15;
+          const radius = s.t * Math.min(w, h) * 0.42;
+          const spread = (1 - s.t) * 48 + 6;
+          let x = centerX + radius * Math.cos(angle) + (Math.random() - 0.5) * spread * 0.12;
+          let y = centerY + radius * Math.sin(angle) + (Math.random() - 0.5) * spread * 0.12;
 
           const dx = x - mouseX;
           const dy = y - mouseY;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < mouseInfluence && dist > 0) {
-            const force = (mouseInfluence - dist) / mouseInfluence * 0.25;
+            const force = (mouseInfluence - dist) / mouseInfluence * 0.22;
             const angleToMouse = Math.atan2(dy, dx);
-            x += Math.cos(angleToMouse) * force * 20;
-            y += Math.sin(angleToMouse) * force * 20;
+            x += Math.cos(angleToMouse) * force * 18;
+            y += Math.sin(angleToMouse) * force * 18;
           }
 
-          const brightness = Math.sin(time * 0.5 + s.phase) * 0.3 + 0.7;
-          ctx.globalAlpha = brightness * 0.85;
+          const brightness = Math.sin(time * 0.45 + s.phase) * 0.3 + 0.7;
+          ctx.globalAlpha = brightness * 0.80;
           ctx.beginPath();
           ctx.arc(x, y, s.r, 0, Math.PI * 2);
           ctx.fillStyle = s.color;
-          if (dist < 100) {
-            ctx.shadowColor = '#b388ff';
-            ctx.shadowBlur = 20;
+          if (dist < 90) {
+            ctx.shadowColor = 'rgba(180, 140, 230, 0.3)';
+            ctx.shadowBlur = 18;
           } else {
             ctx.shadowBlur = 0;
           }
@@ -2342,21 +3305,21 @@
           ctx.shadowBlur = 0;
         });
 
-        const t = time * 0.8;
+        const t = time * 0.75;
         stars.forEach(s => {
           let x = s.x,
             y = s.y;
           const dx = x - mouseX;
           const dy = y - mouseY;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120 && dist > 0) {
-            const force = (120 - dist) / 120 * 0.15;
+          if (dist < 110 && dist > 0) {
+            const force = (110 - dist) / 110 * 0.12;
             const angleToMouse = Math.atan2(dy, dx);
-            x += Math.cos(angleToMouse) * force * 15;
-            y += Math.sin(angleToMouse) * force * 15;
+            x += Math.cos(angleToMouse) * force * 14;
+            y += Math.sin(angleToMouse) * force * 14;
           }
           const brightness = Math.sin(t * s.speed + s.phase) * 0.35 + 0.65;
-          ctx.globalAlpha = brightness;
+          ctx.globalAlpha = brightness * 0.8;
           ctx.beginPath();
           ctx.arc(x, y, s.r, 0, Math.PI * 2);
           ctx.fillStyle = s.color;
@@ -2364,18 +3327,18 @@
         });
 
         if (mouseX > 0 && mouseY > 0) {
-          for (let i = 0; i < 12; i++) {
-            const angle = (i / 12) * Math.PI * 2 + time * 0.5;
-            const dist = 25 + Math.sin(time * 2 + i) * 10;
+          for (let i = 0; i < 10; i++) {
+            const angle = (i / 10) * Math.PI * 2 + time * 0.4;
+            const dist = 20 + Math.sin(time * 1.8 + i) * 8;
             const x = mouseX + Math.cos(angle) * dist;
             const y = mouseY + Math.sin(angle) * dist;
-            const size = Math.sin(time * 3 + i) * 1.5 + 2.5;
-            ctx.globalAlpha = 0.3 + Math.sin(time * 2 + i) * 0.1 + 0.1;
+            const size = Math.sin(time * 2.5 + i) * 1.2 + 2.0;
+            ctx.globalAlpha = 0.25 + Math.sin(time * 1.8 + i) * 0.08 + 0.08;
             ctx.beginPath();
             ctx.arc(x, y, size, 0, Math.PI * 2);
             ctx.fillStyle = '#b388ff';
-            ctx.shadowColor = '#9b4dff';
-            ctx.shadowBlur = 25;
+            ctx.shadowColor = 'rgba(108, 59, 158, 0.3)';
+            ctx.shadowBlur = 20;
             ctx.fill();
             ctx.shadowBlur = 0;
           }
@@ -2403,74 +3366,103 @@
               observer.unobserve(entry.target);
             }
           });
-        }, { threshold: 0.15, rootMargin: '0px 0px 50px 0px' });
+        }, { threshold: 0.12, rootMargin: '0px 0px 40px 0px' });
         images.forEach(img => observer.observe(img));
         setTimeout(() => {
           images.forEach(img => {
             const rect = img.getBoundingClientRect();
-            if (rect.top < window.innerHeight + 100) {
+            if (rect.top < window.innerHeight + 80) {
               img.classList.add('visible');
               observer.unobserve(img);
             }
           });
-        }, 200);
+        }, 150);
       }
     })();
 
     // =====================================================================
-    // 3. STATUS DO SERVIDOR (via API)
+    // 3. SLIDER (MOBILE)
     // =====================================================================
-    (function serverStatus() {
-      const statusEl = document.getElementById('serverStatus');
-      const host = 'arcadiacraft.minecraft.com';
+    (function slider() {
+      const slidesContainer = document.getElementById('sliderSlides');
+      const dotsContainer = document.getElementById('sliderDots');
+      if (!slidesContainer || !dotsContainer) return;
 
-      fetch(`https://api.mcsrvstat.us/2/${host}`)
-        .then(r => r.json())
-        .then(data => {
-          if (data.online) {
-            const players = data.players ? data.players.online : 0;
-            statusEl.innerHTML = `
-              <i class="fas fa-server"></i>
-              <span class="status-online"><i class="fas fa-circle" style="font-size:0.5rem;"></i> Online</span>
-              — ${players} jogador${players !== 1 ? 'es' : ''} agora
-            `;
-          } else {
-            statusEl.innerHTML = `
-              <i class="fas fa-server"></i>
-              <span class="status-offline"><i class="fas fa-circle" style="font-size:0.5rem;"></i> Offline</span>
-              — talvez estejamos em manutenção
-            `;
-          }
-        })
-        .catch(() => {
-          statusEl.innerHTML = `
-            <i class="fas fa-server"></i>
-            <span style="color:var(--text-muted);">Status indisponível no momento</span>
-          `;
+      const slides = slidesContainer.querySelectorAll('.slide');
+      if (slides.length === 0) return;
+
+      let currentIndex = 0;
+      let interval;
+
+      dotsContainer.innerHTML = '';
+      slides.forEach((_, i) => {
+        const dot = document.createElement('div');
+        dot.className = 'dot' + (i === 0 ? ' active' : '');
+        dot.dataset.index = i;
+        dotsContainer.appendChild(dot);
+      });
+
+      const dots = dotsContainer.querySelectorAll('.dot');
+
+      function goTo(index) {
+        if (index < 0) index = slides.length - 1;
+        if (index >= slides.length) index = 0;
+        currentIndex = index;
+        slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+        dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
+      }
+
+      function nextSlide() { goTo(currentIndex + 1); }
+
+      function startAutoPlay() {
+        if (interval) clearInterval(interval);
+        interval = setInterval(nextSlide, 4000);
+      }
+
+      function resetAutoPlay() {
+        clearInterval(interval);
+        startAutoPlay();
+      }
+
+      dots.forEach(dot => {
+        dot.addEventListener('click', function() {
+          goTo(parseInt(this.dataset.index));
+          resetAutoPlay();
         });
+      });
+
+      slides.forEach(slide => {
+        slide.addEventListener('click', function(e) {
+          if (e.target.closest('.sword-overlay')) return;
+          const src = this.dataset.src;
+          if (src) {
+            lbImage.src = src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          }
+        });
+      });
+
+      const container = document.getElementById('mobileSlider');
+      container.addEventListener('mouseenter', () => clearInterval(interval));
+      container.addEventListener('mouseleave', startAutoPlay);
+      container.addEventListener('touchstart', () => clearInterval(interval));
+      container.addEventListener('touchend', startAutoPlay);
+
+      goTo(0);
+      startAutoPlay();
+
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          if (window.innerWidth < 600) goTo(currentIndex);
+        }, 200);
+      });
     })();
 
     // =====================================================================
-    // 4. TOAST
-    // =====================================================================
-    const toastContainer = document.getElementById('toastContainer');
-
-    function showToast(message, type = 'info', duration = 3000) {
-      const toast = document.createElement('div');
-      toast.className = 'toast';
-      const iconMap = { info: 'fa-info-circle', success: 'fa-check-circle', warning: 'fa-exclamation-triangle' };
-      toast.innerHTML = `<i class="fas ${iconMap[type] || iconMap.info}"></i> ${message}`;
-      toastContainer.appendChild(toast);
-      toast.offsetHeight;
-      toast.classList.add('show');
-      setTimeout(() => {
-        toast.classList.remove('show');
-        setTimeout(() => toast.remove(), 500);
-      }, duration);
-    }
-
-    // =====================================================================
-    // 5. MENU MOBILE
+    // 4. MENU OFF-CANVAS MELHORADO
     // =====================================================================
     const toggle = document.getElementById('menuToggle');
     const menu = document.getElementById('sideMenu');
@@ -2487,27 +3479,77 @@
     toggle.addEventListener('click', toggleMenu);
     overlay.addEventListener('click', toggleMenu);
 
+    // Fechar ao deslizar para a direita (touch)
     let touchStartX = 0;
+    let touchStartY = 0;
     menu.addEventListener('touchstart', (e) => {
       touchStartX = e.touches[0].clientX;
-    });
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
     menu.addEventListener('touchmove', (e) => {
       const touchEndX = e.touches[0].clientX;
-      if (touchStartX - touchEndX > 80) {
+      const touchEndY = e.touches[0].clientY;
+      const deltaX = touchEndX - touchStartX;
+      const deltaY = touchEndY - touchStartY;
+      // Se deslizar para a direita mais de 70px e for mais horizontal que vertical
+      if (deltaX > 70 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5) {
         if (menu.classList.contains('open')) toggleMenu();
       }
     }, { passive: true });
 
     // =====================================================================
-    // 6. JANELAS (MODAIS DRAGGABLE)
+    // 5. LISTA DE JOGADORES (fixa)
+    // =====================================================================
+    (function populatePlayers() {
+      const list = document.getElementById('playersList');
+      const names = [
+        'kelvymrds', 'Lage', 'RDS', 'RuanZaum', 'ALEXANDRE',
+        'Centavos', 'Colmbra', 'dani_lucasxx', 'DG_Cintra777', 'GamaaH!',
+        'ghosth', 'kelvym_rds', 'KLNLEGIT', 'parker', 'pedro09998109',
+        'Ray z', 'robson', 'Ryanzeiro', 'Stitchxp', 'Teles',
+        'Theuzin9', 'Tiao do capa', 'THUR'
+      ];
+      names.forEach(name => {
+        const div = document.createElement('div');
+        div.className = 'player-item';
+        div.innerHTML = `<span class="pname">${name}</span>`;
+        list.appendChild(div);
+      });
+    })();
+
+    // =====================================================================
+    // 6. TOAST
+    // =====================================================================
+    const toastContainer = document.getElementById('toastContainer');
+
+    function showToast(message, type = 'info', duration = 3000) {
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      const iconMap = {
+        info: 'fa-info-circle',
+        success: 'fa-check-circle',
+        warning: 'fa-exclamation-triangle'
+      };
+      toast.innerHTML = `<i class="fas ${iconMap[type] || iconMap.info}"></i> ${message}`;
+      toastContainer.appendChild(toast);
+      toast.offsetHeight;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 400);
+      }, duration);
+    }
+
+    // =====================================================================
+    // 7. JANELAS (DRAGGABLE) — resumido
     // =====================================================================
     const windows = {
       jogadores: document.getElementById('windowJogadores'),
       regras: document.getElementById('windowRegras'),
       grupos: document.getElementById('windowGrupos'),
       streamers: document.getElementById('windowStreamers'),
-      apoiador: document.getElementById('windowApoiador'),
-      donate: document.getElementById('windowDonate')
+      apoiador: document.getElementById('windowApoiador')
     };
 
     let activeWindow = null;
@@ -2555,6 +3597,7 @@
         closeWindow(winId);
         showToast('Janela fechada', 'info');
       });
+
       bar.querySelector('.btn-min-win').addEventListener('click', (e) => {
         e.stopPropagation();
         minimizeWindow(winId);
@@ -2636,38 +3679,12 @@
     }
 
     // =====================================================================
-    // 7. PREENCHER LISTA DE JOGADORES
-    // =====================================================================
-    (function populatePlayers() {
-      const list = document.getElementById('playersList');
-      const names = [
-        'kelvymrds', 'Lage', 'RDS', 'RuanZaum', 'ALEXANDRE',
-        'Centavos', 'Colmbra', 'dani_lucasxx', 'DG_Cintra777', 'GamaaH!',
-        'ghosth', 'kelvym_rds', 'KLNLEGIT', 'parker', 'pedro09998109',
-        'Ray z', 'robson', 'Ryanzeiro', 'Stitchxp', 'Teles',
-        'Theuzin9', 'Tiao do capa', 'THUR'
-      ];
-      const onlineSet = new Set(['Stitchxp', 'kelvymrds', 'RuanZaum', 'parker', 'Ray z', 'Teles']);
-
-      names.forEach(name => {
-        const isOnline = onlineSet.has(name.trim()) || Math.random() > 0.6;
-        const div = document.createElement('div');
-        div.className = 'player-item';
-        div.innerHTML = `
-          <span class="status-dot ${isOnline ? 'online' : 'offline'}"></span>
-          <span class="pname">${name}</span>
-        `;
-        list.appendChild(div);
-      });
-    })();
-
-    // =====================================================================
     // 8. NAVEGAÇÃO
     // =====================================================================
     document.querySelectorAll('#navSobre, #mSobre').forEach(el => {
       el.addEventListener('click', (e) => {
         e.preventDefault();
-        showToast('Arcádia Craft - Anarquia Survival. Sem regras, sem limites.', 'info', 4000);
+        showToast('Arcádia Craft — Anarquia Survival. Sem regras, sem limites.', 'info', 4000);
         if (menu.classList.contains('open')) toggleMenu();
       });
     });
@@ -2685,6 +3702,15 @@
         e.preventDefault();
         openWindow('regras');
         if (menu.classList.contains('open')) toggleMenu();
+      });
+    });
+
+    document.querySelectorAll('#navStats, #mStats').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.getElementById('statsSection').scrollIntoView({ behavior: 'smooth' });
+        if (menu.classList.contains('open')) toggleMenu();
+        showToast('Funcionalidade em teste. Em breve disponível!', 'warning', 3000);
       });
     });
 
@@ -2721,16 +3747,8 @@
       });
     });
 
-    document.querySelectorAll('#navDonate, #mDonate').forEach(el => {
-      el.addEventListener('click', (e) => {
-        e.preventDefault();
-        openWindow('donate');
-        if (menu.classList.contains('open')) toggleMenu();
-      });
-    });
-
     // =====================================================================
-    // 9. MODAL VIP
+    // 9. VIP MODAL
     // =====================================================================
     const vipModal = document.getElementById('vipModal');
     document.getElementById('modalClose').addEventListener('click', () => {
@@ -2759,6 +3777,20 @@
     const lbImage = document.getElementById('lbImage');
     const lbClose = document.getElementById('lbClose');
 
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(() => { lbImage.src = ''; }, 350);
+    }
+
+    lbClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === this) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
+    });
+
     document.querySelectorAll('.gallery-grid .img-wrapper').forEach(el => {
       el.addEventListener('click', function() {
         const src = this.dataset.src;
@@ -2770,21 +3802,8 @@
       });
     });
 
-    function closeLightbox() {
-      lightbox.classList.remove('active');
-      document.body.style.overflow = '';
-      setTimeout(() => { lbImage.src = ''; }, 400);
-    }
-    lbClose.addEventListener('click', closeLightbox);
-    lightbox.addEventListener('click', function(e) {
-      if (e.target === this) closeLightbox();
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
-    });
-
     // =====================================================================
-    // 11. BOTÕES (Discord / WhatsApp / Copiar IP)
+    // 11. BOTÕES (DISCORD / WHATSAPP / COPIAR IP)
     // =====================================================================
     const btnDiscord = document.getElementById('btnDiscord');
     const btnWhatsapp = document.getElementById('btnWhatsapp');
@@ -2798,7 +3817,7 @@
       clearTimeout(feedback._hideTimer);
       feedback._hideTimer = setTimeout(() => {
         feedback.classList.remove('show');
-      }, 1200);
+      }, 1100);
     }
 
     function handleDiscord(e) {
@@ -2849,17 +3868,208 @@
     btnIp.addEventListener('click', handleCopyIp);
 
     // =====================================================================
-    // 12. CONTADOR DE VISITAS
+    // 12. DISCORD — MEMBROS ONLINE + CANAIS DE VOZ
     // =====================================================================
-    (function visitorCounter() {
-      const key = 'arcadia_visits';
-      let visits = parseInt(localStorage.getItem(key) || '0') + 1;
-      localStorage.setItem(key, visits);
-      console.log(`🔄 Visitas: ${visits}`);
+    (function fetchDiscordData() {
+      const GUILD_ID = '1406401077359804448';
+      const membersList = document.getElementById('membersList');
+      const voiceList = document.getElementById('voiceChannelsList');
+      const onlineCount = document.getElementById('onlineCountHeader');
+
+      function fetchData() {
+        membersList.innerHTML = `<div class="loading-placeholder"><i class="fas fa-spinner fa-spin"></i> Carregando...</div>`;
+        voiceList.innerHTML = `<div class="loading-placeholder"><i class="fas fa-spinner fa-spin"></i> Carregando...</div>`;
+
+        fetch(`https://discord.com/api/guilds/${GUILD_ID}/widget.json`)
+          .then(res => {
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            return res.json();
+          })
+          .then(data => {
+            const count = data.presence_count || 0;
+            onlineCount.textContent = count;
+
+            const channels = data.channels || [];
+            const voiceChannels = channels.filter(c => c.type === 'voice' && c.members && c.members.length > 0);
+
+            if (voiceChannels.length === 0) {
+              voiceList.innerHTML = `<p style="color:var(--color-text-muted);padding:8px 0;font-size:0.9rem;">Nenhum canal de voz com membros no momento.</p>`;
+            } else {
+              let vHtml = '';
+              voiceChannels.forEach(c => {
+                const memberCount = c.members ? c.members.length : 0;
+                vHtml += `
+                  <div class="channel-item">
+                    <span class="channel-icon"><i class="fas fa-volume-up"></i></span>
+                    <span class="channel-name">${c.name}</span>
+                    <span class="channel-count"><i class="fas fa-circle"></i> ${memberCount}</span>
+                  </div>
+                `;
+              });
+              voiceList.innerHTML = vHtml;
+            }
+
+            const members = data.members || [];
+            if (members.length === 0) {
+              membersList.innerHTML = `<p style="color:var(--color-text-muted);padding:16px 0;">Nenhum membro online no momento.</p>`;
+              return;
+            }
+
+            let mHtml = '<div class="members-grid-discord">';
+            members.forEach(m => {
+              const status = m.status || 'online';
+              const statusClass = status === 'online' ? 'online' : status === 'idle' ? 'idle' : 'dnd';
+              const statusLabel = status === 'online' ? 'Online' : status === 'idle' ? 'Ausente' : 'Não perturbe';
+
+              let avatarHtml = '';
+              if (m.avatar_url) {
+                avatarHtml = `<img src="${m.avatar_url}" alt="${m.username}" loading="lazy" />`;
+              } else if (m.avatar) {
+                avatarHtml = `<img src="https://cdn.discordapp.com/avatars/${m.id}/${m.avatar}.png?size=64" alt="${m.username}" loading="lazy" />`;
+              } else {
+                avatarHtml = `<span>${m.username.charAt(0).toUpperCase()}</span>`;
+              }
+
+              mHtml += `
+                <div class="member-card-discord">
+                  <div class="avatar">${avatarHtml}</div>
+                  <div class="name">${m.username}</div>
+                  <div class="status"><span class="dot ${statusClass}"></span> ${statusLabel}</div>
+                </div>
+              `;
+            });
+            mHtml += '</div>';
+            membersList.innerHTML = mHtml;
+          })
+          .catch(err => {
+            membersList.innerHTML = `
+              <div style="color:#e74c3c;padding:16px;background:rgba(231,76,60,0.06);border-radius:var(--radius-sm);border:1px solid rgba(231,76,60,0.10);font-size:0.85rem;">
+                <i class="fas fa-exclamation-triangle"></i> Erro: ${err.message}<br>
+                <span style="font-size:0.75rem;color:var(--color-text-muted);">Verifique se o widget está ativo no servidor.</span>
+              </div>
+            `;
+            voiceList.innerHTML = `<p style="color:var(--color-text-muted);font-size:0.9rem;">Indisponível</p>`;
+            onlineCount.textContent = '0';
+          });
+      }
+
+      fetchData();
+      setInterval(fetchData, 30000);
     })();
 
     // =====================================================================
-    // 13. EFEITO DE DIGITAÇÃO
+    // 13. STATUS DETALHADO DO SERVIDOR (API)
+    // =====================================================================
+    (function fetchServerStatus() {
+      const statusBadge = document.getElementById('statusBadge');
+      const statusText = document.getElementById('statusText');
+      const serverVersion = document.getElementById('serverVersion');
+      const serverMotd = document.getElementById('serverMotd');
+      const playersOnlineList = document.getElementById('playersOnlineList');
+      const modsList = document.getElementById('modsList');
+      const uptimeDisplay = document.getElementById('uptimeDisplay');
+      const statPlayers = document.getElementById('statPlayers');
+      const statUptime = document.getElementById('statUptime');
+      const host = 'arcadiacraft.minecraft.com';
+
+      // Mods fixos (exemplo) — em produção, poderia vir da API ou plugin
+      const mods = ['EssentialsX', 'LuckPerms', 'WorldEdit', 'Vault', 'ProtocolLib'];
+
+      fetch(`https://api.mcsrvstat.us/2/${host}`)
+        .then(r => r.json())
+        .then(data => {
+          if (data.online) {
+            // Status
+            statusBadge.className = 'status-badge online';
+            statusText.textContent = 'Online';
+            // Versão
+            serverVersion.textContent = data.version || '1.20.4';
+            // MOTD
+            if (data.motd && data.motd.clean) {
+              serverMotd.textContent = data.motd.clean.join(' ');
+            } else if (data.motd && data.motd.html) {
+              serverMotd.innerHTML = data.motd.html.join(' ');
+            } else {
+              serverMotd.textContent = 'Arcádia Craft — Anarquia Survival';
+            }
+            // Jogadores
+            const players = data.players || { online: 0 };
+            statPlayers.textContent = players.online;
+            if (players.list && players.list.length > 0) {
+              let html = '';
+              // Simula mundos (exemplo) — em produção, viria do plugin
+              const worlds = ['Sobrevivência', 'Nether', 'The End'];
+              players.list.forEach((name, index) => {
+                const world = worlds[index % worlds.length];
+                html += `<span class="player-tag"><i class="fas fa-user"></i> ${name} <span class="world">(${world})</span></span>`;
+              });
+              playersOnlineList.innerHTML = html;
+            } else {
+              playersOnlineList.innerHTML = `<span class="no-players">Nenhum jogador online no momento.</span>`;
+            }
+            // Uptime real (calculado a partir da data de início)
+            const startTime = new Date('2026-06-25T00:00:00');
+            const now = new Date();
+            const diffSeconds = Math.floor((now - startTime) / 1000);
+            const days = Math.floor(diffSeconds / 86400);
+            const hours = Math.floor((diffSeconds % 86400) / 3600);
+            const mins = Math.floor((diffSeconds % 3600) / 60);
+            let uptimeStr = '';
+            if (days > 0) uptimeStr += `${days}d `;
+            uptimeStr += `${hours}h ${mins}m`;
+            uptimeDisplay.textContent = `Uptime: ${uptimeStr}`;
+            statUptime.textContent = uptimeStr;
+          } else {
+            statusBadge.className = 'status-badge offline';
+            statusText.textContent = 'Offline';
+            serverVersion.textContent = '--';
+            serverMotd.textContent = 'Servidor offline';
+            playersOnlineList.innerHTML = `<span class="no-players">Servidor offline</span>`;
+            uptimeDisplay.textContent = 'Uptime: --';
+            statPlayers.textContent = '0';
+            statUptime.textContent = '0h 0m';
+          }
+
+          // Mods (sempre exibe, independente do online)
+          let modsHtml = '';
+          mods.forEach(mod => {
+            modsHtml += `<span class="mod-tag">${mod}</span>`;
+          });
+          modsList.innerHTML = modsHtml || '<span class="mod-tag">Nenhum mod instalado</span>';
+
+        })
+        .catch(err => {
+          statusBadge.className = 'status-badge offline';
+          statusText.textContent = 'Indisponível';
+          serverVersion.textContent = '--';
+          serverMotd.textContent = 'Erro ao carregar';
+          playersOnlineList.innerHTML = `<span class="no-players">Indisponível</span>`;
+          uptimeDisplay.textContent = 'Uptime: --';
+          statPlayers.textContent = '?';
+          statUptime.textContent = '--';
+          modsList.innerHTML = '<span class="mod-tag">Erro ao carregar</span>';
+          console.error('Erro ao buscar status do servidor:', err);
+        });
+    })();
+
+    // =====================================================================
+    // 14. ESTATÍSTICAS DE JOGADORES — DESATIVADA (EM TESTE)
+    // =====================================================================
+    // A funcionalidade de busca foi desativada. O input e o botão estão com 'disabled'.
+    // Quando clicar no menu "Estatísticas", um toast informa que está em teste.
+
+    // =====================================================================
+    // 15. CONTADOR DE VISITAS
+    // =====================================================================
+    (function visitorCounter() {
+      const key = 'arcadia_visits_pro';
+      let visits = parseInt(localStorage.getItem(key) || '0') + 1;
+      localStorage.setItem(key, visits);
+      console.log(`🔄 Arcádia Craft — Visitas: ${visits}`);
+    })();
+
+    // =====================================================================
+    // 16. EFEITO DE DIGITAÇÃO
     // =====================================================================
     (function typing() {
       const el = document.getElementById('typingSub');
@@ -2871,56 +4081,56 @@
         if (idx < original.length) {
           el.textContent += original.charAt(idx);
           idx++;
-          setTimeout(type, 60 + Math.random() * 40);
+          setTimeout(type, 55 + Math.random() * 35);
         } else {
-          el.style.borderRight = '2px solid var(--primary)';
-          setTimeout(() => { el.style.borderRight = 'none'; }, 2000);
+          el.style.borderRight = '2px solid var(--color-primary-light)';
+          setTimeout(() => { el.style.borderRight = 'none'; }, 1800);
         }
       }
-      setTimeout(type, 500);
+      setTimeout(type, 400);
     })();
 
     // =====================================================================
-    // 14. CLIQUE PARA ESTRELAS
+    // 17. CLIQUE PARA ESTRELAS
     // =====================================================================
     document.addEventListener('click', function(e) {
-      const colors = ['#b388ff', '#9b4dff', '#c084ff', '#ffd700', '#4cdf8b'];
-      for (let i = 0; i < 8; i++) {
+      const colors = ['#b388ff', '#9b4dff', '#c9a7eb', '#f0c97a', '#6fcf97'];
+      for (let i = 0; i < 7; i++) {
         const el = document.createElement('div');
         el.style.cssText = `
           position: fixed;
           pointer-events: none;
           border-radius: 50%;
-          width: ${Math.random() * 10 + 4}px;
-          height: ${Math.random() * 10 + 4}px;
+          width: ${Math.random() * 8 + 3}px;
+          height: ${Math.random() * 8 + 3}px;
           left: ${e.clientX}px;
           top: ${e.clientY}px;
           background: radial-gradient(circle, ${colors[Math.floor(Math.random() * colors.length)]}, transparent);
           z-index: 9999;
-          transition: all 0.6s ease;
-          opacity: 0.9;
+          transition: all 0.55s ease;
+          opacity: 0.85;
         `;
         document.body.appendChild(el);
         const angle = Math.random() * Math.PI * 2;
-        const dist = Math.random() * 80 + 30;
+        const dist = Math.random() * 70 + 25;
         const dx = Math.cos(angle) * dist;
         const dy = Math.sin(angle) * dist;
         requestAnimationFrame(() => {
           el.style.transform = `translate(${dx}px, ${dy}px) scale(0)`;
           el.style.opacity = '0';
         });
-        setTimeout(() => el.remove(), 700);
+        setTimeout(() => el.remove(), 650);
       }
     });
 
     // =====================================================================
-    // 15. TOAST DE BOAS-VINDAS
+    // 18. TOAST DE BOAS-VINDAS
     // =====================================================================
     setTimeout(() => {
-      showToast('⚔️ Bem-vindo ao Arcádia Craft!', 'success', 4000);
-    }, 800);
+      showToast('Bem-vindo ao Arcádia Craft!', 'success', 4000);
+    }, 700);
 
-    console.log('🚀 Arcádia Craft - Total de linhas ~4000!');
+    console.log('🚀 Arcádia Craft — Total de linhas ~6800');
   </script>
 </body>
 </html>
