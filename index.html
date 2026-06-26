@@ -1030,7 +1030,7 @@
       }
     }
 
-    /* SLIDER (mobile) */
+    /* SLIDER (mobile) — CORRIGIDO: object-fit: contain */
     .slider-container {
       display: none;
       position: relative;
@@ -1053,13 +1053,15 @@
       height: 100%;
       position: relative;
       flex-shrink: 0;
+      background: var(--color-surface);
     }
 
     .slider-slides .slide img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       display: block;
+      background: var(--color-surface);
     }
 
     .slider-slides .slide .sword-overlay {
@@ -2515,6 +2517,7 @@
         padding: 16px;
       }
 
+      /* MOBILE: esconde grid, mostra slider */
       .gallery-grid {
         display: none !important;
       }
@@ -2711,7 +2714,7 @@
     </ul>
   </nav>
 
-  <!-- ===== MENU MOBILE (OFF-CANVAS MELHORADO) ===== -->
+  <!-- ===== MENU MOBILE (OFF-CANVAS) ===== -->
   <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
@@ -2728,7 +2731,7 @@
     <a href="#" class="menu-item supporter" id="mApoiador"><i class="fas fa-hand-holding-heart"></i> <span>Apoiador</span></a>
   </nav>
 
-  <!-- ===== JANELAS MODAIS (resumidas para brevidade) ===== -->
+  <!-- ===== JANELAS MODAIS (resumidas) ===== -->
   <!-- Jogadores -->
   <div class="desktop-window" id="windowJogadores" role="dialog" aria-labelledby="winJogadores">
     <div class="window-titlebar" data-window="jogadores">
@@ -2932,7 +2935,7 @@
       <strong>Não existe regra</strong> · <strong>Não existe perdão</strong> · <strong>Só há consequências</strong>
     </div>
 
-    <!-- ===== STATUS DETALHADO DO SERVIDOR ===== -->
+    <!-- STATUS DETALHADO DO SERVIDOR -->
     <div class="server-status-detailed" id="serverStatusDetailed">
       <div class="status-header">
         <div class="status-badge online" id="statusBadge">
@@ -3017,7 +3020,7 @@
       </div>
     </div>
 
-    <!-- SLIDER (mobile) -->
+    <!-- SLIDER (mobile) — CORRIGIDO: CONTAIN -->
     <div class="slider-container" id="mobileSlider">
       <div class="slider-slides" id="sliderSlides">
         <div class="slide" data-src="arcadiacraft.png">
@@ -3036,22 +3039,16 @@
       <div class="slider-dots" id="sliderDots"></div>
     </div>
 
-    <!-- NOTÍCIAS -->
+    <!-- NOTÍCIAS (apenas lançamento 26/06, removido Nether) -->
     <section class="news-section" aria-labelledby="newsTitle">
       <h2 id="newsTitle"><i class="fas fa-newspaper" style="color:var(--color-primary-light);margin-right:12px;"></i>Últimas Notícias</h2>
       <p class="section-sub">Fique por dentro das novidades do servidor</p>
       <div class="news-grid">
         <div class="news-card">
-          <div class="date"><i class="far fa-calendar-alt" style="margin-right:4px;"></i> 24/06/2026</div>
+          <div class="date"><i class="far fa-calendar-alt" style="margin-right:4px;"></i> 26/06/2026</div>
           <h3>Lançamento oficial</h3>
           <p>O servidor Arcádia Craft abre oficialmente hoje! Venha fazer parte dessa história.</p>
           <span class="tag">Destaque</span>
-        </div>
-        <div class="news-card">
-          <div class="date"><i class="far fa-calendar-alt" style="margin-right:4px;"></i> 15/06/2026</div>
-          <h3>Novo mapa do Nether</h3>
-          <p>O Nether foi completamente resetado com novas estruturas e loots exclusivos.</p>
-          <span class="tag">Atualização</span>
         </div>
       </div>
     </section>
@@ -3174,7 +3171,7 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- =====================================================================
-  JAVASCRIPT
+  JAVASCRIPT (COMPLETO)
   ===================================================================== -->
   <script>
     // =====================================================================
@@ -3492,7 +3489,6 @@
       const touchEndY = e.touches[0].clientY;
       const deltaX = touchEndX - touchStartX;
       const deltaY = touchEndY - touchStartY;
-      // Se deslizar para a direita mais de 70px e for mais horizontal que vertical
       if (deltaX > 70 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5) {
         if (menu.classList.contains('open')) toggleMenu();
       }
@@ -3542,7 +3538,7 @@
     }
 
     // =====================================================================
-    // 7. JANELAS (DRAGGABLE) — resumido
+    // 7. JANELAS (DRAGGABLE)
     // =====================================================================
     const windows = {
       jogadores: document.getElementById('windowJogadores'),
@@ -3972,19 +3968,15 @@
       const statUptime = document.getElementById('statUptime');
       const host = 'arcadiacraft.minecraft.com';
 
-      // Mods fixos (exemplo) — em produção, poderia vir da API ou plugin
       const mods = ['EssentialsX', 'LuckPerms', 'WorldEdit', 'Vault', 'ProtocolLib'];
 
       fetch(`https://api.mcsrvstat.us/2/${host}`)
         .then(r => r.json())
         .then(data => {
           if (data.online) {
-            // Status
             statusBadge.className = 'status-badge online';
             statusText.textContent = 'Online';
-            // Versão
             serverVersion.textContent = data.version || '1.20.4';
-            // MOTD
             if (data.motd && data.motd.clean) {
               serverMotd.textContent = data.motd.clean.join(' ');
             } else if (data.motd && data.motd.html) {
@@ -3992,12 +3984,10 @@
             } else {
               serverMotd.textContent = 'Arcádia Craft — Anarquia Survival';
             }
-            // Jogadores
             const players = data.players || { online: 0 };
             statPlayers.textContent = players.online;
             if (players.list && players.list.length > 0) {
               let html = '';
-              // Simula mundos (exemplo) — em produção, viria do plugin
               const worlds = ['Sobrevivência', 'Nether', 'The End'];
               players.list.forEach((name, index) => {
                 const world = worlds[index % worlds.length];
@@ -4007,8 +3997,7 @@
             } else {
               playersOnlineList.innerHTML = `<span class="no-players">Nenhum jogador online no momento.</span>`;
             }
-            // Uptime real (calculado a partir da data de início)
-            const startTime = new Date('2026-06-25T00:00:00');
+            const startTime = new Date('2026-06-26T00:00:00');
             const now = new Date();
             const diffSeconds = Math.floor((now - startTime) / 1000);
             const days = Math.floor(diffSeconds / 86400);
@@ -4030,7 +4019,6 @@
             statUptime.textContent = '0h 0m';
           }
 
-          // Mods (sempre exibe, independente do online)
           let modsHtml = '';
           mods.forEach(mod => {
             modsHtml += `<span class="mod-tag">${mod}</span>`;
@@ -4055,8 +4043,6 @@
     // =====================================================================
     // 14. ESTATÍSTICAS DE JOGADORES — DESATIVADA (EM TESTE)
     // =====================================================================
-    // A funcionalidade de busca foi desativada. O input e o botão estão com 'disabled'.
-    // Quando clicar no menu "Estatísticas", um toast informa que está em teste.
 
     // =====================================================================
     // 15. CONTADOR DE VISITAS
