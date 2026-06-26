@@ -37,7 +37,7 @@
 
   <style>
     /* =====================================================================
-       ROOT VARIABLES
+       ROOT VARIABLES — TEMA PROFISSIONAL
        ===================================================================== */
     :root {
       --color-primary: #6c3b9e;
@@ -57,6 +57,7 @@
       --radius-md: 20px;
       --radius-sm: 12px;
       --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-smooth: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
       --font-display: 'Space Grotesk', sans-serif;
       --font-body: 'Inter', sans-serif;
       --menu-width: 300px;
@@ -100,8 +101,23 @@
       border-radius: 4px;
     }
 
+    /* Scrollbar personalizada */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--color-bg);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--color-primary);
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--color-primary-light);
+    }
+
     /* =====================================================================
-       GALAXY BACKGROUND
+       GALAXY BACKGROUND — CANVAS INTERATIVO
        ===================================================================== */
     #galaxyCanvas {
       position: fixed;
@@ -252,7 +268,7 @@
     }
 
     /* =====================================================================
-       MENU OFF-CANVAS (MOBILE) — SEM EMOJIS
+       MENU OFF-CANVAS MELHORADO (MOBILE) — SEM EMOJIS
        ===================================================================== */
     .menu-toggle {
       display: none;
@@ -297,6 +313,7 @@
       background: var(--color-text-light);
     }
 
+    /* Overlay com blur e sombra */
     .menu-overlay {
       position: fixed;
       inset: 0;
@@ -315,6 +332,7 @@
       pointer-events: all;
     }
 
+    /* Menu lateral com animação fluida */
     .side-menu {
       position: fixed;
       top: 0;
@@ -327,7 +345,7 @@
       border-right: 1px solid var(--color-border);
       z-index: 999;
       padding: 80px 28px 30px;
-      transition: left 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+      transition: left 0.5s cubic-bezier(0.23, 1, 0.32, 1);
       box-shadow: 4px 0 60px rgba(0, 0, 0, 0.7);
       overflow-y: auto;
       display: flex;
@@ -582,6 +600,7 @@
 
     .server-status-detailed:hover {
       border-color: var(--color-border-hover);
+      box-shadow: 0 0 40px rgba(108, 59, 158, 0.04);
     }
 
     .server-status-detailed .status-header {
@@ -724,6 +743,7 @@
     .stat-card:hover {
       border-color: var(--color-border-hover);
       transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(108, 59, 158, 0.04);
     }
 
     .stat-card .stat-number {
@@ -930,7 +950,7 @@
     }
 
     /* =====================================================================
-       GALERIA
+       GALERIA — GRID DESKTOP
        ===================================================================== */
     .gallery-grid {
       display: grid;
@@ -959,7 +979,7 @@
 
     .gallery-grid .img-wrapper:hover {
       border-color: var(--color-border-hover);
-      box-shadow: var(--shadow-glow);
+      box-shadow: 0 0 30px rgba(108, 59, 158, 0.06);
     }
 
     .gallery-grid .img-wrapper:hover img {
@@ -1028,7 +1048,9 @@
       }
     }
 
-    /* SLIDER (mobile) — CORRIGIDO */
+    /* =====================================================================
+       SLIDER (MOBILE) — CORRIGIDO: object-fit: contain
+       ===================================================================== */
     .slider-container {
       display: none;
       position: relative;
@@ -1042,8 +1064,9 @@
 
     .slider-slides {
       display: flex;
-      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       height: 100%;
+      will-change: transform;
     }
 
     .slider-slides .slide {
@@ -1162,7 +1185,7 @@
     .news-card:hover {
       transform: translateY(-4px);
       border-color: var(--color-border-hover);
-      box-shadow: var(--shadow-glow);
+      box-shadow: 0 8px 30px rgba(108, 59, 158, 0.04);
     }
 
     .news-card .date {
@@ -1253,7 +1276,7 @@
     .staff-card:hover {
       transform: translateY(-4px);
       border-color: var(--color-border-hover);
-      box-shadow: var(--shadow-glow);
+      box-shadow: 0 8px 30px rgba(108, 59, 158, 0.04);
     }
 
     .staff-card .avatar {
@@ -1345,7 +1368,7 @@
     .download-card:hover {
       transform: translateY(-6px);
       border-color: var(--color-border-hover);
-      box-shadow: var(--shadow-glow);
+      box-shadow: 0 8px 30px rgba(108, 59, 158, 0.04);
       background: rgba(21, 16, 32, 0.6);
     }
 
@@ -1411,7 +1434,7 @@
 
     .discord-section:hover {
       border-color: var(--color-border-hover);
-      box-shadow: var(--shadow-glow);
+      box-shadow: 0 0 40px rgba(108, 59, 158, 0.04);
     }
 
     .discord-header {
@@ -1680,7 +1703,7 @@
 
     .stats-player-section:hover {
       border-color: var(--color-border-hover);
-      box-shadow: var(--shadow-glow);
+      box-shadow: 0 0 40px rgba(108, 59, 158, 0.04);
     }
 
     .stats-player-section h2 {
@@ -1989,7 +2012,7 @@
 
     .window-body .btn-window-action:hover {
       transform: scale(1.01);
-      box-shadow: var(--shadow-glow);
+      box-shadow: 0 8px 30px rgba(108, 59, 158, 0.04);
       border-color: var(--color-border-hover);
     }
 
@@ -2518,6 +2541,7 @@
         padding: 16px;
       }
 
+      /* MOBILE: esconde grid, mostra slider */
       .gallery-grid {
         display: none !important;
       }
@@ -2714,7 +2738,7 @@
     </ul>
   </nav>
 
-  <!-- ===== MENU MOBILE (OFF-CANVAS) — SEM EMOJIS ===== -->
+  <!-- ===== MENU MOBILE (OFF-CANVAS) ===== -->
   <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
@@ -2731,7 +2755,7 @@
     <a href="#" class="menu-item supporter" id="mApoiador"><i class="fas fa-hand-holding-heart"></i> <span>Apoiador</span></a>
   </nav>
 
-  <!-- ===== JANELAS MODAIS (resumidas) ===== -->
+  <!-- ===== JANELAS MODAIS ===== -->
   <!-- Jogadores -->
   <div class="desktop-window" id="windowJogadores" role="dialog" aria-labelledby="winJogadores">
     <div class="window-titlebar" data-window="jogadores">
@@ -3039,7 +3063,7 @@
       <div class="slider-dots" id="sliderDots"></div>
     </div>
 
-    <!-- NOTÍCIAS (apenas lançamento 26/06) -->
+    <!-- NOTÍCIAS -->
     <section class="news-section" aria-labelledby="newsTitle">
       <h2 id="newsTitle"><i class="fas fa-newspaper" style="color:var(--color-primary-light);margin-right:12px;"></i>Últimas Notícias</h2>
       <p class="section-sub">Fique por dentro das novidades do servidor</p>
@@ -3171,7 +3195,7 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- =====================================================================
-  JAVASCRIPT (COMPLETO — 5600+ linhas)
+  JAVASCRIPT — COMPLETO E OTIMIZADO
   ===================================================================== -->
   <script>
     // =====================================================================
@@ -3351,7 +3375,7 @@
     })();
 
     // =====================================================================
-    // 2. LAZY LOAD (GRID)
+    // 2. LAZY LOAD
     // =====================================================================
     (function lazyLoad() {
       const images = document.querySelectorAll('.gallery-grid .img-wrapper');
@@ -3378,7 +3402,7 @@
     })();
 
     // =====================================================================
-    // 3. SLIDER (MOBILE)
+    // 3. SLIDER (MOBILE) — CORRIGIDO
     // =====================================================================
     (function slider() {
       const slidesContainer = document.getElementById('sliderSlides');
@@ -3459,7 +3483,7 @@
     })();
 
     // =====================================================================
-    // 4. MENU OFF-CANVAS (com animação melhorada e fechar ao deslizar)
+    // 4. MENU OFF-CANVAS MELHORADO
     // =====================================================================
     const toggle = document.getElementById('menuToggle');
     const menu = document.getElementById('sideMenu');
@@ -4077,7 +4101,7 @@
     })();
 
     // =====================================================================
-    // 17. ANIMAÇÃO DE ESTRELAS AO CLICAR
+    // 17. CLIQUE PARA ESTRELAS
     // =====================================================================
     document.addEventListener('click', function(e) {
       const colors = ['#b388ff', '#9b4dff', '#c9a7eb', '#f0c97a', '#6fcf97'];
