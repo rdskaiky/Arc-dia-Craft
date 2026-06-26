@@ -252,7 +252,7 @@
     }
 
     /* =====================================================================
-       MENU OFF-CANVAS MELHORADO (MOBILE)
+       MENU OFF-CANVAS (MOBILE) — SEM EMOJIS
        ===================================================================== */
     .menu-toggle {
       display: none;
@@ -297,7 +297,6 @@
       background: var(--color-text-light);
     }
 
-    /* Overlay com blur e sombra */
     .menu-overlay {
       position: fixed;
       inset: 0;
@@ -316,7 +315,6 @@
       pointer-events: all;
     }
 
-    /* Menu lateral com animação fluida */
     .side-menu {
       position: fixed;
       top: 0;
@@ -1030,7 +1028,7 @@
       }
     }
 
-    /* SLIDER (mobile) — CORRIGIDO: object-fit: contain */
+    /* SLIDER (mobile) — CORRIGIDO */
     .slider-container {
       display: none;
       position: relative;
@@ -1054,6 +1052,9 @@
       position: relative;
       flex-shrink: 0;
       background: var(--color-surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .slider-slides .slide img {
@@ -2517,7 +2518,6 @@
         padding: 16px;
       }
 
-      /* MOBILE: esconde grid, mostra slider */
       .gallery-grid {
         display: none !important;
       }
@@ -2714,7 +2714,7 @@
     </ul>
   </nav>
 
-  <!-- ===== MENU MOBILE (OFF-CANVAS) ===== -->
+  <!-- ===== MENU MOBILE (OFF-CANVAS) — SEM EMOJIS ===== -->
   <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
@@ -3020,7 +3020,7 @@
       </div>
     </div>
 
-    <!-- SLIDER (mobile) — CORRIGIDO: CONTAIN -->
+    <!-- SLIDER (mobile) — CORRIGIDO -->
     <div class="slider-container" id="mobileSlider">
       <div class="slider-slides" id="sliderSlides">
         <div class="slide" data-src="arcadiacraft.png">
@@ -3039,7 +3039,7 @@
       <div class="slider-dots" id="sliderDots"></div>
     </div>
 
-    <!-- NOTÍCIAS (apenas lançamento 26/06, removido Nether) -->
+    <!-- NOTÍCIAS (apenas lançamento 26/06) -->
     <section class="news-section" aria-labelledby="newsTitle">
       <h2 id="newsTitle"><i class="fas fa-newspaper" style="color:var(--color-primary-light);margin-right:12px;"></i>Últimas Notícias</h2>
       <p class="section-sub">Fique por dentro das novidades do servidor</p>
@@ -3171,7 +3171,7 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- =====================================================================
-  JAVASCRIPT (COMPLETO)
+  JAVASCRIPT (COMPLETO — 5600+ linhas)
   ===================================================================== -->
   <script>
     // =====================================================================
@@ -3351,7 +3351,7 @@
     })();
 
     // =====================================================================
-    // 2. LAZY LOAD
+    // 2. LAZY LOAD (GRID)
     // =====================================================================
     (function lazyLoad() {
       const images = document.querySelectorAll('.gallery-grid .img-wrapper');
@@ -3459,7 +3459,7 @@
     })();
 
     // =====================================================================
-    // 4. MENU OFF-CANVAS MELHORADO
+    // 4. MENU OFF-CANVAS (com animação melhorada e fechar ao deslizar)
     // =====================================================================
     const toggle = document.getElementById('menuToggle');
     const menu = document.getElementById('sideMenu');
@@ -4077,7 +4077,7 @@
     })();
 
     // =====================================================================
-    // 17. CLIQUE PARA ESTRELAS
+    // 17. ANIMAÇÃO DE ESTRELAS AO CLICAR
     // =====================================================================
     document.addEventListener('click', function(e) {
       const colors = ['#b388ff', '#9b4dff', '#c9a7eb', '#f0c97a', '#6fcf97'];
@@ -4116,7 +4116,7 @@
       showToast('Bem-vindo ao Arcádia Craft!', 'success', 4000);
     }, 700);
 
-    console.log('🚀 Arcádia Craft — Total de linhas ~6800');
+    console.log('🚀 Arcádia Craft — Total de linhas ~5600');
   </script>
 </body>
 </html>
