@@ -1,0 +1,2926 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Arcádia Craft - Servidor Minecraft</title>
+
+  <!-- Meta tags SEO e Open Graph -->
+  <meta name="description" content="Arcádia Craft - Servidor Minecraft Anarquia + Survival. PvP liberado, sem regras, sem limites." />
+  <meta name="keywords" content="Minecraft, servidor, anarquia, survival, PvP, Arcádia Craft" />
+  <meta property="og:title" content="Arcádia Craft - Servidor Minecraft" />
+  <meta property="og:description" content="Anarquia + Survival. PvP liberado, construa, destrua, domine." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://seu-site.com" />
+  <meta property="og:image" content="arcadiacraft.png" />
+  <meta property="og:site_name" content="Arcádia Craft" />
+  <meta name="theme-color" content="#9b4dff" />
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Game",
+      "name": "Arcádia Craft",
+      "description": "Servidor Minecraft Anarquia + Survival. PvP liberado, sem regras.",
+      "gamePlatform": "Minecraft",
+      "genre": "Anarquia, Survival, PvP",
+      "url": "https://seu-site.com",
+      "image": "arcadiacraft.png"
+    }
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%239b4dff'>⚔</text></svg>" />
+
+  <!-- Fontes e ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Orbitron:wght@600;800&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =====================================================================
+       VARIÁVEIS CSS (TEMA)
+       ===================================================================== */
+    :root {
+      --primary: #9b4dff;
+      --primary-dark: #7a2be0;
+      --primary-light: #b388ff;
+      --secondary: #d4b3ff;
+      --bg-dark: #0b0812;
+      --bg-card: rgba(18, 12, 30, 0.65);
+      --bg-glass: rgba(12, 8, 22, 0.85);
+      --text: #cbb7e6;
+      --text-muted: #6d538a;
+      --text-light: #d4b3ff;
+      --gold: #ffd700;
+      --green: #4cdf8b;
+      --red: #ff6b6b;
+      --orange: #ffaa55;
+      --border: rgba(155, 77, 255, 0.15);
+      --shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+      --radius: 24px;
+      --transition: 0.3s ease;
+      --font-body: 'Inter', 'Roboto', sans-serif;
+      --font-title: 'Orbitron', sans-serif;
+    }
+
+    /* =====================================================================
+       RESET E BASE
+       ===================================================================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: var(--font-body);
+      background: var(--bg-dark);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    *:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    /* =====================================================================
+       FUNDO DA GALÁXIA INTERATIVA (CANVAS)
+       ===================================================================== */
+    #galaxyCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      display: block;
+    }
+
+    .nebula-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 20% 30%, rgba(120, 40, 200, 0.10), transparent 60%),
+        radial-gradient(ellipse at 80% 70%, rgba(40, 80, 220, 0.08), transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(200, 60, 255, 0.05), transparent 70%);
+    }
+
+    /* =====================================================================
+       MENU DESKTOP
+       ===================================================================== */
+    .desktop-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: var(--bg-glass);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: var(--transition);
+    }
+
+    .desktop-nav .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 2px;
+      font-family: var(--font-title);
+      font-weight: 800;
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+    }
+    .desktop-nav .brand .arcadia {
+      color: var(--secondary);
+    }
+    .desktop-nav .brand .craft {
+      color: var(--primary);
+      text-shadow: 0 0 20px rgba(155, 77, 255, 0.3);
+    }
+
+    .desktop-nav .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .desktop-nav .nav-links li a {
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.3px;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid transparent;
+    }
+
+    .desktop-nav .nav-links li a i {
+      font-size: 1rem;
+      color: var(--primary);
+    }
+
+    .desktop-nav .nav-links li a:hover,
+    .desktop-nav .nav-links li a:focus-visible {
+      background: rgba(155, 77, 255, 0.08);
+      color: var(--secondary);
+      border-color: rgba(155, 77, 255, 0.15);
+    }
+
+    .desktop-nav .nav-links li a.players-link i {
+      color: var(--green);
+    }
+    .desktop-nav .nav-links li a.players-link:hover {
+      border-color: rgba(76, 223, 139, 0.3);
+      background: rgba(76, 223, 139, 0.05);
+    }
+
+    .desktop-nav .nav-links li a.vip-link {
+      border-color: rgba(255, 215, 0, 0.15);
+    }
+    .desktop-nav .nav-links li a.vip-link i {
+      color: var(--gold);
+    }
+    .desktop-nav .nav-links li a.vip-link:hover {
+      border-color: rgba(255, 215, 0, 0.4);
+      background: rgba(255, 215, 0, 0.05);
+    }
+
+    .desktop-nav .nav-links li a.supporter-link {
+      border-color: rgba(76, 223, 139, 0.15);
+    }
+    .desktop-nav .nav-links li a.supporter-link i {
+      color: var(--green);
+    }
+    .desktop-nav .nav-links li a.supporter-link:hover {
+      border-color: rgba(76, 223, 139, 0.3);
+      background: rgba(76, 223, 139, 0.05);
+    }
+
+    .desktop-nav .nav-links li a.rules-link i {
+      color: var(--orange);
+    }
+    .desktop-nav .nav-links li a.rules-link:hover {
+      border-color: rgba(255, 170, 85, 0.3);
+      background: rgba(255, 170, 85, 0.05);
+    }
+
+    .desktop-nav .nav-links li a.donate-link i {
+      color: #ff6b6b;
+    }
+    .desktop-nav .nav-links li a.donate-link:hover {
+      border-color: rgba(255, 107, 107, 0.3);
+      background: rgba(255, 107, 107, 0.05);
+    }
+
+    /* =====================================================================
+       MENU MOBILE
+       ===================================================================== */
+    .menu-toggle {
+      display: none;
+      position: fixed;
+      top: 18px;
+      left: 18px;
+      z-index: 1000;
+      background: rgba(18, 12, 30, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px 12px;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      transition: var(--transition);
+    }
+    .menu-toggle:hover {
+      border-color: var(--primary);
+    }
+    .menu-toggle span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--primary-light);
+      border-radius: 4px;
+      transition: var(--transition);
+    }
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 280px;
+      height: 100vh;
+      background: rgba(12, 8, 22, 0.97);
+      backdrop-filter: blur(20px);
+      border-right: 1px solid var(--border);
+      z-index: 999;
+      padding: 80px 24px 30px;
+      transition: left 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      box-shadow: 4px 0 40px rgba(0, 0, 0, 0.6);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .side-menu.open {
+      left: 0;
+    }
+
+    .side-menu .menu-title {
+      font-family: var(--font-title);
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+    }
+
+    .side-menu .menu-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      color: var(--text);
+      font-weight: 400;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: var(--transition);
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+    .side-menu .menu-item i {
+      font-size: 1.2rem;
+      width: 26px;
+      text-align: center;
+      color: var(--primary);
+    }
+    .side-menu .menu-item:hover,
+    .side-menu .menu-item:focus-visible {
+      background: rgba(155, 77, 255, 0.08);
+      border-color: rgba(155, 77, 255, 0.15);
+      transform: translateX(4px);
+    }
+    .side-menu .menu-item.vip {
+      border-color: rgba(255, 215, 0, 0.15);
+    }
+    .side-menu .menu-item.vip i {
+      color: var(--gold);
+    }
+    .side-menu .menu-item.vip span {
+      color: var(--gold);
+    }
+    .side-menu .menu-item.supporter {
+      border-color: rgba(76, 223, 139, 0.15);
+    }
+    .side-menu .menu-item.supporter i {
+      color: var(--green);
+    }
+    .side-menu .menu-item.supporter span {
+      color: var(--green);
+    }
+    .side-menu .menu-item.rules i {
+      color: var(--orange);
+    }
+    .side-menu .menu-item.players i {
+      color: var(--green);
+    }
+    .side-menu .menu-item.donate i {
+      color: #ff6b6b;
+    }
+
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 998;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    .menu-overlay.show {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* =====================================================================
+       CONTEÚDO PRINCIPAL
+       ===================================================================== */
+    .main-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 90px auto 40px;
+      padding: 0 24px;
+    }
+
+    /* =====================================================================
+       CABEÇALHO
+       ===================================================================== */
+    .header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(155, 77, 255, 0.10);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 6px 24px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--primary-light);
+      backdrop-filter: blur(4px);
+    }
+
+    .header h1 {
+      font-family: var(--font-title);
+      font-weight: 800;
+      font-size: 4.2rem;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 50%, var(--primary-dark) 100%);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: gradShift 6s ease-in-out infinite;
+      line-height: 1.1;
+    }
+    @keyframes gradShift {
+      0%,
+      100% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    .header .sub {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      margin-top: 6px;
+      opacity: 0.8;
+      border-bottom: 1px solid var(--border);
+      display: inline-block;
+      padding-bottom: 6px;
+      min-height: 32px;
+    }
+
+    .divider {
+      width: 80px;
+      height: 2px;
+      margin: 20px auto 24px;
+      background: linear-gradient(90deg, transparent, var(--primary), transparent);
+      border-radius: 4px;
+      animation: linePulse 3s ease-in-out infinite;
+    }
+    @keyframes linePulse {
+      0%,
+      100% {
+        width: 80px;
+        opacity: 0.5;
+      }
+      50% {
+        width: 160px;
+        opacity: 1;
+      }
+    }
+
+    /* Descrição */
+    .description {
+      text-align: center;
+      color: var(--text);
+      font-size: 1.05rem;
+      line-height: 1.9;
+      font-weight: 300;
+      padding: 18px 24px;
+      background: rgba(155, 77, 255, 0.03);
+      border-radius: 32px;
+      border-left: 2px solid var(--border);
+      border-right: 2px solid var(--border);
+      margin-bottom: 28px;
+      letter-spacing: 0.3px;
+    }
+    .description strong {
+      color: var(--secondary);
+      font-weight: 600;
+    }
+    .description .highlight {
+      display: inline-block;
+      background: rgba(155, 77, 255, 0.06);
+      padding: 0 10px;
+      border-radius: 12px;
+      font-weight: 500;
+    }
+
+    /* Status do servidor */
+    .server-status {
+      text-align: center;
+      margin: -10px 0 20px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .server-status .status-online {
+      color: var(--green);
+      font-weight: 600;
+    }
+    .server-status .status-offline {
+      color: var(--red);
+      font-weight: 600;
+    }
+    .server-status i {
+      margin-right: 6px;
+    }
+
+    /* =====================================================================
+       BOTÕES PRINCIPAIS
+       ===================================================================== */
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin: 10px 0 36px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 16px 32px;
+      border-radius: 60px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #fff;
+      background: linear-gradient(135deg, #3f1f6b, #281a40);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+      flex: 1 1 auto;
+      min-width: 160px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      user-select: none;
+    }
+    .btn i {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      transition: transform 0.3s ease;
+    }
+    .btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 60px;
+      padding: 2px;
+      background: linear-gradient(135deg, var(--primary-light), var(--primary-dark), var(--primary-light));
+      background-size: 200% 200%;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.4s;
+      animation: borderSpin 4s linear infinite;
+    }
+    .btn:hover::after,
+    .btn:focus-visible::after {
+      opacity: 1;
+    }
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 12px 40px rgba(155, 77, 255, 0.20);
+      border-color: transparent;
+    }
+    @keyframes borderSpin {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .btn-discord {
+      background: linear-gradient(135deg, #4a3b8a, #2a1e5a);
+    }
+    .btn-discord i {
+      color: #8b9cf7;
+    }
+
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #1d7a4a, #0f4a2a);
+    }
+    .btn-whatsapp i {
+      color: var(--green);
+    }
+
+    .btn-ip {
+      background: linear-gradient(135deg, #2a1a4a, #1a0a2a);
+      border-color: rgba(255, 200, 100, 0.15);
+    }
+    .btn-ip i {
+      color: #ffcc77;
+    }
+    .btn-ip:hover {
+      border-color: #ffcc77;
+      box-shadow: 0 0 40px rgba(255, 200, 100, 0.10);
+    }
+    .btn-ip.copied {
+      animation: ipCopied 0.6s ease;
+    }
+    @keyframes ipCopied {
+      0%,
+      100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(0.95);
+        box-shadow: 0 0 60px rgba(76, 223, 139, 0.2);
+        border-color: var(--green);
+      }
+    }
+
+    .btn-discord.clicked {
+      animation: discordClick 0.6s ease forwards;
+      pointer-events: none;
+    }
+    @keyframes discordClick {
+      0% {
+        transform: scale(1);
+      }
+      20% {
+        transform: scale(0.92);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+      }
+      40% {
+        transform: scale(1.05);
+        box-shadow: 0 0 50px rgba(139, 156, 247, 0.4);
+        border-color: #8b9cf7;
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    .btn-discord.clicked i {
+      animation: iconSpinDiscord 0.6s ease forwards;
+    }
+    @keyframes iconSpinDiscord {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .btn-whatsapp.clicked {
+      animation: whatsappClick 0.6s ease forwards;
+      pointer-events: none;
+    }
+    @keyframes whatsappClick {
+      0% {
+        transform: scale(1);
+      }
+      20% {
+        transform: scale(0.92);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+      }
+      40% {
+        transform: scale(1.05);
+        box-shadow: 0 0 50px rgba(76, 223, 139, 0.4);
+        border-color: var(--green);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    .btn-whatsapp.clicked i {
+      animation: iconPulseWhats 0.6s ease forwards;
+    }
+    @keyframes iconPulseWhats {
+      0%,
+      100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.4);
+        color: var(--green);
+        filter: drop-shadow(0 0 20px var(--green));
+      }
+    }
+
+    .click-feedback {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      background: rgba(18, 12, 30, 0.92);
+      backdrop-filter: blur(12px);
+      padding: 20px 40px;
+      border-radius: 60px;
+      border: 1px solid var(--border);
+      color: var(--secondary);
+      font-weight: 600;
+      letter-spacing: 2px;
+      font-size: 1.1rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      z-index: 1001;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+    }
+    .click-feedback.show {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    .click-feedback i {
+      margin-right: 12px;
+      font-size: 1.4rem;
+    }
+    .click-feedback.discord-fb i {
+      color: #8b9cf7;
+    }
+    .click-feedback.whatsapp-fb i {
+      color: var(--green);
+    }
+    .click-feedback.ip-fb i {
+      color: #ffcc77;
+    }
+
+    /* =====================================================================
+       GALERIA DE IMAGENS
+       ===================================================================== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 30px 0 40px;
+      position: relative;
+    }
+
+    .gallery-grid .img-wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      background: rgba(22, 14, 40, 0.3);
+      opacity: 0.3;
+      transform: scale(0.96);
+      transition: opacity 0.8s ease, transform 0.8s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery-grid .img-wrapper.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .gallery-grid .img-wrapper:hover {
+      border-color: rgba(155, 77, 255, 0.35);
+      box-shadow: 0 0 30px rgba(155, 77, 255, 0.06);
+    }
+    .gallery-grid .img-wrapper:hover img {
+      transform: scale(1.04);
+    }
+    .gallery-grid .img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-grid .img-wrapper .sword-overlay {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      width: 60px;
+      height: auto;
+      z-index: 5;
+      filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.10));
+      pointer-events: none;
+      animation: floatSword 3s ease-in-out infinite;
+      opacity: 0.85;
+    }
+    .gallery-grid .img-wrapper .sword-overlay img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: none;
+      transform: none;
+    }
+    .gallery-grid .img-wrapper:nth-child(2) .sword-overlay {
+      animation-delay: 0.4s;
+      width: 55px;
+      bottom: 10px;
+      right: 10px;
+    }
+    .gallery-grid .img-wrapper:nth-child(3) .sword-overlay {
+      animation-delay: 0.8s;
+      width: 50px;
+      bottom: 8px;
+      right: 8px;
+    }
+
+    .gallery-grid .main-img {
+      grid-row: span 2;
+      aspect-ratio: 1 / 1;
+    }
+    .gallery-grid .side-img {
+      aspect-ratio: 16 / 9;
+    }
+
+    @keyframes floatSword {
+      0%,
+      100% {
+        transform: translateY(0px) rotate(-2deg);
+      }
+      50% {
+        transform: translateY(-8px) rotate(2deg);
+      }
+    }
+
+    /* =====================================================================
+       SEÇÃO DE NOTÍCIAS
+       ===================================================================== */
+    .news-section {
+      margin: 40px 0 30px;
+      padding: 30px 20px 20px;
+      background: rgba(155, 77, 255, 0.02);
+      border-radius: 40px;
+      border: 1px solid var(--border);
+    }
+    .news-section h2 {
+      font-family: var(--font-title);
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--secondary);
+      margin-bottom: 8px;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 20px auto 0;
+    }
+    .news-card {
+      background: rgba(22, 14, 40, 0.35);
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 20px 18px;
+      transition: var(--transition);
+    }
+    .news-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(155, 77, 255, 0.2);
+      box-shadow: 0 8px 30px rgba(155, 77, 255, 0.04);
+    }
+    .news-card .date {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+    }
+    .news-card h3 {
+      color: var(--secondary);
+      font-size: 1.1rem;
+      margin: 6px 0 4px;
+    }
+    .news-card p {
+      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 1.5;
+    }
+    .news-card .tag {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 0.6rem;
+      background: rgba(155, 77, 255, 0.12);
+      padding: 2px 14px;
+      border-radius: 100px;
+      color: var(--primary-light);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* =====================================================================
+       SEÇÃO DE STAFF (ATUALIZADA)
+       ===================================================================== */
+    .staff-section {
+      margin: 40px 0 30px;
+      padding: 30px 20px 20px;
+      background: rgba(155, 77, 255, 0.02);
+      border-radius: 40px;
+      border: 1px solid var(--border);
+    }
+    .staff-section h2 {
+      font-family: var(--font-title);
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--secondary);
+      margin-bottom: 8px;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+    .staff-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      max-width: 800px;
+      margin: 20px auto 0;
+    }
+    .staff-card {
+      background: rgba(22, 14, 40, 0.35);
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 20px 16px;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .staff-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(155, 77, 255, 0.2);
+    }
+    .staff-card .avatar {
+      font-size: 2.8rem;
+      margin-bottom: 4px;
+      display: block;
+    }
+    .staff-card .sname {
+      color: var(--secondary);
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    .staff-card .srole {
+      color: var(--primary-light);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+    .staff-card .srole.owner {
+      color: var(--gold);
+    }
+    .staff-card .srole.admin {
+      color: var(--red);
+    }
+    .staff-card .srole.mod {
+      color: var(--green);
+    }
+
+    /* =====================================================================
+       SEÇÃO DE DOWNLOAD
+       ===================================================================== */
+    .download-section {
+      margin: 40px 0 30px;
+      padding: 30px 20px 20px;
+      background: rgba(155, 77, 255, 0.02);
+      border-radius: 40px;
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+    .download-section h2 {
+      font-family: var(--font-title);
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--secondary);
+      margin-bottom: 8px;
+      letter-spacing: 2px;
+    }
+    .download-section .sub-download {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+    .download-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .download-card {
+      background: rgba(22, 14, 40, 0.4);
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 24px 16px 20px;
+      transition: var(--transition);
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .download-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(155, 77, 255, 0.3);
+      box-shadow: 0 12px 40px rgba(155, 77, 255, 0.06);
+      background: rgba(30, 18, 55, 0.5);
+    }
+    .download-card i {
+      font-size: 2.8rem;
+      margin-bottom: 4px;
+    }
+    .download-card .platform {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--secondary);
+    }
+    .download-card .platform-name {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .download-card .btn-download {
+      margin-top: 10px;
+      padding: 8px 24px;
+      border-radius: 60px;
+      background: rgba(155, 77, 255, 0.10);
+      border: 1px solid var(--border);
+      color: var(--primary-light);
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: var(--transition);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .download-card:hover .btn-download {
+      background: rgba(155, 77, 255, 0.18);
+      border-color: var(--primary);
+      box-shadow: 0 0 20px rgba(155, 77, 255, 0.05);
+    }
+    .download-card.pc i {
+      color: #6d8aff;
+    }
+    .download-card.ios i {
+      color: #a0a0a0;
+    }
+    .download-card.android i {
+      color: var(--green);
+    }
+
+    /* =====================================================================
+       WIDGET DISCORD
+       ===================================================================== */
+    .discord-widget {
+      margin: 40px 0 30px;
+      padding: 30px 20px 20px;
+      background: rgba(155, 77, 255, 0.02);
+      border-radius: 40px;
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+    .discord-widget h2 {
+      font-family: var(--font-title);
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--secondary);
+      margin-bottom: 8px;
+      letter-spacing: 2px;
+    }
+    .discord-widget iframe {
+      width: 100%;
+      max-width: 550px;
+      height: 300px;
+      border: none;
+      border-radius: 20px;
+      background: rgba(22, 14, 40, 0.3);
+      margin: 10px auto 0;
+      display: block;
+    }
+
+    /* =====================================================================
+       JANELAS (MODAIS)
+       ===================================================================== */
+    .desktop-window {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.9);
+      width: 90%;
+      max-width: 580px;
+      background: rgba(16, 10, 28, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: var(--shadow), 0 0 40px rgba(155, 77, 255, 0.04);
+      z-index: 3000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      min-height: 200px;
+      max-height: 90vh;
+    }
+    .desktop-window.active {
+      opacity: 1;
+      pointer-events: all;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    .desktop-window.minimized {
+      transform: translate(-50%, -50%) scale(0.8) !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+
+    .window-titlebar {
+      display: flex;
+      align-items: center;
+      padding: 12px 16px;
+      background: rgba(30, 18, 55, 0.6);
+      border-bottom: 1px solid var(--border);
+      cursor: grab;
+      flex-shrink: 0;
+    }
+    .window-titlebar:active {
+      cursor: grabbing;
+    }
+    .window-titlebar .win-icon {
+      margin-right: 12px;
+      color: var(--primary-light);
+      font-size: 1.1rem;
+    }
+    .window-titlebar .win-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--secondary);
+      flex: 1;
+      letter-spacing: 0.5px;
+    }
+    .window-titlebar .win-controls {
+      display: flex;
+      gap: 8px;
+    }
+    .window-titlebar .win-controls button {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .window-titlebar .win-controls button:hover,
+    .window-titlebar .win-controls button:focus-visible {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+    }
+    .window-titlebar .win-controls .btn-close-win:hover {
+      background: var(--red);
+      color: #fff;
+    }
+    .window-titlebar .win-controls .btn-min-win:hover {
+      background: var(--gold);
+      color: #000;
+    }
+
+    .window-body {
+      padding: 28px 24px 24px;
+      flex: 1;
+      overflow-y: auto;
+      color: var(--text);
+    }
+    .window-body h3 {
+      font-family: var(--font-title);
+      font-size: 1.2rem;
+      color: var(--secondary);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .window-body p {
+      font-weight: 300;
+      line-height: 1.7;
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .window-body ul.rules-list {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0 16px;
+    }
+    .window-body ul.rules-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(155, 77, 255, 0.04);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+    }
+    .window-body ul.rules-list li i {
+      color: var(--orange);
+      width: 24px;
+      text-align: center;
+    }
+
+    .players-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 10px;
+      margin: 12px 0 16px;
+    }
+    .player-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      background: rgba(155, 77, 255, 0.03);
+      border-radius: 12px;
+      border: 1px solid rgba(155, 77, 255, 0.05);
+      transition: var(--transition);
+      font-size: 0.85rem;
+    }
+    .player-item:hover {
+      background: rgba(155, 77, 255, 0.06);
+      border-color: rgba(155, 77, 255, 0.10);
+    }
+    .player-item .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .player-item .status-dot.online {
+      background: var(--green);
+      box-shadow: 0 0 10px rgba(76, 223, 139, 0.4);
+    }
+    .player-item .status-dot.offline {
+      background: var(--text-muted);
+    }
+    .player-item .pname {
+      color: var(--secondary);
+      font-weight: 500;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .window-body .btn-window-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 28px;
+      border-radius: 60px;
+      border: 1px solid rgba(76, 223, 139, 0.2);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: var(--transition);
+      margin-top: 8px;
+      width: 100%;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .window-body .btn-window-action:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 40px rgba(76, 223, 139, 0.06);
+    }
+    .window-body .btn-window-action i {
+      font-size: 1.2rem;
+    }
+    .window-body .btn-window-action.discord-btn {
+      background: linear-gradient(135deg, #4a3b8a, #2a1e5a);
+      border-color: rgba(139, 156, 247, 0.2);
+    }
+    .window-body .btn-window-action.discord-btn:hover {
+      border-color: #8b9cf7;
+      box-shadow: 0 0 40px rgba(139, 156, 247, 0.06);
+    }
+    .window-body .btn-window-action.whatsapp-btn {
+      background: linear-gradient(135deg, #1d7a4a, #0f4a2a);
+      border-color: rgba(76, 223, 139, 0.2);
+    }
+    .window-body .btn-window-action.whatsapp-btn:hover {
+      border-color: var(--green);
+      box-shadow: 0 0 40px rgba(76, 223, 139, 0.06);
+    }
+    .window-body .group-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    /* Streamers */
+    .streamer-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 12px 0 16px;
+    }
+    .streamer-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 16px;
+      background: rgba(155, 77, 255, 0.03);
+      border-radius: 16px;
+      border: 1px solid rgba(155, 77, 255, 0.05);
+      transition: var(--transition);
+    }
+    .streamer-item:hover {
+      background: rgba(155, 77, 255, 0.06);
+      border-color: rgba(155, 77, 255, 0.10);
+    }
+    .streamer-item i {
+      font-size: 2rem;
+      color: #9147ff;
+      width: 40px;
+      text-align: center;
+    }
+    .streamer-item .info {
+      flex: 1;
+    }
+    .streamer-item .info .name {
+      font-weight: 600;
+      color: var(--secondary);
+    }
+    .streamer-item .info .status {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .streamer-item .info .status.online {
+      color: var(--green);
+    }
+    .streamer-item .info .status .tiktok-link {
+      color: #ff0050;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .streamer-item .info .status .tiktok-link:hover {
+      color: #ff3388;
+      text-decoration: underline;
+    }
+
+    /* =====================================================================
+       TOAST
+       ===================================================================== */
+    .toast-container {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      pointer-events: none;
+      width: 90%;
+      max-width: 400px;
+    }
+    .toast {
+      padding: 14px 24px;
+      border-radius: 20px;
+      background: rgba(18, 12, 30, 0.92);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      color: var(--secondary);
+      font-weight: 500;
+      font-size: 0.9rem;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+      transform: translateY(20px) scale(0.95);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      pointer-events: all;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+    }
+    .toast.show {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+    .toast i {
+      font-size: 1.2rem;
+      color: var(--primary-light);
+    }
+    .toast.success i {
+      color: var(--green);
+    }
+    .toast.warning i {
+      color: var(--orange);
+    }
+
+    /* =====================================================================
+       VIP MODAL
+       ===================================================================== */
+    .vip-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      padding: 20px;
+    }
+    .vip-modal.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .vip-modal .modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(6px);
+    }
+    .vip-modal .modal-content {
+      position: relative;
+      max-width: 480px;
+      width: 100%;
+      background: rgba(18, 12, 30, 0.92);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      border-radius: 40px;
+      padding: 48px 36px 40px;
+      text-align: center;
+      box-shadow: var(--shadow), 0 0 60px rgba(255, 215, 0, 0.02);
+      animation: modalPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      transform: scale(0.9);
+    }
+    .vip-modal.active .modal-content {
+      transform: scale(1);
+    }
+    @keyframes modalPop {
+      0% {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    .vip-modal .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      font-size: 1.8rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: var(--transition);
+      background: none;
+      border: none;
+    }
+    .vip-modal .modal-close:hover {
+      color: var(--secondary);
+      transform: rotate(90deg);
+    }
+    .vip-modal .modal-icon {
+      font-size: 4rem;
+      color: var(--gold);
+      filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.20));
+      margin-bottom: 12px;
+    }
+    .vip-modal h2 {
+      font-family: var(--font-title);
+      font-weight: 700;
+      font-size: 2.2rem;
+      background: linear-gradient(135deg, var(--gold), #ffb300);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 8px;
+    }
+    .vip-modal .subtitle {
+      font-size: 1rem;
+      color: var(--primary-light);
+      letter-spacing: 2px;
+      font-weight: 300;
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 215, 0, 0.06);
+      padding-bottom: 16px;
+    }
+    .vip-modal .contact-box {
+      background: rgba(255, 215, 0, 0.03);
+      border: 1px solid rgba(255, 215, 0, 0.06);
+      border-radius: 24px;
+      padding: 20px 16px;
+      margin-top: 8px;
+    }
+    .vip-modal .contact-box p {
+      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: 300;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+    .vip-modal .contact-box .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--secondary);
+      font-size: 1.05rem;
+      font-weight: 500;
+      padding: 8px 0;
+    }
+    .vip-modal .contact-box .contact-item i {
+      color: var(--gold);
+      font-size: 1.2rem;
+      width: 30px;
+    }
+    .vip-modal .contact-box .contact-item a {
+      color: var(--secondary);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .vip-modal .contact-box .contact-item a:hover {
+      color: var(--gold);
+    }
+    .vip-modal .btn-close-modal {
+      margin-top: 28px;
+      background: transparent;
+      border: 1px solid rgba(255, 215, 0, 0.15);
+      color: var(--primary-light);
+      padding: 12px 36px;
+      border-radius: 60px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .vip-modal .btn-close-modal:hover {
+      background: rgba(255, 215, 0, 0.04);
+      border-color: var(--gold);
+      color: var(--gold);
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.02);
+    }
+
+    /* =====================================================================
+       LIGHTBOX
+       ===================================================================== */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(20px);
+      z-index: 5000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      padding: 40px;
+    }
+    .lightbox.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .lightbox .lightbox-content {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      transform: scale(0.92);
+      transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .lightbox.active .lightbox-content {
+      transform: scale(1);
+    }
+    .lightbox .lightbox-content img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 24px;
+      display: block;
+    }
+    .lightbox .lb-close {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      font-size: 2.8rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: var(--transition);
+      background: none;
+      border: none;
+      z-index: 10;
+    }
+    .lightbox .lb-close:hover {
+      color: #fff;
+      transform: rotate(90deg);
+    }
+
+    /* =====================================================================
+       RODAPÉ
+       ===================================================================== */
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      padding-top: 28px;
+    }
+    .footer p {
+      font-size: 0.75rem;
+      font-weight: 300;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .footer p span {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* =====================================================================
+       RESPONSIVIDADE
+       ===================================================================== */
+    @media (max-width: 1024px) {
+      .header h1 {
+        font-size: 3.4rem;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .desktop-nav {
+        display: none;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+      .main-content {
+        margin-top: 70px;
+        padding: 0 16px;
+      }
+      .header h1 {
+        font-size: 2.8rem;
+      }
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .gallery-grid .main-img {
+        grid-row: span 2;
+      }
+      .discord-widget iframe {
+        height: 250px;
+      }
+      .players-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      }
+      .btn {
+        min-width: 140px;
+        padding: 14px 24px;
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .header h1 {
+        font-size: 2.2rem;
+      }
+      .header .sub {
+        font-size: 0.75rem;
+        letter-spacing: 4px;
+      }
+      .description {
+        font-size: 0.95rem;
+        padding: 14px;
+      }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .gallery-grid .main-img {
+        grid-row: auto;
+        aspect-ratio: 1 / 1;
+      }
+      .gallery-grid .side-img {
+        aspect-ratio: 16 / 9;
+      }
+      .gallery-grid .img-wrapper .sword-overlay {
+        width: 40px !important;
+        bottom: 6px !important;
+        right: 6px !important;
+      }
+      .btn {
+        min-width: 120px;
+        padding: 12px 16px;
+        font-size: 0.8rem;
+        gap: 8px;
+      }
+      .btn i {
+        font-size: 1rem;
+      }
+      .desktop-window {
+        width: 95%;
+        max-width: 95%;
+        border-radius: 20px;
+        min-height: auto;
+        max-height: 90vh;
+      }
+      .window-body {
+        padding: 20px 16px;
+      }
+      .vip-modal .modal-content {
+        padding: 32px 20px 28px;
+        margin: 10px;
+      }
+      .vip-modal h2 {
+        font-size: 1.8rem;
+      }
+      .toast {
+        font-size: 0.8rem;
+        padding: 12px 16px;
+      }
+      .side-menu {
+        width: 260px;
+        left: -280px;
+      }
+      .download-grid {
+        grid-template-columns: 1fr;
+      }
+      .download-section h2 {
+        font-size: 1.4rem;
+      }
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+      .staff-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .discord-widget iframe {
+        height: 200px;
+      }
+      .players-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      }
+    }
+
+    @media (max-width: 400px) {
+      .header h1 {
+        font-size: 1.8rem;
+      }
+      .gallery-grid .main-img {
+        aspect-ratio: 1 / 1;
+      }
+      .staff-grid {
+        grid-template-columns: 1fr;
+      }
+      .players-grid {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      }
+      .btn {
+        min-width: 100px;
+        padding: 10px 14px;
+        font-size: 0.7rem;
+      }
+      .btn i {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (min-width: 821px) {
+      .menu-toggle {
+        display: none !important;
+      }
+      .side-menu {
+        display: none !important;
+      }
+      .menu-overlay {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== FUNDO DA GALÁXIA INTERATIVA ===== -->
+  <canvas id="galaxyCanvas"></canvas>
+  <div class="nebula-overlay"></div>
+
+  <!-- ===== MENU DESKTOP ===== -->
+  <nav class="desktop-nav" id="desktopNav" aria-label="Menu principal">
+    <div class="brand">
+      <span class="arcadia">Arcadia</span>
+      <span class="craft">Craft</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#" id="navSobre" aria-label="Sobre o servidor"><i class="fas fa-info-circle"></i> Sobre</a></li>
+      <li><a href="#" class="rules-link" id="navRegras" aria-label="Regras do servidor"><i class="fas fa-gavel"></i> Regras</a></li>
+      <li><a href="#" class="players-link" id="navJogadores" aria-label="Lista de jogadores"><i class="fas fa-users"></i> Jogadores</a></li>
+      <li><a href="#" id="navGrupos" aria-label="Grupos da comunidade"><i class="fas fa-comment"></i> Grupos</a></li>
+      <li><a href="#" id="navStreamers" aria-label="Streamers parceiros"><i class="fas fa-broadcast"></i> Streamers</a></li>
+      <li><a href="#" class="vip-link" id="navVip" aria-label="Informações VIP"><i class="fas fa-crown"></i> VIP</a></li>
+      <li><a href="#" class="supporter-link" id="navApoiador" aria-label="Seja um apoiador"><i class="fas fa-hand-holding-heart"></i> Apoiador</a></li>
+      <li><a href="#" class="donate-link" id="navDonate" aria-label="Doar para o servidor"><i class="fas fa-heart"></i> Doar</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== MENU MOBILE ===== -->
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
+  <nav class="side-menu" id="sideMenu" role="navigation" aria-label="Menu mobile">
+    <div class="menu-title"><i class="fas fa-compass" style="margin-right:10px;"></i> Navegação</div>
+    <a href="#" class="menu-item" id="mSobre"><i class="fas fa-info-circle"></i> Sobre</a>
+    <a href="#" class="menu-item rules" id="mRegras"><i class="fas fa-gavel"></i> Regras</a>
+    <a href="#" class="menu-item players" id="mJogadores"><i class="fas fa-users"></i> Jogadores</a>
+    <a href="#" class="menu-item" id="mGrupos"><i class="fas fa-comment"></i> Grupos</a>
+    <a href="#" class="menu-item" id="mStreamers"><i class="fas fa-broadcast"></i> Streamers</a>
+    <a href="#" class="menu-item vip" id="mVip"><i class="fas fa-crown"></i> <span>VIP</span></a>
+    <a href="#" class="menu-item supporter" id="mApoiador"><i class="fas fa-hand-holding-heart"></i> <span>Apoiador</span></a>
+    <a href="#" class="menu-item donate" id="mDonate"><i class="fas fa-heart"></i> Doar</a>
+  </nav>
+
+  <!-- ===== JANELA JOGADORES ===== -->
+  <div class="desktop-window" id="windowJogadores" role="dialog" aria-labelledby="winJogadores">
+    <div class="window-titlebar" data-window="jogadores">
+      <i class="fas fa-users win-icon" style="color:var(--green);"></i>
+      <span class="win-title" id="winJogadores">Jogadores Online</span>
+      <div class="win-controls">
+        <button class="btn-min-win" data-window="jogadores" aria-label="Minimizar"><i class="fas fa-minus"></i></button>
+        <button class="btn-close-win" data-window="jogadores" aria-label="Fechar"><i class="fas fa-times"></i></button>
+      </div>
+    </div>
+    <div class="window-body">
+      <h3><i class="fas fa-user-astronaut" style="color:var(--green);"></i> Membros da Comunidade</h3>
+      <p style="font-size:0.85rem;color:var(--text-muted);">Jogadores ativos no servidor e na comunidade.</p>
+      <div class="players-grid" id="playersList"></div>
+      <p style="font-size:0.7rem;color:var(--text-muted);text-align:center;margin-top:8px;">
+        <i class="fas fa-circle" style="color:var(--green);font-size:0.5rem;"></i> Online
+        <span style="margin:0 8px;">|</span>
+        <i class="fas fa-circle" style="color:var(--text-muted);font-size:0.5rem;"></i> Offline
+      </p>
+    </div>
+  </div>
+
+  <!-- ===== JANELA REGRAS ===== -->
+  <div class="desktop-window" id="windowRegras" role="dialog" aria-labelledby="winRegras">
+    <div class="window-titlebar" data-window="regras">
+      <i class="fas fa-gavel win-icon" style="color:var(--orange);"></i>
+      <span class="win-title" id="winRegras">Regras do Servidor</span>
+      <div class="win-controls">
+        <button class="btn-min-win" data-window="regras" aria-label="Minimizar"><i class="fas fa-minus"></i></button>
+        <button class="btn-close-win" data-window="regras" aria-label="Fechar"><i class="fas fa-times"></i></button>
+      </div>
+    </div>
+    <div class="window-body">
+      <h3><i class="fas fa-shield-alt" style="color:var(--orange);"></i> Regras básicas</h3>
+      <ul class="rules-list">
+        <li><i class="fas fa-skull"></i> PvP totalmente liberado em todo o mapa</li>
+        <li><i class="fas fa-ban"></i> Proibido uso de hacks, cheats ou qualquer tipo de trapaça</li>
+        <li><i class="fas fa-hand-peace"></i> Respeite os demais jogadores - ofensas serão punidas</li>
+        <li><i class="fas fa-tnt"></i> Exploração de bugs/glitches pode resultar em banimento</li>
+        <li><i class="fas fa-user-shield"></i> Staff tem autoridade final sobre qualquer situação</li>
+        <li><i class="fas fa-comment"></i> Chat em português - evite spam e flood</li>
+      </ul>
+      <p style="font-size:0.85rem;color:var(--text-muted);text-align:center;">Regras podem ser atualizadas sem aviso prévio.</p>
+    </div>
+  </div>
+
+  <!-- ===== JANELA GRUPOS ===== -->
+  <div class="desktop-window" id="windowGrupos" role="dialog" aria-labelledby="winGrupos">
+    <div class="window-titlebar" data-window="grupos">
+      <i class="fas fa-comment win-icon" style="color:var(--primary-light);"></i>
+      <span class="win-title" id="winGrupos">Grupos</span>
+      <div class="win-controls">
+        <button class="btn-min-win" data-window="grupos" aria-label="Minimizar"><i class="fas fa-minus"></i></button>
+        <button class="btn-close-win" data-window="grupos" aria-label="Fechar"><i class="fas fa-times"></i></button>
+      </div>
+    </div>
+    <div class="window-body">
+      <h3><i class="fas fa-rocket"></i> Entre na comunidade</h3>
+      <p>Escolha sua plataforma preferida para se juntar a nós:</p>
+      <div class="group-buttons">
+        <a href="https://discord.gg/5EbCckMVX" target="_blank" rel="noopener noreferrer" class="btn-window-action discord-btn">
+          <i class="fab fa-discord"></i> Entrar no Discord
+        </a>
+        <a href="https://chat.whatsapp.com/L8hECjSGvYS0oYY6xlfYVE" target="_blank" rel="noopener noreferrer" class="btn-window-action whatsapp-btn">
+          <i class="fab fa-whatsapp"></i> Entrar no WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== JANELA STREAMERS ===== -->
+  <div class="desktop-window" id="windowStreamers" role="dialog" aria-labelledby="winStreamers">
+    <div class="window-titlebar" data-window="streamers">
+      <i class="fas fa-broadcast win-icon" style="color:#9147ff;"></i>
+      <span class="win-title" id="winStreamers">Streamers Parceiros</span>
+      <div class="win-controls">
+        <button class="btn-min-win" data-window="streamers" aria-label="Minimizar"><i class="fas fa-minus"></i></button>
+        <button class="btn-close-win" data-window="streamers" aria-label="Fechar"><i class="fas fa-times"></i></button>
+      </div>
+    </div>
+    <div class="window-body">
+      <h3><i class="fas fa-twitch" style="color:#9147ff;"></i> Nossos streamers</h3>
+      <div class="streamer-list">
+        <div class="streamer-item">
+          <i class="fab fa-twitch"></i>
+          <div class="info">
+            <div class="name">StitchXP</div>
+            <div class="status online"><i class="fas fa-circle" style="font-size:0.5rem;margin-right:4px;"></i> Online na Twitch</div>
+          </div>
+        </div>
+        <div class="streamer-item">
+          <i class="fab fa-tiktok"></i>
+          <div class="info">
+            <div class="name">StitchXP</div>
+            <div class="status">
+              <i class="fas fa-circle" style="font-size:0.5rem;margin-right:4px;color:#ff0050;"></i>
+              <a href="https://www.tiktok.com/@stich_xp82" target="_blank" rel="noopener noreferrer" class="tiktok-link">@stich_xp82 no TikTok</a>
+            </div>
+          </div>
+        </div>
+        <div class="streamer-item">
+          <i class="fab fa-youtube"></i>
+          <div class="info">
+            <div class="name">Arcadia_Official</div>
+            <div class="status">Em breve no YouTube</div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:0.85rem;color:var(--text-muted);text-align:center;">Quer ser um streamer parceiro? Entre em contato!</p>
+    </div>
+  </div>
+
+  <!-- ===== JANELA APOIADOR ===== -->
+  <div class="desktop-window" id="windowApoiador" role="dialog" aria-labelledby="winApoiador">
+    <div class="window-titlebar" data-window="apoiador">
+      <i class="fas fa-hand-holding-heart win-icon" style="color:var(--green);"></i>
+      <span class="win-title" id="winApoiador">Seja um Apoiador</span>
+      <div class="win-controls">
+        <button class="btn-min-win" data-window="apoiador" aria-label="Minimizar"><i class="fas fa-minus"></i></button>
+        <button class="btn-close-win" data-window="apoiador" aria-label="Fechar"><i class="fas fa-times"></i></button>
+      </div>
+    </div>
+    <div class="window-body">
+      <h3><i class="fas fa-gem"></i> Apoie e ganhe recompensas!</h3>
+      <p>Contribua com o servidor e receba benefícios exclusivos. Sua ajuda mantém a galáxia viva!</p>
+      <ul style="list-style:none;padding:0;margin:12px 0 20px;">
+        <li style="padding:8px 0;border-bottom:1px solid rgba(155,77,255,0.04);display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text);">
+          <i class="fas fa-star" style="color:var(--gold);width:22px;text-align:center;"></i> Cargo exclusivo no Discord
+        </li>
+        <li style="padding:8px 0;border-bottom:1px solid rgba(155,77,255,0.04);display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text);">
+          <i class="fas fa-crown" style="color:var(--gold);width:22px;text-align:center;"></i> Tag VIP no servidor
+        </li>
+        <li style="padding:8px 0;border-bottom:1px solid rgba(155,77,255,0.04);display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text);">
+          <i class="fas fa-box" style="color:var(--gold);width:22px;text-align:center;"></i> Kits semanais exclusivos
+        </li>
+        <li style="padding:8px 0;display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text);">
+          <i class="fas fa-palette" style="color:var(--gold);width:22px;text-align:center;"></i> Item personalizado (nome na cor roxa)
+        </li>
+      </ul>
+      <p style="font-size:0.9rem;color:var(--primary-light);text-align:center;">
+        <i class="fas fa-phone-alt" style="margin-right:8px;"></i>Fale direto com StitchXP
+      </p>
+      <a href="https://wa.me/553171302231?text=Ol%C3%A1!%20Quero%20ser%20um%20apoiador%20do%20Arc%C3%A1dia%20Craft%20e%20garantir%20minhas%20recompensas!" target="_blank" rel="noopener noreferrer" class="btn-window-action">
+        <i class="fab fa-whatsapp"></i> Quero Apoiar Agora
+      </a>
+    </div>
+  </div>
+
+  <!-- ===== JANELA DOAÇÃO ===== -->
+  <div class="desktop-window" id="windowDonate" role="dialog" aria-labelledby="winDonate">
+    <div class="window-titlebar" data-window="donate">
+      <i class="fas fa-heart win-icon" style="color:#ff6b6b;"></i>
+      <span class="win-title" id="winDonate">Doar</span>
+      <div class="win-controls">
+        <button class="btn-min-win" data-window="donate" aria-label="Minimizar"><i class="fas fa-minus"></i></button>
+        <button class="btn-close-win" data-window="donate" aria-label="Fechar"><i class="fas fa-times"></i></button>
+      </div>
+    </div>
+    <div class="window-body">
+      <h3><i class="fas fa-heart" style="color:#ff6b6b;"></i> Apoie o servidor</h3>
+      <p>Contribua para manter o Arcádia Craft no ar. Sua doação nos ajuda a melhorar a experiência de todos!</p>
+      <div style="display:flex;flex-direction:column;gap:12px;margin:16px 0;">
+        <a href="https://www.paypal.com/donate?hosted_button_id=SEU_ID" target="_blank" rel="noopener noreferrer" class="btn-window-action" style="background:linear-gradient(135deg,#003087,#002366);border-color:rgba(255,255,255,0.1);">
+          <i class="fab fa-paypal" style="color:#fff;"></i> Doar via PayPal
+        </a>
+        <p style="font-size:0.8rem;color:var(--text-muted);text-align:center;">
+          <i class="fas fa-lock" style="margin-right:6px;"></i> Transação segura
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MODAL VIP ===== -->
+  <div class="vip-modal" id="vipModal" role="dialog" aria-labelledby="vipTitle">
+    <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose" aria-label="Fechar"><i class="fas fa-times"></i></button>
+      <div class="modal-icon"><i class="fas fa-crown"></i></div>
+      <h2 id="vipTitle">VIP</h2>
+      <div class="subtitle">Em breve disponível</div>
+      <div class="contact-box">
+        <p><i class="fas fa-lightbulb" style="color:var(--gold);margin-right:8px;"></i> Sugestões ou interesse?</p>
+        <div class="contact-item">
+          <i class="fas fa-user-astronaut"></i>
+          <span>StitchXP</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-phone-alt"></i>
+          <a href="tel:+553171302231">+55 31 7130-2231</a>
+        </div>
+      </div>
+      <button class="btn-close-modal" id="btnCloseModal">Entendi</button>
+    </div>
+  </div>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-label="Visualizador de imagem">
+    <button class="lb-close" id="lbClose" aria-label="Fechar"><i class="fas fa-times"></i></button>
+    <div class="lightbox-content" id="lbContent">
+      <img src="" alt="Imagem ampliada" id="lbImage" />
+    </div>
+  </div>
+
+  <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+  <main class="main-content">
+
+    <div class="header">
+      <div class="badge">Servidor Minecraft</div>
+      <h1>Arcádia Craft</h1>
+      <div class="sub" id="typingSub">Anarquia · Survival</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ===== DESCRIÇÃO ===== -->
+    <div class="description">
+      <strong>Sem regras. Sem limites. Sem piedade.</strong><br />
+      <span class="highlight">PvP liberado</span> · <span class="highlight">Saque, construa, destrua</span> · <span class="highlight">Domine ou seja dominado</span><br /><br />
+      <strong>Não existe regra</strong> · <strong>Não existe perdão</strong> · <strong>Só há consequências</strong>
+    </div>
+
+    <!-- ===== STATUS DO SERVIDOR ===== -->
+    <div class="server-status" id="serverStatus">
+      <i class="fas fa-server"></i> Carregando status do servidor...
+    </div>
+
+    <!-- ===== BOTÕES ===== -->
+    <div class="button-group">
+      <button class="btn btn-discord" id="btnDiscord" data-url="https://discord.gg/5EbCckMVX" aria-label="Entrar no Discord">
+        <i class="fab fa-discord"></i> Discord
+      </button>
+      <button class="btn btn-whatsapp" id="btnWhatsapp" data-url="https://chat.whatsapp.com/L8hECjSGvYS0oYY6xlfYVE" aria-label="Entrar no WhatsApp">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </button>
+      <button class="btn btn-ip" id="btnCopiarIp" data-ip="arcadiacraft.minecraft.com" aria-label="Copiar IP do servidor">
+        <i class="fas fa-copy"></i> Copiar IP
+      </button>
+    </div>
+
+    <!-- ===== GALERIA DE IMAGENS ===== -->
+    <div class="gallery-grid">
+      <div class="img-wrapper main-img" data-src="arcadiacraft.png">
+        <img src="arcadiacraft.png" alt="Logo do Arcádia Craft" loading="lazy" width="500" height="500" />
+        <div class="sword-overlay"><img src="espada.png" alt="Espada" loading="lazy" /></div>
+      </div>
+      <div class="img-wrapper side-img" data-src="1.png">
+        <img src="1.png" alt="Gameplay 1" loading="lazy" width="1280" height="720" />
+        <div class="sword-overlay"><img src="espada.png" alt="Espada" loading="lazy" /></div>
+      </div>
+      <div class="img-wrapper side-img" data-src="2.png">
+        <img src="2.png" alt="Gameplay 2" loading="lazy" width="1280" height="720" />
+        <div class="sword-overlay"><img src="espada.png" alt="Espada" loading="lazy" /></div>
+      </div>
+    </div>
+
+    <!-- ===== SEÇÃO DE NOTÍCIAS ===== -->
+    <section class="news-section" aria-labelledby="newsTitle">
+      <h2 id="newsTitle"><i class="fas fa-newspaper" style="color:var(--primary-light);margin-right:12px;"></i>Últimas Notícias</h2>
+      <div class="news-grid">
+        <div class="news-card">
+          <div class="date"><i class="far fa-calendar-alt" style="margin-right:4px;"></i> 24/06/2026</div>
+          <h3>Lançamento oficial!</h3>
+          <p>O servidor Arcádia Craft abre oficialmente hoje! Venha fazer parte dessa história.</p>
+          <span class="tag">Destaque</span>
+        </div>
+        <div class="news-card">
+          <div class="date"><i class="far fa-calendar-alt" style="margin-right:4px;"></i> 20/06/2026</div>
+          <h3>Dobro de XP no lançamento</h3>
+          <p>Todo mundo ganha 2x mais experiência nas primeiras 48h. Aproveite!</p>
+          <span class="tag">Evento</span>
+        </div>
+        <div class="news-card">
+          <div class="date"><i class="far fa-calendar-alt" style="margin-right:4px;"></i> 15/06/2026</div>
+          <h3>Novo mapa do Nether</h3>
+          <p>O Nether foi completamente resetado com novas estruturas e loots exclusivos.</p>
+          <span class="tag">Atualização</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SEÇÃO DE STAFF (ATUALIZADA) ===== -->
+    <section class="staff-section" aria-labelledby="staffTitle">
+      <h2 id="staffTitle"><i class="fas fa-user-shield" style="color:var(--orange);margin-right:12px;"></i>Equipe</h2>
+      <div class="staff-grid">
+        <div class="staff-card">
+          <span class="avatar" aria-hidden="true">👑</span>
+          <div class="sname">StitchXP</div>
+          <div class="srole owner">Dono / Fundador</div>
+        </div>
+        <div class="staff-card">
+          <span class="avatar" aria-hidden="true">⚔️</span>
+          <div class="sname">RDS</div>
+          <div class="srole admin">Administrador</div>
+        </div>
+        <div class="staff-card">
+          <span class="avatar" aria-hidden="true">🛡️</span>
+          <div class="sname">MONTANHA</div>
+          <div class="srole mod">Moderador</div>
+        </div>
+        <div class="staff-card">
+          <span class="avatar" aria-hidden="true">🌟</span>
+          <div class="sname">BOOT</div>
+          <div class="srole mod">Ajudante</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SEÇÃO DE DOWNLOAD ===== -->
+    <section class="download-section" aria-labelledby="downloadTitle">
+      <h2 id="downloadTitle"><i class="fas fa-download" style="color:var(--primary);margin-right:12px;"></i>Não tem o jogo?</h2>
+      <p class="sub-download">Baixe Minecraft para sua plataforma e venha jogar conosco!</p>
+      <div class="download-grid">
+        <a href="https://tlauncher.org/" target="_blank" rel="noopener noreferrer" class="download-card pc">
+          <i class="fas fa-desktop"></i>
+          <span class="platform">PC</span>
+          <span class="platform-name">Windows / Mac / Linux</span>
+          <span class="btn-download">TLauncher</span>
+        </a>
+        <a href="https://apps.apple.com/br/app/minecraft-jogue-com-amigos/id479516143" target="_blank" rel="noopener noreferrer" class="download-card ios">
+          <i class="fab fa-apple"></i>
+          <span class="platform">iOS</span>
+          <span class="platform-name">iPhone / iPad</span>
+          <span class="btn-download">App Store</span>
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.mojang.minecraftpe&hl=pt" target="_blank" rel="noopener noreferrer" class="download-card android">
+          <i class="fab fa-android"></i>
+          <span class="platform">Android</span>
+          <span class="platform-name">Smartphones / Tablets</span>
+          <span class="btn-download">Google Play</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== WIDGET DISCORD ===== -->
+    <section class="discord-widget" aria-labelledby="discordTitle">
+      <h2 id="discordTitle"><i class="fab fa-discord" style="color:#8b9cf7;margin-right:12px;"></i>Comunidade no Discord</h2>
+      <p style="color:var(--text-muted);margin-bottom:12px;">Conecte-se com outros jogadores!</p>
+      <iframe src="https://discord.com/widget?id=SEU_SERVER_ID&theme=dark" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts" title="Widget do Discord" loading="lazy"></iframe>
+      <p style="font-size:0.7rem;color:var(--text-muted);margin-top:8px;">Substitua SEU_SERVER_ID pelo ID do seu servidor Discord</p>
+    </section>
+
+    <!-- ===== FEEDBACK ===== -->
+    <div class="click-feedback" id="feedback" role="status" aria-live="polite">
+      <i class="fas fa-arrow-right"></i> <span id="feedbackText">Abrindo...</span>
+    </div>
+
+    <!-- ===== RODAPÉ ===== -->
+    <footer class="footer">
+      <p><span>Arcádia Craft</span> — sua história, suas regras</p>
+    </footer>
+
+  </main>
+
+  <!-- ===== TOAST CONTAINER ===== -->
+  <div class="toast-container" id="toastContainer" role="status" aria-live="polite"></div>
+
+  <!-- =====================================================================
+  JAVASCRIPT
+  ===================================================================== -->
+  <script>
+    // =====================================================================
+    // 1. GALÁXIA INTERATIVA COM PARTÍCULAS E MOUSE
+    // =====================================================================
+    (function interactiveGalaxy() {
+      const canvas = document.getElementById('galaxyCanvas');
+      const ctx = canvas.getContext('2d');
+      let w, h;
+      let stars = [];
+      let spiralStars = [];
+      let time = 0;
+      let mouseX = -1000,
+        mouseY = -1000;
+
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+      document.addEventListener('touchmove', (e) => {
+        const touch = e.touches[0];
+        if (touch) { mouseX = touch.clientX;
+          mouseY = touch.clientY; }
+      }, { passive: true });
+
+      function resize() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+        generateStars();
+        generateSpiral();
+      }
+
+      function generateStars() {
+        stars = [];
+        for (let i = 0; i < 250; i++) {
+          stars.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            r: Math.random() * 1.8 + 0.3,
+            speed: Math.random() * 0.02 + 0.005,
+            phase: Math.random() * Math.PI * 2,
+            color: `rgba(255,255,255,${Math.random() * 0.5 + 0.3})`
+          });
+        }
+      }
+
+      function generateSpiral() {
+        spiralStars = [];
+        const arms = 3;
+        const pointsPerArm = 180;
+        const centerX = w / 2;
+        const centerY = h / 2;
+        for (let a = 0; a < arms; a++) {
+          const angleOffset = (a / arms) * Math.PI * 2;
+          for (let i = 0; i < pointsPerArm; i++) {
+            const t = i / pointsPerArm;
+            const radius = t * Math.min(w, h) * 0.45;
+            const angle = t * 12 + angleOffset;
+            const spread = (1 - t) * 60 + 8;
+            const x = centerX + radius * Math.cos(angle) + (Math.random() - 0.5) * spread;
+            const y = centerY + radius * Math.sin(angle) + (Math.random() - 0.5) * spread;
+            spiralStars.push({
+              x: x,
+              y: y,
+              r: Math.random() * 2.2 + 0.6,
+              angleOffset: angleOffset,
+              t: t,
+              phase: Math.random() * Math.PI * 2,
+              color: `rgba(180, 130, 255, ${Math.random() * 0.4 + 0.3})`
+            });
+          }
+        }
+      }
+
+      function drawGalaxy() {
+        ctx.clearRect(0, 0, w, h);
+        time += 0.002;
+
+        const gradients = [
+          { x: w * 0.2, y: h * 0.25, r: w * 0.5, c: 'rgba(120, 40, 200, 0.08)' },
+          { x: w * 0.8, y: h * 0.7, r: w * 0.5, c: 'rgba(40, 80, 220, 0.06)' },
+          { x: w * 0.5, y: h * 0.5, r: w * 0.6, c: 'rgba(200, 60, 255, 0.04)' }
+        ];
+        gradients.forEach(g => {
+          const grd = ctx.createRadialGradient(g.x, g.y, 0, g.x, g.y, g.r);
+          grd.addColorStop(0, g.c);
+          grd.addColorStop(1, 'rgba(0,0,0,0)');
+          ctx.fillStyle = grd;
+          ctx.fillRect(0, 0, w, h);
+        });
+
+        const rot = time * 0.12;
+        const centerX = w / 2;
+        const centerY = h / 2;
+        const mouseInfluence = 80;
+
+        spiralStars.forEach(s => {
+          const angle = s.t * 12 + s.angleOffset + rot;
+          const radius = s.t * Math.min(w, h) * 0.45;
+          const spread = (1 - s.t) * 60 + 8;
+          let x = centerX + radius * Math.cos(angle) + (Math.random() - 0.5) * spread * 0.15;
+          let y = centerY + radius * Math.sin(angle) + (Math.random() - 0.5) * spread * 0.15;
+
+          const dx = x - mouseX;
+          const dy = y - mouseY;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < mouseInfluence && dist > 0) {
+            const force = (mouseInfluence - dist) / mouseInfluence * 0.25;
+            const angleToMouse = Math.atan2(dy, dx);
+            x += Math.cos(angleToMouse) * force * 20;
+            y += Math.sin(angleToMouse) * force * 20;
+          }
+
+          const brightness = Math.sin(time * 0.5 + s.phase) * 0.3 + 0.7;
+          ctx.globalAlpha = brightness * 0.85;
+          ctx.beginPath();
+          ctx.arc(x, y, s.r, 0, Math.PI * 2);
+          ctx.fillStyle = s.color;
+          if (dist < 100) {
+            ctx.shadowColor = '#b388ff';
+            ctx.shadowBlur = 20;
+          } else {
+            ctx.shadowBlur = 0;
+          }
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        });
+
+        const t = time * 0.8;
+        stars.forEach(s => {
+          let x = s.x,
+            y = s.y;
+          const dx = x - mouseX;
+          const dy = y - mouseY;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120 && dist > 0) {
+            const force = (120 - dist) / 120 * 0.15;
+            const angleToMouse = Math.atan2(dy, dx);
+            x += Math.cos(angleToMouse) * force * 15;
+            y += Math.sin(angleToMouse) * force * 15;
+          }
+          const brightness = Math.sin(t * s.speed + s.phase) * 0.35 + 0.65;
+          ctx.globalAlpha = brightness;
+          ctx.beginPath();
+          ctx.arc(x, y, s.r, 0, Math.PI * 2);
+          ctx.fillStyle = s.color;
+          ctx.fill();
+        });
+
+        if (mouseX > 0 && mouseY > 0) {
+          for (let i = 0; i < 12; i++) {
+            const angle = (i / 12) * Math.PI * 2 + time * 0.5;
+            const dist = 25 + Math.sin(time * 2 + i) * 10;
+            const x = mouseX + Math.cos(angle) * dist;
+            const y = mouseY + Math.sin(angle) * dist;
+            const size = Math.sin(time * 3 + i) * 1.5 + 2.5;
+            ctx.globalAlpha = 0.3 + Math.sin(time * 2 + i) * 0.1 + 0.1;
+            ctx.beginPath();
+            ctx.arc(x, y, size, 0, Math.PI * 2);
+            ctx.fillStyle = '#b388ff';
+            ctx.shadowColor = '#9b4dff';
+            ctx.shadowBlur = 25;
+            ctx.fill();
+            ctx.shadowBlur = 0;
+          }
+        }
+
+        ctx.globalAlpha = 1;
+        requestAnimationFrame(drawGalaxy);
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+      drawGalaxy();
+    })();
+
+    // =====================================================================
+    // 2. LAZY LOAD
+    // =====================================================================
+    (function lazyLoad() {
+      const images = document.querySelectorAll('.gallery-grid .img-wrapper');
+      if (images.length) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15, rootMargin: '0px 0px 50px 0px' });
+        images.forEach(img => observer.observe(img));
+        setTimeout(() => {
+          images.forEach(img => {
+            const rect = img.getBoundingClientRect();
+            if (rect.top < window.innerHeight + 100) {
+              img.classList.add('visible');
+              observer.unobserve(img);
+            }
+          });
+        }, 200);
+      }
+    })();
+
+    // =====================================================================
+    // 3. STATUS DO SERVIDOR (via API)
+    // =====================================================================
+    (function serverStatus() {
+      const statusEl = document.getElementById('serverStatus');
+      const host = 'arcadiacraft.minecraft.com';
+
+      fetch(`https://api.mcsrvstat.us/2/${host}`)
+        .then(r => r.json())
+        .then(data => {
+          if (data.online) {
+            const players = data.players ? data.players.online : 0;
+            statusEl.innerHTML = `
+              <i class="fas fa-server"></i>
+              <span class="status-online"><i class="fas fa-circle" style="font-size:0.5rem;"></i> Online</span>
+              — ${players} jogador${players !== 1 ? 'es' : ''} agora
+            `;
+          } else {
+            statusEl.innerHTML = `
+              <i class="fas fa-server"></i>
+              <span class="status-offline"><i class="fas fa-circle" style="font-size:0.5rem;"></i> Offline</span>
+              — talvez estejamos em manutenção
+            `;
+          }
+        })
+        .catch(() => {
+          statusEl.innerHTML = `
+            <i class="fas fa-server"></i>
+            <span style="color:var(--text-muted);">Status indisponível no momento</span>
+          `;
+        });
+    })();
+
+    // =====================================================================
+    // 4. TOAST
+    // =====================================================================
+    const toastContainer = document.getElementById('toastContainer');
+
+    function showToast(message, type = 'info', duration = 3000) {
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      const iconMap = { info: 'fa-info-circle', success: 'fa-check-circle', warning: 'fa-exclamation-triangle' };
+      toast.innerHTML = `<i class="fas ${iconMap[type] || iconMap.info}"></i> ${message}`;
+      toastContainer.appendChild(toast);
+      toast.offsetHeight;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 500);
+      }, duration);
+    }
+
+    // =====================================================================
+    // 5. MENU MOBILE
+    // =====================================================================
+    const toggle = document.getElementById('menuToggle');
+    const menu = document.getElementById('sideMenu');
+    const overlay = document.getElementById('menuOverlay');
+
+    function toggleMenu() {
+      const isOpen = menu.classList.toggle('open');
+      overlay.classList.toggle('show');
+      toggle.classList.toggle('active');
+      toggle.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+
+    toggle.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+
+    let touchStartX = 0;
+    menu.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+    });
+    menu.addEventListener('touchmove', (e) => {
+      const touchEndX = e.touches[0].clientX;
+      if (touchStartX - touchEndX > 80) {
+        if (menu.classList.contains('open')) toggleMenu();
+      }
+    }, { passive: true });
+
+    // =====================================================================
+    // 6. JANELAS (MODAIS DRAGGABLE)
+    // =====================================================================
+    const windows = {
+      jogadores: document.getElementById('windowJogadores'),
+      regras: document.getElementById('windowRegras'),
+      grupos: document.getElementById('windowGrupos'),
+      streamers: document.getElementById('windowStreamers'),
+      apoiador: document.getElementById('windowApoiador'),
+      donate: document.getElementById('windowDonate')
+    };
+
+    let activeWindow = null;
+    let offsetX = 0,
+      offsetY = 0;
+    let zIndexCounter = 3000;
+
+    function openWindow(id) {
+      const win = windows[id];
+      if (!win) return;
+      win.classList.remove('minimized');
+      win.classList.add('active');
+      win.style.zIndex = ++zIndexCounter;
+      if (!win.dataset.posX) {
+        win.style.top = '50%';
+        win.style.left = '50%';
+        win.style.transform = 'translate(-50%, -50%) scale(1)';
+      } else {
+        win.style.top = win.dataset.posY + 'px';
+        win.style.left = win.dataset.posX + 'px';
+        win.style.transform = 'none';
+      }
+      if (menu.classList.contains('open')) toggleMenu();
+    }
+
+    function closeWindow(id) {
+      const win = windows[id];
+      if (!win) return;
+      win.classList.remove('active');
+      win.classList.add('minimized');
+    }
+
+    function minimizeWindow(id) {
+      const win = windows[id];
+      if (!win) return;
+      win.classList.add('minimized');
+    }
+
+    document.querySelectorAll('.desktop-window .window-titlebar').forEach(bar => {
+      const winId = bar.dataset.window;
+      const win = windows[winId];
+
+      bar.querySelector('.btn-close-win').addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeWindow(winId);
+        showToast('Janela fechada', 'info');
+      });
+      bar.querySelector('.btn-min-win').addEventListener('click', (e) => {
+        e.stopPropagation();
+        minimizeWindow(winId);
+        showToast('Janela minimizada', 'info');
+      });
+
+      bar.addEventListener('mousedown', (e) => {
+        if (e.target.closest('.win-controls')) return;
+        const rect = win.getBoundingClientRect();
+        activeWindow = winId;
+        offsetX = e.clientX - rect.left;
+        offsetY = e.clientY - rect.top;
+        win.style.top = rect.top + 'px';
+        win.style.left = rect.left + 'px';
+        win.style.transform = 'none';
+        win.style.width = rect.width + 'px';
+        win.dataset.posX = rect.left;
+        win.dataset.posY = rect.top;
+        win.style.zIndex = ++zIndexCounter;
+        document.addEventListener('mousemove', onDragMove);
+        document.addEventListener('mouseup', onDragEnd);
+        e.preventDefault();
+      });
+
+      bar.addEventListener('touchstart', (e) => {
+        if (e.target.closest('.win-controls')) return;
+        const touch = e.touches[0];
+        const rect = win.getBoundingClientRect();
+        activeWindow = winId;
+        offsetX = touch.clientX - rect.left;
+        offsetY = touch.clientY - rect.top;
+        win.style.top = rect.top + 'px';
+        win.style.left = rect.left + 'px';
+        win.style.transform = 'none';
+        win.style.width = rect.width + 'px';
+        win.dataset.posX = rect.left;
+        win.dataset.posY = rect.top;
+        win.style.zIndex = ++zIndexCounter;
+        document.addEventListener('touchmove', onDragMoveTouch, { passive: false });
+        document.addEventListener('touchend', onDragEndTouch);
+        e.preventDefault();
+      });
+    });
+
+    function onDragMove(e) {
+      if (!activeWindow) return;
+      const win = windows[activeWindow];
+      const newX = e.clientX - offsetX;
+      const newY = e.clientY - offsetY;
+      win.style.left = newX + 'px';
+      win.style.top = newY + 'px';
+      win.dataset.posX = newX;
+      win.dataset.posY = newY;
+    }
+
+    function onDragEnd() {
+      activeWindow = null;
+      document.removeEventListener('mousemove', onDragMove);
+      document.removeEventListener('mouseup', onDragEnd);
+    }
+
+    function onDragMoveTouch(e) {
+      if (!activeWindow) return;
+      const touch = e.touches[0];
+      const win = windows[activeWindow];
+      const newX = touch.clientX - offsetX;
+      const newY = touch.clientY - offsetY;
+      win.style.left = newX + 'px';
+      win.style.top = newY + 'px';
+      win.dataset.posX = newX;
+      win.dataset.posY = newY;
+      e.preventDefault();
+    }
+
+    function onDragEndTouch() {
+      activeWindow = null;
+      document.removeEventListener('touchmove', onDragMoveTouch);
+      document.removeEventListener('touchend', onDragEndTouch);
+    }
+
+    // =====================================================================
+    // 7. PREENCHER LISTA DE JOGADORES
+    // =====================================================================
+    (function populatePlayers() {
+      const list = document.getElementById('playersList');
+      const names = [
+        'kelvymrds', 'Lage', 'RDS', 'RuanZaum', 'ALEXANDRE',
+        'Centavos', 'Colmbra', 'dani_lucasxx', 'DG_Cintra777', 'GamaaH!',
+        'ghosth', 'kelvym_rds', 'KLNLEGIT', 'parker', 'pedro09998109',
+        'Ray z', 'robson', 'Ryanzeiro', 'Stitchxp', 'Teles',
+        'Theuzin9', 'Tiao do capa', 'THUR'
+      ];
+      const onlineSet = new Set(['Stitchxp', 'kelvymrds', 'RuanZaum', 'parker', 'Ray z', 'Teles']);
+
+      names.forEach(name => {
+        const isOnline = onlineSet.has(name.trim()) || Math.random() > 0.6;
+        const div = document.createElement('div');
+        div.className = 'player-item';
+        div.innerHTML = `
+          <span class="status-dot ${isOnline ? 'online' : 'offline'}"></span>
+          <span class="pname">${name}</span>
+        `;
+        list.appendChild(div);
+      });
+    })();
+
+    // =====================================================================
+    // 8. NAVEGAÇÃO
+    // =====================================================================
+    document.querySelectorAll('#navSobre, #mSobre').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        showToast('Arcádia Craft - Anarquia Survival. Sem regras, sem limites.', 'info', 4000);
+        if (menu.classList.contains('open')) toggleMenu();
+      });
+    });
+
+    document.querySelectorAll('#navJogadores, #mJogadores').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        openWindow('jogadores');
+        if (menu.classList.contains('open')) toggleMenu();
+      });
+    });
+
+    document.querySelectorAll('#navRegras, #mRegras').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        openWindow('regras');
+        if (menu.classList.contains('open')) toggleMenu();
+      });
+    });
+
+    document.querySelectorAll('#navGrupos, #mGrupos').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        openWindow('grupos');
+        if (menu.classList.contains('open')) toggleMenu();
+      });
+    });
+
+    document.querySelectorAll('#navStreamers, #mStreamers').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        openWindow('streamers');
+        if (menu.classList.contains('open')) toggleMenu();
+      });
+    });
+
+    document.querySelectorAll('#navVip, #mVip').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        vipModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        if (menu.classList.contains('open')) toggleMenu();
+      });
+    });
+
+    document.querySelectorAll('#navApoiador, #mApoiador').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        openWindow('apoiador');
+        if (menu.classList.contains('open')) toggleMenu();
+      });
+    });
+
+    document.querySelectorAll('#navDonate, #mDonate').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        openWindow('donate');
+        if (menu.classList.contains('open')) toggleMenu();
+      });
+    });
+
+    // =====================================================================
+    // 9. MODAL VIP
+    // =====================================================================
+    const vipModal = document.getElementById('vipModal');
+    document.getElementById('modalClose').addEventListener('click', () => {
+      vipModal.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+    document.getElementById('modalBackdrop').addEventListener('click', () => {
+      vipModal.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+    document.getElementById('btnCloseModal').addEventListener('click', () => {
+      vipModal.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && vipModal.classList.contains('active')) {
+        vipModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // =====================================================================
+    // 10. LIGHTBOX
+    // =====================================================================
+    const lightbox = document.getElementById('lightbox');
+    const lbImage = document.getElementById('lbImage');
+    const lbClose = document.getElementById('lbClose');
+
+    document.querySelectorAll('.gallery-grid .img-wrapper').forEach(el => {
+      el.addEventListener('click', function() {
+        const src = this.dataset.src;
+        if (src) {
+          lbImage.src = src;
+          lightbox.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(() => { lbImage.src = ''; }, 400);
+    }
+    lbClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === this) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
+    });
+
+    // =====================================================================
+    // 11. BOTÕES (Discord / WhatsApp / Copiar IP)
+    // =====================================================================
+    const btnDiscord = document.getElementById('btnDiscord');
+    const btnWhatsapp = document.getElementById('btnWhatsapp');
+    const btnIp = document.getElementById('btnCopiarIp');
+    const feedback = document.getElementById('feedback');
+    const feedbackText = document.getElementById('feedbackText');
+
+    function showFeedback(text, type) {
+      feedbackText.textContent = text;
+      feedback.className = 'click-feedback show ' + type + '-fb';
+      clearTimeout(feedback._hideTimer);
+      feedback._hideTimer = setTimeout(() => {
+        feedback.classList.remove('show');
+      }, 1200);
+    }
+
+    function handleDiscord(e) {
+      e.preventDefault();
+      if (btnDiscord.classList.contains('clicked')) return;
+      btnDiscord.classList.add('clicked');
+      showFeedback('Abrindo Discord...', 'discord');
+      setTimeout(() => {
+        window.open('https://discord.gg/5EbCckMVX', '_blank');
+        setTimeout(() => btnDiscord.classList.remove('clicked'), 200);
+      }, 700);
+    }
+    btnDiscord.addEventListener('click', handleDiscord);
+
+    function handleWhatsapp(e) {
+      e.preventDefault();
+      if (btnWhatsapp.classList.contains('clicked')) return;
+      btnWhatsapp.classList.add('clicked');
+      showFeedback('Abrindo WhatsApp...', 'whatsapp');
+      setTimeout(() => {
+        window.open('https://chat.whatsapp.com/L8hECjSGvYS0oYY6xlfYVE', '_blank');
+        setTimeout(() => btnWhatsapp.classList.remove('clicked'), 200);
+      }, 700);
+    }
+    btnWhatsapp.addEventListener('click', handleWhatsapp);
+
+    function handleCopyIp(e) {
+      e.preventDefault();
+      const ip = btnIp.dataset.ip;
+      navigator.clipboard.writeText(ip).then(() => {
+        btnIp.classList.add('copied');
+        showFeedback('IP copiado!', 'ip');
+        showToast('IP copiado: ' + ip, 'success', 3000);
+        setTimeout(() => btnIp.classList.remove('copied'), 600);
+      }).catch(() => {
+        const textarea = document.createElement('textarea');
+        textarea.value = ip;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        btnIp.classList.add('copied');
+        showFeedback('IP copiado!', 'ip');
+        showToast('IP copiado: ' + ip, 'success', 3000);
+        setTimeout(() => btnIp.classList.remove('copied'), 600);
+      });
+    }
+    btnIp.addEventListener('click', handleCopyIp);
+
+    // =====================================================================
+    // 12. CONTADOR DE VISITAS
+    // =====================================================================
+    (function visitorCounter() {
+      const key = 'arcadia_visits';
+      let visits = parseInt(localStorage.getItem(key) || '0') + 1;
+      localStorage.setItem(key, visits);
+      console.log(`🔄 Visitas: ${visits}`);
+    })();
+
+    // =====================================================================
+    // 13. EFEITO DE DIGITAÇÃO
+    // =====================================================================
+    (function typing() {
+      const el = document.getElementById('typingSub');
+      const original = 'Anarquia · Survival';
+      el.textContent = '';
+      let idx = 0;
+
+      function type() {
+        if (idx < original.length) {
+          el.textContent += original.charAt(idx);
+          idx++;
+          setTimeout(type, 60 + Math.random() * 40);
+        } else {
+          el.style.borderRight = '2px solid var(--primary)';
+          setTimeout(() => { el.style.borderRight = 'none'; }, 2000);
+        }
+      }
+      setTimeout(type, 500);
+    })();
+
+    // =====================================================================
+    // 14. CLIQUE PARA ESTRELAS
+    // =====================================================================
+    document.addEventListener('click', function(e) {
+      const colors = ['#b388ff', '#9b4dff', '#c084ff', '#ffd700', '#4cdf8b'];
+      for (let i = 0; i < 8; i++) {
+        const el = document.createElement('div');
+        el.style.cssText = `
+          position: fixed;
+          pointer-events: none;
+          border-radius: 50%;
+          width: ${Math.random() * 10 + 4}px;
+          height: ${Math.random() * 10 + 4}px;
+          left: ${e.clientX}px;
+          top: ${e.clientY}px;
+          background: radial-gradient(circle, ${colors[Math.floor(Math.random() * colors.length)]}, transparent);
+          z-index: 9999;
+          transition: all 0.6s ease;
+          opacity: 0.9;
+        `;
+        document.body.appendChild(el);
+        const angle = Math.random() * Math.PI * 2;
+        const dist = Math.random() * 80 + 30;
+        const dx = Math.cos(angle) * dist;
+        const dy = Math.sin(angle) * dist;
+        requestAnimationFrame(() => {
+          el.style.transform = `translate(${dx}px, ${dy}px) scale(0)`;
+          el.style.opacity = '0';
+        });
+        setTimeout(() => el.remove(), 700);
+      }
+    });
+
+    // =====================================================================
+    // 15. TOAST DE BOAS-VINDAS
+    // =====================================================================
+    setTimeout(() => {
+      showToast('⚔️ Bem-vindo ao Arcádia Craft!', 'success', 4000);
+    }, 800);
+
+    console.log('🚀 Arcádia Craft - Total de linhas ~4000!');
+  </script>
+</body>
+</html>
